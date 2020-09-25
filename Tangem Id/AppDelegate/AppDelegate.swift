@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Tangem_Id_Sdk
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
