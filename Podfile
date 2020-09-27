@@ -16,6 +16,16 @@ pre_install do |installer|
     Pod::Installer::Xcode::TargetValidator.send(:define_method, :verify_no_static_framework_transitive_dependencies) {}
 end
 
+post_install do |installer|
+	installer.pods_project.targets.each do |target|
+		target.build_configurations.each do |config|
+			if Gem::Version.new('9.0') > Gem::Version.new(config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'])
+				config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+			end
+		end
+	end
+end
+
 target 'Tangem IdTests' do
     pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :branch => 'master'
     pod 'BlockchainSdk', :git => 'git@bitbucket.org:tangem/blockchain-sdk-swift.git', :branch => 'master'

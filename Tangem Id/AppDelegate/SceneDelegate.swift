@@ -17,9 +17,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
+		
+		let naviBarAppearance =  UINavigationBar.appearance()
+		
+		let backButtonImage = #imageLiteral(resourceName: "arrow_left_black").withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0))
+		naviBarAppearance.backIndicatorImage = backButtonImage
+		naviBarAppearance.backIndicatorTransitionMaskImage = backButtonImage
+		naviBarAppearance.tintColor = .tangemBlack
 		// Create the SwiftUI view that provides the window contents.
-		let contentView = ContentView()
+		let contentView = OnboardingPage()
 
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
