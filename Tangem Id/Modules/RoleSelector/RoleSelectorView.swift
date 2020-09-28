@@ -22,7 +22,13 @@ struct RoleSelectorView: View {
 					.font(Font.system(size: 28, weight: .light))
 				Spacer()
 					.frame(width: 100, height: 56)
-				Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ornare tellus tincidunt nunc convallis id viverra fermentum lacus, morbi. Massa pulvinar erat sit eu tellus dolor quis.")
+				(Text("This application demonstrates the Tangem ID solution. Conformant with W3C DID and Verifiable Credential. Try for yourself! Get ID cards kit at ") +
+					Text("shop.tangem.com")
+					.foregroundColor(.tangemBlue)
+				)
+					.onTapGesture(perform: {
+						self.viewModel.openShop()
+					})
 					.multilineTextAlignment(.center)
 					.font(Font.system(size: 13, weight: .regular, design: .default))
 					.lineSpacing(7)

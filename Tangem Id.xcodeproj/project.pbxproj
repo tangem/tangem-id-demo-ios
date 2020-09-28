@@ -34,6 +34,7 @@
 		B0993F432521B362003BEB85 /* Assembly+Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F422521B362003BEB85 /* Assembly+Module.swift */; };
 		B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F4C2521B3B3003BEB85 /* ServiceAssembly.swift */; };
 		B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F512521B66A003BEB85 /* IssuerAssembly.swift */; };
+		B0993F572521BF45003BEB85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F562521BF45003BEB85 /* Constants.swift */; };
 		B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF08FC2520D9940077479E /* NavigationButton.swift */; };
 		B0DF09052520DAC10077479E /* ModalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF09042520DAC10077479E /* ModalLink.swift */; };
 		D739EAD27536E56B2A5880F2 /* Pods_Tangem_Id.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */; };
@@ -94,6 +95,7 @@
 		B0993F422521B362003BEB85 /* Assembly+Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assembly+Module.swift"; sourceTree = "<group>"; };
 		B0993F4C2521B3B3003BEB85 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
 		B0993F512521B66A003BEB85 /* IssuerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuerAssembly.swift; sourceTree = "<group>"; };
+		B0993F562521BF45003BEB85 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B0DF08FC2520D9940077479E /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		B0DF09042520DAC10077479E /* ModalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLink.swift; sourceTree = "<group>"; };
 		E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_Id.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				B05FE393251E0D090002D338 /* Info.plist */,
+				B0993F562521BF45003BEB85 /* Constants.swift */,
 			);
 			path = AppSettings;
 			sourceTree = "<group>";
@@ -605,6 +608,7 @@
 				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
 				B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */,
 				B0993F252521AF72003BEB85 /* Module.swift in Sources */,
+				B0993F572521BF45003BEB85 /* Constants.swift in Sources */,
 				B05FE386251E0D080002D338 /* AppDelegate.swift in Sources */,
 				B0DF09052520DAC10077479E /* ModalLink.swift in Sources */,
 				B0993F2D2521AF89003BEB85 /* ModuleAssembly.swift in Sources */,

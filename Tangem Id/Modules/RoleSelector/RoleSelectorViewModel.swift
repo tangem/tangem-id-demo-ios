@@ -56,4 +56,13 @@ extension RoleSelectorViewModel {
 	func holderButtonAction() {
 		state = .holder
 	}
+	
+	func openShop() {
+		let app = UIApplication.shared
+		guard
+			let url = URL(string: Constants.shopUrl),
+			app.canOpenURL(url)
+		else { return }
+		app.open(url, options: [:], completionHandler: nil)
+	}
 }
