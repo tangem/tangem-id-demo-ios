@@ -12,7 +12,10 @@ final class ApplicationAssembly {
 	
 	static let assembler = Assembler(
 		[
-			RoleSelectorAssembly()
+			ServiceAssembly(),
+			
+			RoleSelectorAssembly(),
+			IssuerAssembly()
 		]
 	)
 	

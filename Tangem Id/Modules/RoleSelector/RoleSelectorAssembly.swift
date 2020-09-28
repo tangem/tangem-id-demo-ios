@@ -18,7 +18,8 @@ struct RoleSelectorAssembly: Assembly {
 			return RoleSelectorView(viewModel: viewModel)
 		}
 		container.register(RoleSelectorViewModel.self) { r in
-			return RoleSelectorViewModel()
+			let moduleAssembly = self.moduleAssembly(r)
+			return RoleSelectorViewModel(moduleAssembly: moduleAssembly)
 		}
 	}
 }

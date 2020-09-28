@@ -23,8 +23,10 @@ final class RoleSelectorViewModel: ObservableObject {
 		}
 	}
 	
+	private let moduleAssembly: ModuleAssembly
+	
 	var issuerLink: some View {
-		IssuerView()
+		try? moduleAssembly.assembledView(for: .issuer)
 	}
 	
 	var veridierLink: some View {
@@ -35,8 +37,8 @@ final class RoleSelectorViewModel: ObservableObject {
 		IssuerView()
 	}
 	
-	init() {
-
+	init(moduleAssembly: ModuleAssembly) {
+		self.moduleAssembly = moduleAssembly
 	}
 	
 	
