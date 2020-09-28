@@ -65,6 +65,7 @@ PODS:
   - SwiftDate (6.0.3)
   - SwiftProtobuf (1.12.0)
   - SwiftyJSON (5.0.0)
+  - Swinject (2.7.1)
   - TangemSdk (2.0.2)
   - web3swift (2.2.1):
     - BigInt (~> 4.0)
@@ -82,6 +83,7 @@ DEPENDENCIES:
   - "BlockchainSdk (from `git@bitbucket.org:tangem/blockchain-sdk-swift.git`, branch `master`)"
   - HDWalletKit (from `https://bitbucket.org/tangem/hdwallet.git`, tag `0.3.8`)
   - Moya
+  - Swinject
   - "TangemSdk (from `git@bitbucket.org:tangem/card-sdk-swift.git`, branch `master`)"
   - web3swift (from `https://bitbucket.org/tangem/web3swift.git`, tag `2.2.3`)
 
@@ -103,6 +105,7 @@ SPEC REPOS:
     - SwiftDate
     - SwiftProtobuf
     - SwiftyJSON
+    - Swinject
     - XCGLogger
 
 EXTERNAL SOURCES:
@@ -159,10 +162,11 @@ SPEC CHECKSUMS:
   SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
   SwiftProtobuf: 4ef85479c18ca85b5482b343df9c319c62bda699
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
+  Swinject: ddf78b8486dd9b71a667b852cad919ab4484478e
   TangemSdk: 2c0260f85c41711af449f8901f698c12b6e45673
   web3swift: e618d3efb2075e65eb42fa1e4c47580fefd8f76b
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
 
-PODFILE CHECKSUM: 7d45375d784308deab8709049ac4da37d57347c9
+PODFILE CHECKSUM: ffe114c29cc7e0b0ba88648d8eea4c84809e7f88
 
 COCOAPODS: 1.9.3

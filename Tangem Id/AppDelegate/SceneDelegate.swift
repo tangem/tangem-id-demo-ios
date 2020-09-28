@@ -25,12 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		naviBarAppearance.backIndicatorTransitionMaskImage = backButtonImage
 		naviBarAppearance.tintColor = .tangemBlack
 		// Create the SwiftUI view that provides the window contents.
-		let contentView = OnboardingPage()
+		let resolver = ApplicationAssembly.assembler.resolver
+		let roleSelector = resolver.resolve(RoleSelectorView.self)
 
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
 		    let window = UIWindow(windowScene: windowScene)
-		    window.rootViewController = UIHostingController(rootView: contentView)
+		    window.rootViewController = UIHostingController(rootView: roleSelector)
 		    self.window = window
 		    window.makeKeyAndVisible()
 		}
