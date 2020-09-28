@@ -23,21 +23,22 @@ final class RoleSelectorViewModel: ObservableObject {
 		}
 	}
 	
-	private let moduleAssembly: ModuleAssembly
+	private let moduleAssembly: ModuleAssemblyType
 	
-	var issuerLink: some View {
-		try? moduleAssembly.assembledView(for: .issuer)
+	var issuerLink: AnyView {
+		guard state == .issuer else { return AnyView(EmptyView()) }
+		return AnyView(try? moduleAssembly.assembledView(for: .issuer))
 	}
 	
-	var veridierLink: some View {
-		IssuerView()
+	var veridierLink: AnyView {
+		AnyView(EmptyView())
 	}
 	
-	var holderLink: some View {
-		IssuerView()
+	var holderLink: AnyView {
+		AnyView(EmptyView())
 	}
 	
-	init(moduleAssembly: ModuleAssembly) {
+	init(moduleAssembly: ModuleAssemblyType) {
 		self.moduleAssembly = moduleAssembly
 	}
 	

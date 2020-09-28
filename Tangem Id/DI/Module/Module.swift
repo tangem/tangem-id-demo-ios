@@ -10,4 +10,5 @@ import Foundation
 
 enum Module {
 	case issuer
+	case issuerCreateCredentials
 }

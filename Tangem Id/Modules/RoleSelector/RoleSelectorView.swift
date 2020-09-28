@@ -8,6 +8,17 @@
 
 import SwiftUI
 
+extension UINavigationController: UIGestureRecognizerDelegate {
+	override open func viewDidLoad() {
+		super.viewDidLoad()
+		interactivePopGestureRecognizer?.delegate = self
+	}
+
+	public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+		return viewControllers.count > 1
+	}
+}
+
 struct RoleSelectorView: View {
 	@ObservedObject var viewModel: RoleSelectorViewModel
 	
@@ -70,26 +81,28 @@ struct RoleSelectorView: View {
 				.padding(.horizontal, 46)
 				.padding(.bottom, 40)
 			}
-			.navigationBarTitle(Text(" "), displayMode: .inline)
-			.background(NavigationController() { navi in
-				let bar = navi.navigationBar
-				bar.titleTextAttributes = [
-					.font: UIFont.systemFont(ofSize: 20, weight: .bold),
-					.foregroundColor: UIColor.tangemBlack
-				]
-				bar.backgroundColor = .clear
-				bar.setBackgroundImage(UIColor.clear.image(), for: .default)
-				bar.shadowImage = UIColor.clear.image()
-			})
+			.navigationBarTitle("")
+			.navigationBarBackButtonHidden(true)
+			.navigationBarHidden(true)
+//			.background(NavigationController() { navi in
+//				let bar = navi.navigationBar
+//				navi.setNavigationBarHidden(true, animated: false)
+//				bar.titleTextAttributes = [
+//					.font: UIFont.systemFont(ofSize: 20, weight: .bold),
+//					.foregroundColor: UIColor.tangemBlack
+//				]
+//				bar.backgroundColor = .clear
+//				bar.setBackgroundImage(UIColor.white.image(), for: .default)
+//				bar.shadowImage = UIColor.clear.image()
+//			})
 		}
+		
 	}
 }
 
 struct RoleSelector_Previews: PreviewProvider {
-	static let resolver = ApplicationAssembly.assembler.resolver
 	static var previews: some View {
-		resolver
-			.resolve(RoleSelectorView.self)!
-			.previewGroup()
+		ApplicationAssembly.resolve(RoleSelectorView.self)!
+			.deviceForPreview(.iPhone7)
 	}
 }

@@ -15,5 +15,5 @@ extension View {
 			self.deviceForPreview(.iPhone11)
 			self.deviceForPreview(.iPhone11Max)
 		}
-	}
+	}	
 }

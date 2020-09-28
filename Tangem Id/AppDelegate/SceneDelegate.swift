@@ -18,12 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		// If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
 		// This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 		
-		let naviBarAppearance =  UINavigationBar.appearance()
-		
-		let backButtonImage = #imageLiteral(resourceName: "arrow_left_black").withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0))
-		naviBarAppearance.backIndicatorImage = backButtonImage
-		naviBarAppearance.backIndicatorTransitionMaskImage = backButtonImage
-		naviBarAppearance.tintColor = .tangemBlack
+//		let naviBarAppearance =  UINavigationBar.appearance()
+//		naviBarAppearance.isHidden = true
+//		let backButtonImage = #imageLiteral(resourceName: "arrow_left_black").withAlignmentRectInsets(UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 0))
+//		naviBarAppearance.backIndicatorImage = backButtonImage
+//		naviBarAppearance.backIndicatorTransitionMaskImage = backButtonImage
+//		naviBarAppearance.tintColor = .tangemBlack
 		// Create the SwiftUI view that provides the window contents.
 		let resolver = ApplicationAssembly.assembler.resolver
 		let roleSelector = resolver.resolve(RoleSelectorView.self)
