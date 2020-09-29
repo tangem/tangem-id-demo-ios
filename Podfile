@@ -4,6 +4,9 @@ inhibit_all_warnings!
 
 target 'Tangem Id' do
 	
+	# UIKit
+	pod 'InputMask'
+	
 	# Network
 	pod 'Moya'
 	

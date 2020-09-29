@@ -37,4 +37,8 @@ class IssuerCreateCredentialsViewModel: ObservableObject {
 		}
 	}
 	
+	func inputSsn(_ text: String) {
+		print("Updating ssn: \(text)")
+	}
+	
 }

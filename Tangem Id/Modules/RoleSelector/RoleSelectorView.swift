@@ -84,17 +84,6 @@ struct RoleSelectorView: View {
 			.navigationBarTitle("")
 			.navigationBarBackButtonHidden(true)
 			.navigationBarHidden(true)
-//			.background(NavigationController() { navi in
-//				let bar = navi.navigationBar
-//				navi.setNavigationBarHidden(true, animated: false)
-//				bar.titleTextAttributes = [
-//					.font: UIFont.systemFont(ofSize: 20, weight: .bold),
-//					.foregroundColor: UIColor.tangemBlack
-//				]
-//				bar.backgroundColor = .clear
-//				bar.setBackgroundImage(UIColor.white.image(), for: .default)
-//				bar.shadowImage = UIColor.clear.image()
-//			})
 		}
 		
 	}

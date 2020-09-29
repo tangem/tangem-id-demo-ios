@@ -7,50 +7,6 @@
 
 import SwiftUI
 
-struct ArrowBack: View {
-	let action: () -> Void
-	
-	var body: some View {
-		Button(action: action, label: {
-			Image("arrow_left_black")
-		})
-		.padding()
-	}
-}
-
-struct NavigationBar<LeftButtons: View, RightButtons: View>: View {
-	
-	private let title: String
-	private let leftButtons: LeftButtons
-	private let rightButtons: RightButtons
-	private let titleFont: Font
-	
-	init(
-		title: String,
-		titleFont: Font = .credentialCardName,
-		@ViewBuilder leftItems: () -> LeftButtons,
-		@ViewBuilder rightItems: () -> RightButtons
-	) {
-		self.title = title
-		self.titleFont = titleFont
-		leftButtons = leftItems()
-		rightButtons = rightItems()
-	}
-	
-	var body: some View {
-		ZStack {
-			HStack {
-				leftButtons
-				Spacer()
-				rightButtons
-			}
-			Text(title)
-				.font(titleFont)
-		}
-		.frame(height: 44)
-	}
-}
-
 struct IssuerView: View {
 	
 	@Environment(\.presentationMode) var presentationMode
@@ -61,12 +17,7 @@ struct IssuerView: View {
 		VStack {
 			NavigationBar(
 				title: "Issue Credentials",
-				leftItems: {
-					ArrowBack(action: {
-						self.presentationMode.wrappedValue.dismiss()
-					})
-				},
-				rightItems: {  }
+				presentationMode: presentationMode
 			)
 			.foregroundColor(.tangemBlack)
 			ZStack {

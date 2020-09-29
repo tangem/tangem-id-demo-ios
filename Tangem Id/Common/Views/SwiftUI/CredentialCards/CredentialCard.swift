@@ -16,6 +16,24 @@ struct CredentialCard<Supplement: View, Content: View>: View {
 	
 	init(
 		title: String,
+		@ViewBuilder supplementBuilder: () -> Supplement
+	) where Content == EmptyView {
+		self.title = title
+		supplementView = supplementBuilder()
+		content = EmptyView()
+	}
+	
+	init (
+		title: String,
+		@ViewBuilder contentBuilder: () -> Content
+	) where Supplement == EmptyView {
+		self.title = title
+		supplementView = EmptyView()
+		content = contentBuilder()
+	}
+	
+	init(
+		title: String,
 		@ViewBuilder supplementBuilder: () -> Supplement,
 		@ViewBuilder contentBuilder: () -> Content
 	) {
