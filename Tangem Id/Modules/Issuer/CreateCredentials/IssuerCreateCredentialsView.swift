@@ -49,6 +49,11 @@ struct IssuerCreateCredentialsView: View {
 						VStack {
 							TextFieldWithClearButton(text: $name, placeholder: "Name")
 							TextFieldWithClearButton(text: $surname, placeholder: "Surname")
+							RadioSegmentSelector(
+								segments: viewModel.availableGenders,
+								selectedIndex: viewModel.selectedGenderIndex,
+								selectionAction: viewModel.selectGender(at:)
+							)
 						}
 					})
 				CredentialCard(
