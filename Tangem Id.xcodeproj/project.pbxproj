@@ -10,6 +10,7 @@
 		113E01595C413ACF3067056F /* Pods_Tangem_IdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */; };
 		B03A3BEE252200F800937676 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3BED252200F800937676 /* ButtonWithImage.swift */; };
 		B03A3C1125220C0300937676 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3C1025220C0300937676 /* Checkbox.swift */; };
+		B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */; };
 		B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */; };
 		B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */; };
 		B05CCAEF2520F6340033093C /* RoleSelectorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */; };
@@ -73,6 +74,7 @@
 		B01A675B251E19C100D08C8D /* Tangem Id.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tangem Id.entitlements"; sourceTree = "<group>"; };
 		B03A3BED252200F800937676 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		B03A3C1025220C0300937676 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
+		B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithClearButton.swift; sourceTree = "<group>"; };
 		B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorViewModel.swift; sourceTree = "<group>"; };
 		B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
 		B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorAssembly.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				B0DF09042520DAC10077479E /* ModalLink.swift */,
 				B03A3BED252200F800937676 /* ButtonWithImage.swift */,
 				B03A3C1025220C0300937676 /* Checkbox.swift */,
+				B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,
+				B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */,
 				B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */,
 				B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */,
 				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
