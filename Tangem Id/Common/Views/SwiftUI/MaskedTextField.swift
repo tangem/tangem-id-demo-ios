@@ -12,6 +12,7 @@ import SwiftUI
 struct MaskedTextField: UIViewRepresentable {
 	
 	var placeholder: String
+	var placeholderColor: UIColor = .placeholderTextColor
 	var isWithClearButton: Bool = true
 	var keyType: UIKeyboardType
 	var format = "[000] - [00] - [0000]"
@@ -20,17 +21,12 @@ struct MaskedTextField: UIViewRepresentable {
 	
 	func makeUIView(context: Context) -> UITextField {
 		let textField = UITextField()
-		textField.placeholder = placeholder
+		textField.attributedPlaceholder = NSAttributedString(string: placeholder,
+															 attributes: [.foregroundColor: placeholderColor])
 		textField.delegate = context.coordinator
 		textField.keyboardType = keyType
 		textField.clearButtonMode = isWithClearButton ? .whileEditing : .never
-		let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: textField.frame.size.width, height: 44))
-		let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(textField.doneButtonTapped(button:)))
-		toolBar.setItems(
-			[.init(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), doneButton],
-			animated: true
-		)
-		textField.inputAccessoryView = toolBar
+		textField.addDoneButton()
 		return textField
 	}
 	

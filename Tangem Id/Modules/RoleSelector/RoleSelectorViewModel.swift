@@ -9,7 +9,11 @@
 import Combine
 import SwiftUI
 
-final class RoleSelectorViewModel: ObservableObject {
+final class RoleSelectorViewModel: ObservableObject, Equatable {
+	
+	static func == (lhs: RoleSelectorViewModel, rhs: RoleSelectorViewModel) -> Bool {
+		lhs.state == rhs.state
+	}
 	
 	enum ViewState: Hashable {
 		case `default`, issuer, verifier, holder
@@ -23,12 +27,11 @@ final class RoleSelectorViewModel: ObservableObject {
 		}
 	}
 	
+	private var disposable = Set<AnyCancellable>()
+	
 	private let moduleAssembly: ModuleAssemblyType
 	
-	var issuerLink: AnyView {
-		guard state == .issuer else { return AnyView(EmptyView()) }
-		return AnyView(try? moduleAssembly.assembledView(for: .issuer))
-	}
+	private(set) var issuerLink: AnyView = AnyView(EmptyView())
 	
 	var veridierLink: AnyView {
 		AnyView(EmptyView())
@@ -40,6 +43,13 @@ final class RoleSelectorViewModel: ObservableObject {
 	
 	init(moduleAssembly: ModuleAssemblyType) {
 		self.moduleAssembly = moduleAssembly
+		
+		// TODO: Try to rework single link for every view state through subscription
+//		let subs = $state
+//			.sink(receiveValue: {
+//				print("Current state of Role selector view", $0)
+//			})
+//		disposable.insert(subs)
 	}
 	
 	
@@ -47,6 +57,7 @@ final class RoleSelectorViewModel: ObservableObject {
 
 extension RoleSelectorViewModel {
 	func issuerButtonAction() {
+		issuerLink = try! moduleAssembly.assembledView(for: .issuer)
 		state = .issuer
 	}
 	

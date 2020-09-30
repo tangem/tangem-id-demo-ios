@@ -9,56 +9,67 @@
 import SwiftUI
 import UIKit
 
-struct IssuerCreateCredentialsView: View {
+struct IssuerCreateCredentialsView: View, Equatable {
+	
+	static func == (lhs: IssuerCreateCredentialsView, rhs: IssuerCreateCredentialsView) -> Bool {
+		print("Comparing creating credentials view")
+		return lhs.viewModel == rhs.viewModel
+	}
 	
 	@Environment(\.presentationMode) var presentationMode
 	
 	@ObservedObject var viewModel: IssuerCreateCredentialsViewModel
+	@ObservedObject var keyboardHandler: KeyboardFollower = KeyboardFollower()
 	
-	@State var name: String = ""
-	@State var surname: String = ""
+	@State private var showingImagePicker = false
 	
-	@State var isOver18: Bool = false
+	func photoCard() -> some View {
+		let title = "Photo"
+		let addPhotoButton = ButtonWithImage(image: UIImage(systemName: "plus")!,
+											 color: .tangemBlue,
+											 text: "Add photo",
+											 action: { self.showingImagePicker = true },
+											 isLtr: true)
+		if let photo = viewModel.photo {
+			return AnyView(CredentialCard(
+				title: title,
+				supplementBuilder: {
+					addPhotoButton
+			}, contentBuilder: {
+				CredentialPhotoContent(image: photo)
+			}))
+		} else {
+			return AnyView(CredentialCard(title: title,
+										  supplementBuilder: {
+											addPhotoButton
+			}))
+		}
+	}
 	
 	var body: some View {
 		VStack {
-			NavigationBar(
-				title: "Issue Credentials",
-				presentationMode: presentationMode
-			)
+			NavigationBar(title: "Issue Credentials", presentationMode: presentationMode)
+				.foregroundColor(.tangemBlack)
 			ScrollView {
-				CredentialCard(
-					title: "Photo") {
-					ButtonWithImage(
-						image: UIImage(named: "plus_blue")!,
-						text: "Add photo",
-						action: {},
-						isLtr: true)
-				} contentBuilder: {
-					CredentialPhotoContent(image: .constant(UIImage(named: "dude")!))
-				}
+				photoCard()
 				CredentialCard(
 					title: "Personal information",
 					contentBuilder: {
 						VStack {
-							TextFieldWithClearButton(text: $name, placeholder: "Name")
-							TextFieldWithClearButton(text: $surname, placeholder: "Surname")
+							TextFieldWithClearButton(placeholder: "Name") { (newText) in
+								self.viewModel.inputName(newText)
+							}
+							TextFieldWithClearButton(placeholder: "Surname") {
+								self.viewModel.inputSurname($0)
+							}
 							RadioSegmentSelector(
 								segments: viewModel.availableGenders,
 								selectedIndex: viewModel.selectedGenderIndex,
 								selectionAction: viewModel.selectGender(at:)
 							)
-							VStack {
-								HStack {
-									Text("Date of Birth")
-									Spacer()
-									Image("calendar_gray")
-								}
-								Divider()
-							}
-							.padding()
+							DatePicker(placeholder: "Date of birth", date: $viewModel.dateOfBirth)
 						}
-					})
+				})
 					.frame(height: 300)
 				CredentialCard(
 					title: "SSN",
@@ -67,42 +78,42 @@ struct IssuerCreateCredentialsView: View {
 							placeholder: "000 - 00 - 0000",
 							isWithClearButton: false,
 							keyType: .numberPad) {
-							viewModel.inputSsn($0)
+								self.viewModel.inputSsn($0)
 						}
 						.font(.credentialCardContent)
 						.frame(width: 130)
-					})
+				})
 				CredentialCard(
 					title: "Age over 18",
 					contentBuilder: {
-						HStack {
-							Text("Valid")
-								.font(.credentialCardContent)
-								.foregroundColor(Color.tangemBlack)
-							Spacer()
-								.background(Color.red)
-							Checkbox(isSelected: $isOver18)
-						}
-						
-						.padding(.horizontal)
-						.padding(.bottom, 16)
-						.background(Color.white)
-						.onTapGesture(perform: {
-							self.isOver18.toggle()
+						ClickableRowWithCheckbox(
+							isSelected: viewModel.isOver18,
+							action: {
+								self.viewModel.isOver18Action()
 						})
-					})
+				})
 				Spacer()
 					.frame(width: 10, height: 100)
 			}
 			.padding(.horizontal, 8)
 		}
-		
+		.padding(.bottom, keyboardHandler.keyboardHeight)
+		.sheet(isPresented: $showingImagePicker, onDismiss: { print("Image picked") }, content: {
+			ImagePicker(image: self.$viewModel.photo)
+		})
+			.onAppear(perform: {
+				self.keyboardHandler.subscribe()
+			})
+			.onDisappear(perform: {
+				self.keyboardHandler.unsubscribe()
+			})
+			.modifier(HiddenSystemNavigation())
 	}
 }
 
 struct IssuerCreateCredentialsView_Previews: PreviewProvider {
 	static var previews: some View {
 		ApplicationAssembly.resolve(IssuerCreateCredentialsView.self)!
-			.previewLayout(.fixed(width: 375, height: 1000))
+			.deviceForPreview(.iPhone7)
 	}
 }

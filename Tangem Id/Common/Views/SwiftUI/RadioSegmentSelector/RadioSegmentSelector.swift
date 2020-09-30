@@ -33,7 +33,7 @@ struct RadioSegmentButton: View {
 		.frame(minWidth: 0, maxWidth: .infinity)
 		.onTapGesture(perform: {
 //			self.selectionIndex = index
-			selectionAction?(index)
+			self.selectionAction?(self.index)
 		})
 	}
 }
@@ -48,7 +48,7 @@ struct RadioSegmentSelector: View {
     var body: some View {
 		HStack(spacing: 0) {
 			ForEach(segments) { segment in
-				RadioSegmentButton(title: segment.title, index: segment.selectionIndex, selectionIndex: selectedIndex, selectionAction: selectionAction)
+				RadioSegmentButton(title: segment.title, index: segment.selectionIndex, selectionIndex: self.selectedIndex, selectionAction: self.selectionAction)
 			}
 		}
 		.padding(.bottom, 10)

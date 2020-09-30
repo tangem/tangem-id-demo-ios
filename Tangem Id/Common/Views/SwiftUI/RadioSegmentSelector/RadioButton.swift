@@ -38,14 +38,14 @@ struct RadioButton: View {
 		GeometryReader { reader in
 			ZStack {
 				Ring(degree: 270)
-					.stroke(isSelected ? Color.tangemBlue : Color.gray, lineWidth: 2)
+					.stroke(self.isSelected ? Color.tangemBlue : Color.gray, lineWidth: 2)
 					.animation(Animation.linear.speed(2))
 				Circle()
 					.fill(Color.tangemBlue)
 					.padding(.all, 4)
-					.scaleEffect(isSelected ? 1.0 : 0.0)
+					.scaleEffect(self.isSelected ? 1.0 : 0.001)
 					.animation(
-						isSelected ?
+						self.isSelected ?
 							Animation.spring(response: 0.15, dampingFraction: 0.45, blendDuration: 0) :
 							Animation.linear.speed(2))
 			}

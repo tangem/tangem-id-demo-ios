@@ -7,14 +7,20 @@
 
 import SwiftUI
 
-struct IssuerView: View {
+struct IssuerView: View, Equatable {
+	static func == (lhs: IssuerView, rhs: IssuerView) -> Bool {
+		print("Comparing issuer view")
+		return lhs.viewModel == rhs.viewModel
+	}
 	
 	@Environment(\.presentationMode) var presentationMode
 	
 	@ObservedObject var viewModel: IssuerViewModel
 	
+	@State var isCreatingCredentials: Bool = false
+	
 	var body: some View {
-		VStack {
+		return VStack {
 			NavigationBar(
 				title: "Issue Credentials",
 				presentationMode: presentationMode
@@ -44,15 +50,19 @@ struct IssuerView: View {
 							navigationLink: NavigationLink(
 								"",
 								destination: viewModel.createCredentialsLink,
-								isActive: $viewModel.isCreatingCredentials),
-							buttonStyle: ScreenPaddingButtonStyle(height: 42, cornerRadius: 4, colorStyle: .blue, isDisabled: false))
+								tag: true,
+								selection: $viewModel.isCreatingCredentials),
+							buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					}
 					.padding(.bottom, 40)
 					.padding(.horizontal, 46)
 				}
 			}
 		}
-		.navigationBarHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+		.onAppear(perform: {
+			print("Issuer view appeared")
+		})
+		.modifier(HiddenSystemNavigation())
 		
 	}
 }

@@ -16,24 +16,6 @@ struct CredentialCard<Supplement: View, Content: View>: View {
 	
 	init(
 		title: String,
-		@ViewBuilder supplementBuilder: () -> Supplement
-	) where Content == EmptyView {
-		self.title = title
-		supplementView = supplementBuilder()
-		content = EmptyView()
-	}
-	
-	init (
-		title: String,
-		@ViewBuilder contentBuilder: () -> Content
-	) where Supplement == EmptyView {
-		self.title = title
-		supplementView = EmptyView()
-		content = contentBuilder()
-	}
-	
-	init(
-		title: String,
 		@ViewBuilder supplementBuilder: () -> Supplement,
 		@ViewBuilder contentBuilder: () -> Content
 	) {
@@ -42,6 +24,7 @@ struct CredentialCard<Supplement: View, Content: View>: View {
 		content = contentBuilder()
 	}
 	
+	@ViewBuilder
     var body: some View {
 		VStack {
 			HStack {
@@ -65,6 +48,22 @@ struct CredentialCard<Supplement: View, Content: View>: View {
     }
 }
 
+extension CredentialCard where Content == EmptyView {
+	init(title: String, @ViewBuilder supplementBuilder: () -> Supplement) {
+		self.title = title
+		supplementView = supplementBuilder()
+		content = EmptyView()
+	}
+}
+
+extension CredentialCard where Supplement == EmptyView {
+	init (title: String, @ViewBuilder contentBuilder: () -> Content) {
+		self.title = title
+		supplementView = EmptyView()
+		content = contentBuilder()
+	}
+}
+
 struct CredentialCard_Previews: PreviewProvider {
     static var previews: some View {
 		Group {
@@ -80,18 +79,16 @@ struct CredentialCard_Previews: PreviewProvider {
 					})
 				},
 				contentBuilder: {
-					CredentialPhotoContent(image: .constant(UIImage(named: "dude")!))
+					CredentialPhotoContent(image: UIImage(named: "dude")!)
 				})
 				.previewLayout(.fixed(width: 375, height: 260))
 			CredentialCard(
 				title: "SSN",
 				supplementBuilder: {
 					TextField("000 - 00 - 0000", text: .constant(""))
-						.font(.credentialCardContent)
-						.frame(width: 125)
-				}, contentBuilder: {
-					
-				})
+					.font(.credentialCardContent)
+					.frame(width: 125)
+			})
 				.previewLayout(.fixed(width: 375, height: 320))
 		}
 	}

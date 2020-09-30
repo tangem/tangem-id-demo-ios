@@ -35,6 +35,7 @@ extension ModuleAssembly: ModuleAssemblyType {
 		case .issuer:
 			return try resolveView(for: IssuerView.self)
 		case .issuerCreateCredentials:
+//			return AnyView(resolver.resolve(IssuerCreateCredentialsView.self))
 			return try resolveView(for: IssuerCreateCredentialsView.self)
 		}
 	}

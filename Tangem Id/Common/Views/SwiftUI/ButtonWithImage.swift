@@ -11,6 +11,7 @@ import SwiftUI
 struct ButtonWithImage: View {
 	
 	let image: UIImage
+	let color: Color
 	let text: String
 	let action: () -> Void
 	let isLtr: Bool
@@ -20,11 +21,13 @@ struct ButtonWithImage: View {
 			HStack(spacing: 12) {
 				if isLtr {
 					Image(uiImage: image)
+					.foregroundColor(color)
 				}
 				Text(text)
-					.foregroundColor(.tangemBlue)
+					.foregroundColor(color)
 				if !isLtr {
 					Image(uiImage: image)
+					.foregroundColor(color)
 				}
 			}
 		})
@@ -33,7 +36,8 @@ struct ButtonWithImage: View {
 struct ButtonWithImage_Previews: PreviewProvider {
     static var previews: some View {
         ButtonWithImage(
-			image: UIImage(named: "plus_blue")!,
+			image: UIImage(systemName: "plus")!,
+			color: .tangemBlue,
 			text: "Add photo",
 			action: {},
 			isLtr: true

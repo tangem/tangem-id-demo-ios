@@ -10,7 +10,7 @@ import SwiftUI
 
 struct Checkbox: View {
 	
-	@Binding var isSelected: Bool
+	var isSelected: Bool
 	
     var body: some View {
 		ZStack {
@@ -42,7 +42,7 @@ struct Checkbox: View {
 				}
 				.frame(width: 20, height: 20)
 			}
-			.scaleEffect(isSelected ? 1.0 : 0.01)
+			.scaleEffect(isSelected ? 1.0 : 0.001)
 			.animation(
 				(!isSelected ?
 					Animation.easeIn :
@@ -50,15 +50,12 @@ struct Checkbox: View {
 					))
 					.speed(2))
 		}
-		.onTapGesture(perform: {
-			self.isSelected.toggle()
-		})
     }
 }
 
 struct Checkbox_Previews: PreviewProvider {
     static var previews: some View {
-		Checkbox(isSelected: .constant(true))
+		Checkbox(isSelected: true)
 			.previewLayout(.fixed(width: 40, height: 40))
     }
 }

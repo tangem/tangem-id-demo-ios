@@ -10,16 +10,17 @@ import SwiftUI
 
 struct CredentialPhotoContent: View {
 	
-	@Binding var image: UIImage
+	var image: UIImage
 	
     var body: some View {
 		ZStack {
 			Color.photoBackground
 				.padding(.bottom, 16)
 			Image(uiImage: image)
-				.resizable(resizingMode:.stretch)
-				.background(Color.red)
+				.resizable(resizingMode: .stretch)
+				.aspectRatio(contentMode: .fill)
 				.frame(width: 201, height: 133)
+				.clipped()
 				.padding(.vertical, 8)
 				.padding(.bottom, 16)
 		}
@@ -28,6 +29,6 @@ struct CredentialPhotoContent: View {
 
 struct CredentialPhotoContent_Previews: PreviewProvider {
     static var previews: some View {
-		CredentialPhotoContent(image: .constant(#imageLiteral(resourceName: "dude")))
+		CredentialPhotoContent(image: #imageLiteral(resourceName: "dude"))
     }
 }

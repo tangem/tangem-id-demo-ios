@@ -14,7 +14,8 @@ struct IssuerAssembly: Assembly {
 			guard let viewModel = r.resolve(IssuerViewModel.self) else {
 				fatalError()
 			}
-			return IssuerView(viewModel: viewModel)
+			let view = IssuerView(viewModel: viewModel)
+			return view
 		}
 		container.register(IssuerViewModel.self) { r in
 			let moduleAssembly = self.moduleAssembly(r)

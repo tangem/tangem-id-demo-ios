@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import UIKit
 
 extension Gender {
 	static var genderSegments: [SegmentData] {
@@ -17,12 +18,27 @@ extension Gender {
 	}
 }
 
-class IssuerCreateCredentialsViewModel: ObservableObject {
+class IssuerCreateCredentialsViewModel: ObservableObject, Equatable {
+	
+	static func == (lhs: IssuerCreateCredentialsViewModel, rhs: IssuerCreateCredentialsViewModel) -> Bool {
+		lhs.dateOfBirth == rhs.dateOfBirth &&
+			lhs.name == rhs.name &&
+			lhs.surname == rhs.surname &&
+			lhs.selectedGender == rhs.selectedGender &&
+			lhs.isOver18 == rhs.isOver18
+	}
 	
 	private var selectedGender: Gender = .notSelected
 	
 	var availableGenders: [SegmentData] = Gender.genderSegments
+	
+	@Published var photo: UIImage?
+	@Published var name: String = ""
+	@Published var surname: String = ""
 	@Published var selectedGenderIndex: Int = -1
+	@Published var dateOfBirth: Date?
+	@Published var isOver18: Bool = false
+	
 	
 	private let moduleAssembly: ModuleAssemblyType
 	
@@ -37,8 +53,24 @@ class IssuerCreateCredentialsViewModel: ObservableObject {
 		}
 	}
 	
+	func inputName(_ text: String) {
+		name = text
+	}
+	
+	func inputSurname(_ text: String) {
+		surname = text
+	}
+	
 	func inputSsn(_ text: String) {
 		print("Updating ssn: \(text)")
+	}
+	
+	func isOver18Action() {
+		isOver18.toggle()
+	}
+	
+	func loadNewPhoto(image: UIImage) {
+		photo = image
 	}
 	
 }

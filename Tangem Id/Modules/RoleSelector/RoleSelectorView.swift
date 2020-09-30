@@ -19,7 +19,12 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 	}
 }
 
-struct RoleSelectorView: View {
+struct RoleSelectorView: View, Equatable {
+	static func == (lhs: RoleSelectorView, rhs: RoleSelectorView) -> Bool {
+		print("Comparing role selector views")
+		return lhs.viewModel == rhs.viewModel
+	}
+	
 	@ObservedObject var viewModel: RoleSelectorViewModel
 	
 	var body: some View {
@@ -49,7 +54,7 @@ struct RoleSelectorView: View {
 					.frame(minHeight: 96)
 				VStack(spacing: 16) {
 					NavigationButton(
-						action: { viewModel.issuerButtonAction() },
+						action: { self.viewModel.issuerButtonAction() },
 						contentView: Text("Issuer"),
 						navigationLink: NavigationLink(
 							"",
@@ -60,7 +65,7 @@ struct RoleSelectorView: View {
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding
 					)
 					NavigationButton(
-						action: { viewModel.verifierButtonAction() },
+						action: { self.viewModel.verifierButtonAction() },
 						text: "Verifier",
 						navigationLink: NavigationLink(
 							"",
@@ -69,7 +74,7 @@ struct RoleSelectorView: View {
 							selection: $viewModel.state),
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
-						action: { viewModel.holderButtonAction() },
+						action: { self.viewModel.holderButtonAction() },
 						text: "Holder",
 						navigationLink: NavigationLink(
 							destination: viewModel.holderLink,
@@ -81,11 +86,8 @@ struct RoleSelectorView: View {
 				.padding(.horizontal, 46)
 				.padding(.bottom, 40)
 			}
-			.navigationBarTitle("")
-			.navigationBarBackButtonHidden(true)
-			.navigationBarHidden(true)
+			.modifier(HiddenSystemNavigation())
 		}
-		
 	}
 }
 
