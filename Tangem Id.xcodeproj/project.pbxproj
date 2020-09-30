@@ -58,6 +58,8 @@
 		B0C529622524B42900BBCD27 /* DateField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C529612524B42900BBCD27 /* DateField.swift */; };
 		B0C529642524B49F00BBCD27 /* UITextField+Done.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C529632524B49F00BBCD27 /* UITextField+Done.swift */; };
 		B0C529662524B54400BBCD27 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C529652524B54400BBCD27 /* DatePicker.swift */; };
+		B0C529692524D03900BBCD27 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B0C529682524D03900BBCD27 /* Localizable.strings */; };
+		B0C5296B2524D31F00BBCD27 /* LocalizationKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5296A2524D31F00BBCD27 /* LocalizationKeys.swift */; };
 		B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF08FC2520D9940077479E /* NavigationButton.swift */; };
 		B0DF09052520DAC10077479E /* ModalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF09042520DAC10077479E /* ModalLink.swift */; };
 		D739EAD27536E56B2A5880F2 /* Pods_Tangem_Id.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */; };
@@ -142,6 +144,8 @@
 		B0C529612524B42900BBCD27 /* DateField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateField.swift; sourceTree = "<group>"; };
 		B0C529632524B49F00BBCD27 /* UITextField+Done.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Done.swift"; sourceTree = "<group>"; };
 		B0C529652524B54400BBCD27 /* DatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
+		B0C529682524D03900BBCD27 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B0C5296A2524D31F00BBCD27 /* LocalizationKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationKeys.swift; sourceTree = "<group>"; };
 		B0DF08FC2520D9940077479E /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
 		B0DF09042520DAC10077479E /* ModalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLink.swift; sourceTree = "<group>"; };
 		E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_Id.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,6 +327,7 @@
 		B08196FE251E161E00F41636 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B0C529672524D01A00BBCD27 /* Localization */,
 				B08F084B251F968100AEA1C1 /* Colors */,
 				B05FE38D251E0D090002D338 /* Preview Content */,
 				B05FE38B251E0D090002D338 /* Assets.xcassets */,
@@ -482,6 +487,15 @@
 			path = DatePicker;
 			sourceTree = "<group>";
 		};
+		B0C529672524D01A00BBCD27 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				B0C529682524D03900BBCD27 /* Localizable.strings */,
+				B0C5296A2524D31F00BBCD27 /* LocalizationKeys.swift */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
 		B0DF08FB2520D9820077479E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -610,6 +624,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0C529692524D03900BBCD27 /* Localizable.strings in Resources */,
 				B05FE392251E0D090002D338 /* LaunchScreen.storyboard in Resources */,
 				B08F0855251F969D00AEA1C1 /* Colors.xcassets in Resources */,
 				B05FE38F251E0D090002D338 /* Preview Assets.xcassets in Resources */,
@@ -754,6 +769,7 @@
 				B0C529622524B42900BBCD27 /* DateField.swift in Sources */,
 				B0C5295B2524B0CE00BBCD27 /* DateTextField.swift in Sources */,
 				B0413BD32522EEB500140A70 /* RadioButton.swift in Sources */,
+				B0C5296B2524D31F00BBCD27 /* LocalizationKeys.swift in Sources */,
 				B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */,
 				B08F0885251F9C2B00AEA1C1 /* UIImage+Color.swift in Sources */,
 				B08F0891251FA36300AEA1C1 /* NavigationController.swift in Sources */,

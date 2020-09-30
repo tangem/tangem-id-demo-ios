@@ -6,16 +6,16 @@
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
-import Foundation
+import SwiftUI
 
 enum Gender: Int, CaseIterable {
 	case notSelected = -1, male = 0, female = 1, other = 2
 	
-	var title: String {
+	var title: LocalizedStringKey {
 		switch self {
-		case .male: return "Male"
-		case .female: return "Female"
-		case .other: return "Other"
+		case .male: return LocalizationKeys.Common.male
+		case .female: return LocalizationKeys.Common.female
+		case .other: return LocalizationKeys.Common.other
 		case .notSelected: return "N/A"
 		}
 	}

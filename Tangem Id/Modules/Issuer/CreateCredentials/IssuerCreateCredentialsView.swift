@@ -24,10 +24,10 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var showingImagePicker = false
 	
 	func photoCard() -> some View {
-		let title = "Photo"
+		let title = LocalizationKeys.Modules.CreateCredentials.photo
 		let addPhotoButton = ButtonWithImage(image: UIImage(systemName: "plus")!,
 											 color: .tangemBlue,
-											 text: "Add photo",
+											 text: LocalizationKeys.Common.addPhoto,
 											 action: { self.showingImagePicker = true },
 											 isLtr: true)
 		if let photo = viewModel.photo {
@@ -48,18 +48,18 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	
 	var body: some View {
 		VStack {
-			NavigationBar(title: "Issue Credentials", presentationMode: presentationMode)
+			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials, presentationMode: presentationMode)
 				.foregroundColor(.tangemBlack)
 			ScrollView {
 				photoCard()
 				CredentialCard(
-					title: "Personal information",
+					title: LocalizationKeys.Modules.CreateCredentials.personalInfo,
 					contentBuilder: {
 						VStack {
-							TextFieldWithClearButton(placeholder: "Name") { (newText) in
+							TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { (newText) in
 								self.viewModel.inputName(newText)
 							}
-							TextFieldWithClearButton(placeholder: "Surname") {
+							TextFieldWithClearButton(placeholder: LocalizedStrings.Common.surname) {
 								self.viewModel.inputSurname($0)
 							}
 							RadioSegmentSelector(
@@ -67,12 +67,12 @@ struct IssuerCreateCredentialsView: View, Equatable {
 								selectedIndex: viewModel.selectedGenderIndex,
 								selectionAction: viewModel.selectGender(at:)
 							)
-							DatePicker(placeholder: "Date of birth", date: $viewModel.dateOfBirth)
+							DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth.localizedString(), date: $viewModel.dateOfBirth)
 						}
 				})
 					.frame(height: 300)
 				CredentialCard(
-					title: "SSN",
+					title: LocalizationKeys.Common.ssn,
 					supplementBuilder: {
 						MaskedTextField(
 							placeholder: "000 - 00 - 0000",
@@ -84,7 +84,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 						.frame(width: 130)
 				})
 				CredentialCard(
-					title: "Age over 18",
+					title: LocalizationKeys.Common.ageOver18,
 					contentBuilder: {
 						ClickableRowWithCheckbox(
 							isSelected: viewModel.isOver18,

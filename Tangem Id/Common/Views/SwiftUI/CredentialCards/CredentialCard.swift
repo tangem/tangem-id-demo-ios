@@ -10,12 +10,12 @@ import SwiftUI
 
 struct CredentialCard<Supplement: View, Content: View>: View {
 	
-	let title: String
+	let title: LocalizedStringKey
 	let supplementView: Supplement
 	let content: Content
 	
 	init(
-		title: String,
+		title: LocalizedStringKey,
 		@ViewBuilder supplementBuilder: () -> Supplement,
 		@ViewBuilder contentBuilder: () -> Content
 	) {
@@ -49,7 +49,7 @@ struct CredentialCard<Supplement: View, Content: View>: View {
 }
 
 extension CredentialCard where Content == EmptyView {
-	init(title: String, @ViewBuilder supplementBuilder: () -> Supplement) {
+	init(title: LocalizedStringKey, @ViewBuilder supplementBuilder: () -> Supplement) {
 		self.title = title
 		supplementView = supplementBuilder()
 		content = EmptyView()
@@ -57,7 +57,7 @@ extension CredentialCard where Content == EmptyView {
 }
 
 extension CredentialCard where Supplement == EmptyView {
-	init (title: String, @ViewBuilder contentBuilder: () -> Content) {
+	init (title: LocalizedStringKey, @ViewBuilder contentBuilder: () -> Content) {
 		self.title = title
 		supplementView = EmptyView()
 		content = contentBuilder()

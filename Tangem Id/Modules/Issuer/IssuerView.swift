@@ -22,7 +22,7 @@ struct IssuerView: View, Equatable {
 	var body: some View {
 		return VStack {
 			NavigationBar(
-				title: "Issue Credentials",
+				title: LocalizationKeys.NavigationBar.issueCredentials,
 				presentationMode: presentationMode
 			)
 			.foregroundColor(.tangemBlack)
@@ -46,7 +46,7 @@ struct IssuerView: View, Equatable {
 					ZStack {
 						NavigationButton(
 							action: { self.viewModel.createNewCredentials() },
-							text: "Issue credentials",
+							text: LocalizationKeys.NavigationBar.issueCredentials,
 							navigationLink: NavigationLink(
 								"",
 								destination: viewModel.createCredentialsLink,

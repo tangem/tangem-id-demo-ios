@@ -22,14 +22,14 @@ struct ArrowBack: View {
 
 struct NavigationBar<LeftButtons: View, RightButtons: View>: View {
 	
-	private let title: String
+	private let title: LocalizedStringKey
 	private let leftButtons: LeftButtons
 	private let rightButtons: RightButtons
 	private let titleFont: Font
 	private let titleColor: Color
 	
 	init(
-		title: String,
+		title: LocalizedStringKey,
 		titleFont: Font = .navigationTitle,
 		titleColor: Color = .tangemBlack,
 		@ViewBuilder leftItems: () -> LeftButtons,
@@ -59,7 +59,7 @@ struct NavigationBar<LeftButtons: View, RightButtons: View>: View {
 
 extension NavigationBar where LeftButtons == ArrowBack, RightButtons == EmptyView {
 	init(
-		title: String,
+		title: LocalizedStringKey,
 		titleFont: Font = .navigationTitle,
 		titleColor: Color = .tangemBlack,
 		presentationMode:  Binding<PresentationMode>

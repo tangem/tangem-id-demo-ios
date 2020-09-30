@@ -15,8 +15,8 @@ struct DateField: UIViewRepresentable {
     private let formatter: DateFormatter
     private let textField: DateTextField
 	
-    init<S>(_ title: S, date: Binding<Date?>, formatter: DateFormatter = .monthDayYear) where S: StringProtocol {
-		self.placeholder = String(title)
+	init(_ title: String, date: Binding<Date?>, formatter: DateFormatter = .monthDayYear) {
+		self.placeholder = title
         self._date = date
 
         self.textField = DateTextField(date: date)

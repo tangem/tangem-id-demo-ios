@@ -38,7 +38,7 @@ struct RoleSelectorView: View, Equatable {
 					.font(Font.system(size: 28, weight: .light))
 				Spacer()
 					.frame(width: 100, height: 56)
-				(Text("This application demonstrates the Tangem ID solution. Conformant with W3C DID and Verifiable Credential. Try for yourself! Get ID cards kit at ") +
+				(Text(LocalizationKeys.Modules.RoleSelector.descriptionText) +
 					Text("shop.tangem.com")
 					.foregroundColor(.tangemBlue)
 				)
@@ -55,18 +55,17 @@ struct RoleSelectorView: View, Equatable {
 				VStack(spacing: 16) {
 					NavigationButton(
 						action: { self.viewModel.issuerButtonAction() },
-						contentView: Text("Issuer"),
+						text: LocalizationKeys.Common.issuer,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.issuerLink,
 							tag: RoleSelectorViewModel.ViewState.issuer,
 							selection: $viewModel.state
 						),
-						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding
-					)
+						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
 						action: { self.viewModel.verifierButtonAction() },
-						text: "Verifier",
+						text: LocalizationKeys.Common.verifier,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.veridierLink,
@@ -75,7 +74,7 @@ struct RoleSelectorView: View, Equatable {
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
 						action: { self.viewModel.holderButtonAction() },
-						text: "Holder",
+						text: LocalizationKeys.Common.holder,
 						navigationLink: NavigationLink(
 							destination: viewModel.holderLink,
 							tag: RoleSelectorViewModel.ViewState.holder,

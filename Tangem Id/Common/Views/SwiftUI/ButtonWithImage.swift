@@ -12,7 +12,7 @@ struct ButtonWithImage: View {
 	
 	let image: UIImage
 	let color: Color
-	let text: String
+	let text: LocalizedStringKey
 	let action: () -> Void
 	let isLtr: Bool
 	

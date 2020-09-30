@@ -31,7 +31,7 @@ struct NavigationButton<CV: View, NL: View, Style: ButtonStyle>: View {
 }
 
 extension NavigationButton where CV == Text {
-	internal init(action: @escaping () -> Void, text: String, navigationLink: NL, buttonStyle: Style) {
+	internal init(action: @escaping () -> Void, text: LocalizedStringKey, navigationLink: NL, buttonStyle: Style) {
 		self.action = action
 		self.contentView = Text(text)
 		self.navigationLink = navigationLink

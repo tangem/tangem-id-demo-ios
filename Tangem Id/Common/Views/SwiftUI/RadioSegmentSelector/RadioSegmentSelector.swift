@@ -10,13 +10,13 @@ import SwiftUI
 
 struct SegmentData: Identifiable {
 	let id = UUID()
-	let title: String
+	let title: LocalizedStringKey
 	var selectionIndex: Int
 }
 
 struct RadioSegmentButton: View {
 	
-	let title: String
+	let title: LocalizedStringKey
 	let index: Int
 	var selectionIndex: Int
 	
@@ -60,9 +60,9 @@ struct RadioSegmentSelector_Previews: PreviewProvider {
 	
     static var previews: some View {
         RadioSegmentSelector(segments: [
-			SegmentData(title: "Male", selectionIndex: 0),
-			SegmentData(title: "Female", selectionIndex: 1),
-			SegmentData(title: "Other", selectionIndex: 2)
+			SegmentData(title: "male", selectionIndex: 0),
+			SegmentData(title: "female", selectionIndex: 1),
+			SegmentData(title: "other", selectionIndex: 2)
 		], selectedIndex: selectedIndex, selectionAction: {
 			selectedIndex = $0
 		})
