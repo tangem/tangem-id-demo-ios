@@ -8,14 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		113E01595C413ACF3067056F /* Pods_Tangem_IdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */; };
+		B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */; };
+		B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */; };
+		B05CCAEF2520F6340033093C /* RoleSelectorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */; };
 		B05FE386251E0D080002D338 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE385251E0D080002D338 /* AppDelegate.swift */; };
 		B05FE388251E0D080002D338 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE387251E0D080002D338 /* SceneDelegate.swift */; };
-		B05FE38A251E0D080002D338 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE389251E0D080002D338 /* ContentView.swift */; };
+		B05FE38A251E0D080002D338 /* RoleSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE389251E0D080002D338 /* RoleSelectorView.swift */; };
 		B05FE38C251E0D090002D338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05FE38B251E0D090002D338 /* Assets.xcassets */; };
 		B05FE38F251E0D090002D338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B05FE38E251E0D090002D338 /* Preview Assets.xcassets */; };
 		B05FE392251E0D090002D338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05FE390251E0D090002D338 /* LaunchScreen.storyboard */; };
 		B05FE39D251E0D090002D338 /* Tangem_IdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE39C251E0D090002D338 /* Tangem_IdTests.swift */; };
 		B05FE3A8251E0D090002D338 /* Tangem_IdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE3A7251E0D090002D338 /* Tangem_IdUITests.swift */; };
+		B08F0843251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0842251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift */; };
+		B08F084D251F968B00AEA1C1 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F084C251F968B00AEA1C1 /* Color+.swift */; };
+		B08F0855251F969D00AEA1C1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08F0854251F969D00AEA1C1 /* Colors.xcassets */; };
+		B08F0866251F974A00AEA1C1 /* IssuerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0865251F974A00AEA1C1 /* IssuerView.swift */; };
+		B08F086C251F97AB00AEA1C1 /* UIScreen+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F086B251F97AB00AEA1C1 /* UIScreen+.swift */; };
+		B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0874251F981E00AEA1C1 /* PreviewDevice+.swift */; };
+		B08F0885251F9C2B00AEA1C1 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0884251F9C2B00AEA1C1 /* UIImage+Color.swift */; };
+		B08F0891251FA36300AEA1C1 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0890251FA36300AEA1C1 /* NavigationController.swift */; };
+		B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0898251FB21700AEA1C1 /* View+PreviewGroup.swift */; };
+		B0993F252521AF72003BEB85 /* Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F242521AF72003BEB85 /* Module.swift */; };
+		B0993F2D2521AF89003BEB85 /* ModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F2C2521AF89003BEB85 /* ModuleAssembly.swift */; };
+		B0993F322521B1C2003BEB85 /* ModuleAssemblyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F312521B1C2003BEB85 /* ModuleAssemblyError.swift */; };
+		B0993F432521B362003BEB85 /* Assembly+Module.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F422521B362003BEB85 /* Assembly+Module.swift */; };
+		B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F4C2521B3B3003BEB85 /* ServiceAssembly.swift */; };
+		B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F512521B66A003BEB85 /* IssuerAssembly.swift */; };
+		B0993F572521BF45003BEB85 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F562521BF45003BEB85 /* Constants.swift */; };
+		B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF08FC2520D9940077479E /* NavigationButton.swift */; };
+		B0DF09052520DAC10077479E /* ModalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0DF09042520DAC10077479E /* ModalLink.swift */; };
 		D739EAD27536E56B2A5880F2 /* Pods_Tangem_Id.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */; };
 /* End PBXBuildFile section */
 
@@ -42,10 +63,13 @@
 		5FDE8B3725CF46D1E1FB58F7 /* Pods-Tangem IdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.debug.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_IdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B01A675B251E19C100D08C8D /* Tangem Id.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tangem Id.entitlements"; sourceTree = "<group>"; };
+		B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorViewModel.swift; sourceTree = "<group>"; };
+		B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
+		B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorAssembly.swift; sourceTree = "<group>"; };
 		B05FE382251E0D080002D338 /* Tangem Id.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tangem Id.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05FE385251E0D080002D338 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B05FE387251E0D080002D338 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		B05FE389251E0D080002D338 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B05FE389251E0D080002D338 /* RoleSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorView.swift; sourceTree = "<group>"; };
 		B05FE38B251E0D090002D338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B05FE38E251E0D090002D338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B05FE391251E0D090002D338 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,6 +80,24 @@
 		B05FE3A3251E0D090002D338 /* Tangem IdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tangem IdUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05FE3A7251E0D090002D338 /* Tangem_IdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tangem_IdUITests.swift; sourceTree = "<group>"; };
 		B05FE3A9251E0D090002D338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B08F0842251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenPaddingButtonStyle.swift; sourceTree = "<group>"; };
+		B08F084C251F968B00AEA1C1 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
+		B08F0854251F969D00AEA1C1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B08F0865251F974A00AEA1C1 /* IssuerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuerView.swift; sourceTree = "<group>"; };
+		B08F086B251F97AB00AEA1C1 /* UIScreen+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+.swift"; sourceTree = "<group>"; };
+		B08F0874251F981E00AEA1C1 /* PreviewDevice+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PreviewDevice+.swift"; sourceTree = "<group>"; };
+		B08F0884251F9C2B00AEA1C1 /* UIImage+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
+		B08F0890251FA36300AEA1C1 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		B08F0898251FB21700AEA1C1 /* View+PreviewGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+PreviewGroup.swift"; sourceTree = "<group>"; };
+		B0993F242521AF72003BEB85 /* Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Module.swift; sourceTree = "<group>"; };
+		B0993F2C2521AF89003BEB85 /* ModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssembly.swift; sourceTree = "<group>"; };
+		B0993F312521B1C2003BEB85 /* ModuleAssemblyError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleAssemblyError.swift; sourceTree = "<group>"; };
+		B0993F422521B362003BEB85 /* Assembly+Module.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Assembly+Module.swift"; sourceTree = "<group>"; };
+		B0993F4C2521B3B3003BEB85 /* ServiceAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceAssembly.swift; sourceTree = "<group>"; };
+		B0993F512521B66A003BEB85 /* IssuerAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuerAssembly.swift; sourceTree = "<group>"; };
+		B0993F562521BF45003BEB85 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B0DF08FC2520D9940077479E /* NavigationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButton.swift; sourceTree = "<group>"; };
+		B0DF09042520DAC10077479E /* ModalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalLink.swift; sourceTree = "<group>"; };
 		E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_Id.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F0F669173C1ECAE064488 /* Pods-Tangem Id.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem Id.release.xcconfig"; path = "Target Support Files/Pods-Tangem Id/Pods-Tangem Id.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +149,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B00578232520F09200D767D5 /* DI */ = {
+			isa = PBXGroup;
+			children = (
+				B0993F232521AF64003BEB85 /* Module */,
+				B0993F4B2521B38B003BEB85 /* Services */,
+				B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */,
+			);
+			path = DI;
+			sourceTree = "<group>";
+		};
+		B03844BD251E73B100437D54 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				B03844C1251E73BF00437D54 /* RoleSelector */,
+				B08F0859251F972C00AEA1C1 /* Issuer */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		B03844C1251E73BF00437D54 /* RoleSelector */ = {
+			isa = PBXGroup;
+			children = (
+				B05FE389251E0D080002D338 /* RoleSelectorView.swift */,
+				B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */,
+				B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */,
+			);
+			path = RoleSelector;
+			sourceTree = "<group>";
+		};
 		B05FE379251E0D080002D338 = {
 			isa = PBXGroup;
 			children = (
@@ -136,7 +207,9 @@
 				B0819708251E162F00F41636 /* AppSettings */,
 				B08196FE251E161E00F41636 /* Assets */,
 				B08196F7251E161200F41636 /* AppDelegate */,
-				B05FE389251E0D080002D338 /* ContentView.swift */,
+				B08F083F251F963500AEA1C1 /* Common */,
+				B00578232520F09200D767D5 /* DI */,
+				B03844BD251E73B100437D54 /* Modules */,
 			);
 			path = "Tangem Id";
 			sourceTree = "<group>";
@@ -179,6 +252,7 @@
 		B08196FE251E161E00F41636 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				B08F084B251F968100AEA1C1 /* Colors */,
 				B05FE38D251E0D090002D338 /* Preview Content */,
 				B05FE38B251E0D090002D338 /* Assets.xcassets */,
 				B05FE390251E0D090002D338 /* LaunchScreen.storyboard */,
@@ -190,8 +264,125 @@
 			isa = PBXGroup;
 			children = (
 				B05FE393251E0D090002D338 /* Info.plist */,
+				B0993F562521BF45003BEB85 /* Constants.swift */,
 			);
 			path = AppSettings;
+			sourceTree = "<group>";
+		};
+		B08F083F251F963500AEA1C1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				B08F084A251F967B00AEA1C1 /* Extensions */,
+				B08F0840251F963E00AEA1C1 /* Views */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		B08F0840251F963E00AEA1C1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B0DF08FB2520D9820077479E /* SwiftUI */,
+				B08F088F251FA35800AEA1C1 /* UIKit */,
+				B08F0841251F964500AEA1C1 /* ScreenPaddingButtonStyle */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B08F0841251F964500AEA1C1 /* ScreenPaddingButtonStyle */ = {
+			isa = PBXGroup;
+			children = (
+				B08F0842251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift */,
+			);
+			path = ScreenPaddingButtonStyle;
+			sourceTree = "<group>";
+		};
+		B08F084A251F967B00AEA1C1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B0993F472521B365003BEB85 /* Swinject */,
+				B08F0873251F980300AEA1C1 /* SwiftUI */,
+				B08F086A251F979E00AEA1C1 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B08F084B251F968100AEA1C1 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				B08F084C251F968B00AEA1C1 /* Color+.swift */,
+				B08F0854251F969D00AEA1C1 /* Colors.xcassets */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		B08F0859251F972C00AEA1C1 /* Issuer */ = {
+			isa = PBXGroup;
+			children = (
+				B08F0865251F974A00AEA1C1 /* IssuerView.swift */,
+				B0993F512521B66A003BEB85 /* IssuerAssembly.swift */,
+			);
+			path = Issuer;
+			sourceTree = "<group>";
+		};
+		B08F086A251F979E00AEA1C1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B08F086B251F97AB00AEA1C1 /* UIScreen+.swift */,
+				B08F0884251F9C2B00AEA1C1 /* UIImage+Color.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B08F0873251F980300AEA1C1 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				B08F0874251F981E00AEA1C1 /* PreviewDevice+.swift */,
+				B08F0898251FB21700AEA1C1 /* View+PreviewGroup.swift */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		B08F088F251FA35800AEA1C1 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				B08F0890251FA36300AEA1C1 /* NavigationController.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		B0993F232521AF64003BEB85 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				B0993F242521AF72003BEB85 /* Module.swift */,
+				B0993F2C2521AF89003BEB85 /* ModuleAssembly.swift */,
+				B0993F312521B1C2003BEB85 /* ModuleAssemblyError.swift */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		B0993F472521B365003BEB85 /* Swinject */ = {
+			isa = PBXGroup;
+			children = (
+				B0993F422521B362003BEB85 /* Assembly+Module.swift */,
+			);
+			path = Swinject;
+			sourceTree = "<group>";
+		};
+		B0993F4B2521B38B003BEB85 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B0993F4C2521B3B3003BEB85 /* ServiceAssembly.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B0DF08FB2520D9820077479E /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				B0DF08FC2520D9940077479E /* NavigationButton.swift */,
+				B0DF09042520DAC10077479E /* ModalLink.swift */,
+			);
+			path = SwiftUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +453,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1200;
 				LastUpgradeCheck = 1200;
+				ORGANIZATIONNAME = "Tangem AG";
 				TargetAttributes = {
 					B05FE381251E0D080002D338 = {
 						CreatedOnToolsVersion = 12.0.1;
@@ -302,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B05FE392251E0D090002D338 /* LaunchScreen.storyboard in Resources */,
+				B08F0855251F969D00AEA1C1 /* Colors.xcassets in Resources */,
 				B05FE38F251E0D090002D338 /* Preview Assets.xcassets in Resources */,
 				B05FE38C251E0D090002D338 /* Assets.xcassets in Resources */,
 			);
@@ -409,9 +602,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,
+				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
+				B0993F432521B362003BEB85 /* Assembly+Module.swift in Sources */,
+				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
+				B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */,
+				B0993F252521AF72003BEB85 /* Module.swift in Sources */,
+				B0993F572521BF45003BEB85 /* Constants.swift in Sources */,
 				B05FE386251E0D080002D338 /* AppDelegate.swift in Sources */,
+				B0DF09052520DAC10077479E /* ModalLink.swift in Sources */,
+				B0993F2D2521AF89003BEB85 /* ModuleAssembly.swift in Sources */,
+				B08F084D251F968B00AEA1C1 /* Color+.swift in Sources */,
+				B08F086C251F97AB00AEA1C1 /* UIScreen+.swift in Sources */,
+				B05CCAEF2520F6340033093C /* RoleSelectorAssembly.swift in Sources */,
+				B08F0843251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift in Sources */,
+				B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */,
+				B08F0866251F974A00AEA1C1 /* IssuerView.swift in Sources */,
+				B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */,
+				B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */,
+				B08F0885251F9C2B00AEA1C1 /* UIImage+Color.swift in Sources */,
+				B08F0891251FA36300AEA1C1 /* NavigationController.swift in Sources */,
 				B05FE388251E0D080002D338 /* SceneDelegate.swift in Sources */,
-				B05FE38A251E0D080002D338 /* ContentView.swift in Sources */,
+				B0993F322521B1C2003BEB85 /* ModuleAssemblyError.swift in Sources */,
+				B05FE38A251E0D080002D338 /* RoleSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
