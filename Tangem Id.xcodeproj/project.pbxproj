@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		113E01595C413ACF3067056F /* Pods_Tangem_IdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */; };
-		B007E1982525E81000B16E93 /* IssuerCardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E1972525E81000B16E93 /* IssuerCardValidator.swift */; };
-		B007E19D2525E81E00B16E93 /* CardValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E19C2525E81E00B16E93 /* CardValidator.swift */; };
 		B007E1A22525F9F600B16E93 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E1A12525F9F600B16E93 /* Command.swift */; };
 		B0298AB625230B7D004A2985 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AB525230B7D004A2985 /* Gender.swift */; };
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
@@ -33,6 +31,8 @@
 		B05FE3A8251E0D090002D338 /* Tangem_IdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE3A7251E0D090002D338 /* Tangem_IdUITests.swift */; };
 		B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068AB0225246351006559F9 /* HiddenSystemNavigation.swift */; };
 		B068AB052524678F006559F9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068AB042524678F006559F9 /* ImagePicker.swift */; };
+		B08C33ED2527743200194BF1 /* TangemIdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C33EC2527743200194BF1 /* TangemIdFactory.swift */; };
+		B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */; };
 		B08F0843251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F0842251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift */; };
 		B08F084D251F968B00AEA1C1 /* Color+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08F084C251F968B00AEA1C1 /* Color+.swift */; };
 		B08F0855251F969D00AEA1C1 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B08F0854251F969D00AEA1C1 /* Colors.xcassets */; };
@@ -57,6 +57,9 @@
 		B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F7C2521F5FB003BEB85 /* CredentialPhotoContent.swift */; };
 		B0A99DDE2526EF7A006F4A5D /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A99DDD2526EF7A006F4A5D /* Role.swift */; };
 		B0B82C2125270A34002D71FF /* RoleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B82C2025270A34002D71FF /* RoleInfo.swift */; };
+		B0B82C2D252752D7002D71FF /* VerifiableCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B82C2C252752D7002D71FF /* VerifiableCredential.swift */; };
+		B0B82C332527532E002D71FF /* JsonLdConvertor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B82C322527532E002D71FF /* JsonLdConvertor.swift */; };
+		B0B82C3E25275BA1002D71FF /* CredentialFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B82C3D25275BA1002D71FF /* CredentialFactory.swift */; };
 		B0C529592524AF1100BBCD27 /* KeyboardFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C529582524AF1100BBCD27 /* KeyboardFollower.swift */; };
 		B0C5295B2524B0CE00BBCD27 /* DateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5295A2524B0CE00BBCD27 /* DateTextField.swift */; };
 		B0C5295F2524B17100BBCD27 /* DateFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C5295E2524B17100BBCD27 /* DateFormatter+.swift */; };
@@ -100,8 +103,6 @@
 		528375D1826D7575429E5B5C /* Pods-Tangem IdTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.release.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.release.xcconfig"; sourceTree = "<group>"; };
 		5FDE8B3725CF46D1E1FB58F7 /* Pods-Tangem IdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.debug.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_IdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B007E1972525E81000B16E93 /* IssuerCardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IssuerCardValidator.swift; sourceTree = "<group>"; };
-		B007E19C2525E81E00B16E93 /* CardValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardValidator.swift; sourceTree = "<group>"; };
 		B007E1A12525F9F600B16E93 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		B01A675B251E19C100D08C8D /* Tangem Id.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tangem Id.entitlements"; sourceTree = "<group>"; };
 		B0298AB525230B7D004A2985 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
@@ -132,6 +133,8 @@
 		B05FE3A9251E0D090002D338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B068AB0225246351006559F9 /* HiddenSystemNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSystemNavigation.swift; sourceTree = "<group>"; };
 		B068AB042524678F006559F9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		B08C33EC2527743200194BF1 /* TangemIdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdFactory.swift; sourceTree = "<group>"; };
+		B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdVerifier.swift; sourceTree = "<group>"; };
 		B08F0842251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenPaddingButtonStyle.swift; sourceTree = "<group>"; };
 		B08F084C251F968B00AEA1C1 /* Color+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+.swift"; sourceTree = "<group>"; };
 		B08F0854251F969D00AEA1C1 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -156,6 +159,9 @@
 		B0993F7C2521F5FB003BEB85 /* CredentialPhotoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialPhotoContent.swift; sourceTree = "<group>"; };
 		B0A99DDD2526EF7A006F4A5D /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		B0B82C2025270A34002D71FF /* RoleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleInfo.swift; sourceTree = "<group>"; };
+		B0B82C2C252752D7002D71FF /* VerifiableCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiableCredential.swift; sourceTree = "<group>"; };
+		B0B82C322527532E002D71FF /* JsonLdConvertor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonLdConvertor.swift; sourceTree = "<group>"; };
+		B0B82C3D25275BA1002D71FF /* CredentialFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialFactory.swift; sourceTree = "<group>"; };
 		B0C529582524AF1100BBCD27 /* KeyboardFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardFollower.swift; sourceTree = "<group>"; };
 		B0C5295A2524B0CE00BBCD27 /* DateTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTextField.swift; sourceTree = "<group>"; };
 		B0C5295E2524B17100BBCD27 /* DateFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+.swift"; sourceTree = "<group>"; };
@@ -516,6 +522,23 @@
 			path = Commands;
 			sourceTree = "<group>";
 		};
+		B0B82C2B252752BB002D71FF /* Credential */ = {
+			isa = PBXGroup;
+			children = (
+				B0B82C2C252752D7002D71FF /* VerifiableCredential.swift */,
+			);
+			path = Credential;
+			sourceTree = "<group>";
+		};
+		B0B82C312527530E002D71FF /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				B0B82C322527532E002D71FF /* JsonLdConvertor.swift */,
+				B0B82C3D25275BA1002D71FF /* CredentialFactory.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		B0C529602524B41C00BBCD27 /* DatePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -540,7 +563,9 @@
 				B0C529782525B37700BBCD27 /* Assets */,
 				B0C5296D2524EFB300BBCD27 /* Core */,
 				B0A99DE52526F0C7006F4A5D /* Commands */,
+				B0B82C2B252752BB002D71FF /* Credential */,
 				B0C5296E2524EFBC00BBCD27 /* Roles */,
+				B0B82C312527530E002D71FF /* Utils */,
 			);
 			path = TangemIdCore;
 			sourceTree = "<group>";
@@ -550,7 +575,7 @@
 			children = (
 				B0C5296F2524EFE400BBCD27 /* TangemIdSdk.swift */,
 				B0C5297B2525B9E600BBCD27 /* TangemIdError.swift */,
-				B007E19C2525E81E00B16E93 /* CardValidator.swift */,
+				B08C33EC2527743200194BF1 /* TangemIdFactory.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -560,9 +585,9 @@
 			children = (
 				B0A99DDD2526EF7A006F4A5D /* Role.swift */,
 				B0C529712524EFF300BBCD27 /* TangemIdIssuer.swift */,
-				B007E1972525E81000B16E93 /* IssuerCardValidator.swift */,
 				B0D4AC682526F59F006F3FA4 /* RoleAction.swift */,
 				B0B82C2025270A34002D71FF /* RoleInfo.swift */,
+				B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */,
 			);
 			path = Roles;
 			sourceTree = "<group>";
@@ -817,19 +842,21 @@
 				B0C5295F2524B17100BBCD27 /* DateFormatter+.swift in Sources */,
 				B0C529592524AF1100BBCD27 /* KeyboardFollower.swift in Sources */,
 				B0B82C2125270A34002D71FF /* RoleInfo.swift in Sources */,
+				B0B82C332527532E002D71FF /* JsonLdConvertor.swift in Sources */,
 				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,
 				B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */,
 				B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */,
 				B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */,
 				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
-				B007E1982525E81000B16E93 /* IssuerCardValidator.swift in Sources */,
 				B0C529702524EFE400BBCD27 /* TangemIdSdk.swift in Sources */,
+				B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */,
 				B0993F432521B362003BEB85 /* Assembly+Module.swift in Sources */,
 				B0D4AC692526F59F006F3FA4 /* RoleAction.swift in Sources */,
 				B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */,
 				B0298AB625230B7D004A2985 /* Gender.swift in Sources */,
 				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
 				B0993F5D2521C5E1003BEB85 /* IssuerCreateCredentialsView.swift in Sources */,
+				B0B82C3E25275BA1002D71FF /* CredentialFactory.swift in Sources */,
 				B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */,
 				B0C5297C2525B9E600BBCD27 /* TangemIdError.swift in Sources */,
 				B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */,
@@ -843,14 +870,15 @@
 				B03A3BEE252200F800937676 /* ButtonWithImage.swift in Sources */,
 				B0DF09052520DAC10077479E /* ModalLink.swift in Sources */,
 				B0993F2D2521AF89003BEB85 /* ModuleAssembly.swift in Sources */,
+				B0B82C2D252752D7002D71FF /* VerifiableCredential.swift in Sources */,
 				B08F084D251F968B00AEA1C1 /* Color+.swift in Sources */,
 				B08F086C251F97AB00AEA1C1 /* UIScreen+.swift in Sources */,
-				B007E19D2525E81E00B16E93 /* CardValidator.swift in Sources */,
 				B05CCAEF2520F6340033093C /* RoleSelectorAssembly.swift in Sources */,
 				B0413BCA2522ED8900140A70 /* RadioSegmentSelector.swift in Sources */,
 				B0C5297E2525C2DF00BBCD27 /* TangemIdAppError.swift in Sources */,
 				B08F0843251F965A00AEA1C1 /* ScreenPaddingButtonStyle.swift in Sources */,
 				B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */,
+				B08C33ED2527743200194BF1 /* TangemIdFactory.swift in Sources */,
 				B0993F6A2521C74D003BEB85 /* IssuerViewModel.swift in Sources */,
 				B08F0866251F974A00AEA1C1 /* IssuerView.swift in Sources */,
 				B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */,

@@ -41,6 +41,8 @@ final class TangemIdSdk<T: ActionExecutioner> {
 	
 }
 
+typealias TangemIssuerManager = TangemIdSdk<TangemIdIssuer>
+
 //final class TangemIdSdk {
 //
 //	private(set) var tangemSdk: TangemSdk

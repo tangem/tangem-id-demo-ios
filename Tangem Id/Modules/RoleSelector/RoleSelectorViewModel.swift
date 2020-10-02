@@ -32,6 +32,7 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 	private var disposable = Set<AnyCancellable>()
 	
 	private let moduleAssembly: ModuleAssemblyType
+	private let tangemIdFactory: TangemIdFactoryType
 	
 	private(set) var issuerLink: AnyView = AnyView(EmptyView())
 	
@@ -43,15 +44,9 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 		AnyView(EmptyView())
 	}
 	
-	init(moduleAssembly: ModuleAssemblyType) {
+	init(moduleAssembly: ModuleAssemblyType, tangemIdFactory: TangemIdFactoryType) {
 		self.moduleAssembly = moduleAssembly
-		
-		// TODO: Try to rework single link for every view state through subscription
-//		let subs = $state
-//			.sink(receiveValue: {
-//				print("Current state of Role selector view", $0)
-//			})
-//		disposable.insert(subs)
+		self.tangemIdFactory = tangemIdFactory
 	}
 	
 	
@@ -59,13 +54,13 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 
 extension RoleSelectorViewModel {
 	func issuerButtonAction() {
-		let sdk = TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: TangemSdk()))
-		sdk.execute(action: .authorizeAsIssuer({ [weak self] (result) in
+		let manager: TangemIssuerManager = tangemIdFactory.makeManager(for: .issuer)
+		manager.execute(action: .authorizeAsIssuer({ [weak self] (result) in
 			guard let self = self else { return }
 			switch result {
 			case .success:
-				let info = sdk.executionerInfo
-				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(roleInfo: info))
+				let info = manager.executionerInfo
+				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(roleInfo: info, manager: manager))
 				self.state = .issuer
 			case .failure(let error):
 				self.error = error

@@ -18,6 +18,7 @@ struct IdLocalization {
 		static let youNotAuthorized = "you_not_authorized".localizedString()
 		static let wrongAuthorization = "wrong_authorization".localizedString()
 		static let invalidIssuerCard = "invalid_issuer_card".localizedString()
+		static let invalidHolderCard = "invalid_holder_card".localizedString()
 		static let failedToReadIssuerCard = "failed_to_read_issuer_card".localizedString()
 	}
 }

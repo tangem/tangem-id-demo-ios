@@ -9,10 +9,10 @@
 import Swinject
 
 extension Assembly {
-//	func tangemIdSdk(_ r: Resolver) -> TangemIdSdk {
-//		guard let tangemSdk = r.resolve(TangemIdSdk.self) else {
-//			fatalError("Failed to instantiate Tangem Id Sdk")
-//		}
-//		return tangemSdk
-//	}
+	func tangemIdManagerFactory(_ r: Resolver) -> TangemIdFactoryType {
+		guard let tangemSdk = r.resolve(TangemIdFactoryType.self) else {
+			fatalError("Failed to instantiate Tangem Id Sdk")
+		}
+		return tangemSdk
+	}
 }

@@ -41,9 +41,11 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable {
 	
 	
 	private let moduleAssembly: ModuleAssemblyType
+	private let issuerManager: TangemIssuerManager
 	
-	init(moduleAssembly: ModuleAssemblyType) {
+	init(moduleAssembly: ModuleAssemblyType, issuerManager: TangemIssuerManager) {
 		self.moduleAssembly = moduleAssembly
+		self.issuerManager = issuerManager
 	}
 	
 	func selectGender(at index: Int) {

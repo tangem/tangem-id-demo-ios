@@ -43,4 +43,5 @@
 "you_not_authorized" = "You not authorized. Please Authorize yourself as Issuer, Holder of Verifier";
 "wrong_authorization" = "Action you trying to perform is not valid for this Role";
 "invalid_issuer_card" = "To issue credentials please use ID Issuer card";
+"invalid_holder_card" = "Tapped card is not an ID Card. Please, tap ID Card";
 "failed_to_read_issuer_card" = "Something went wrong in interaction with a card";

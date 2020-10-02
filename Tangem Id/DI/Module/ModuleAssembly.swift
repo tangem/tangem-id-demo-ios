@@ -32,13 +32,16 @@ class ModuleAssembly {
 extension ModuleAssembly: ModuleAssemblyType {
 	func assembledView(for module: Module) throws -> AnyView {
 		switch module {
-		case .issuer(let info):
-			guard let view = resolver.resolve(IssuerView.self, argument: info) else {
+		case let .issuer(info, manager):
+			guard let view = resolver.resolve(IssuerView.self, arguments: info, manager) else {
 				throw ModuleAssemblyError.dependencyResolvingError
 			}
 			return AnyView(view)
-		case .issuerCreateCredentials:
-			return try resolveView(for: IssuerCreateCredentialsView.self)
+		case .issuerCreateCredentials(let manager):
+			guard let view = resolver.resolve(IssuerCreateCredentialsView.self, argument: manager) else {
+				throw ModuleAssemblyError.dependencyResolvingError
+			}
+			return AnyView(view)
 		}
 	}
 }

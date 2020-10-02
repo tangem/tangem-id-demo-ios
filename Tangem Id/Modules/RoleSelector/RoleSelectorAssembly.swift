@@ -19,8 +19,8 @@ struct RoleSelectorAssembly: Assembly {
 		}
 		container.register(RoleSelectorViewModel.self) { r in
 			let moduleAssembly = self.moduleAssembly(r)
-//			let tangemId = self.tangemIdSdk(r)
-			return RoleSelectorViewModel(moduleAssembly: moduleAssembly)
+			let factory = self.tangemIdManagerFactory(r)
+			return RoleSelectorViewModel(moduleAssembly: moduleAssembly, tangemIdFactory: factory)
 		}
 	}
 }
