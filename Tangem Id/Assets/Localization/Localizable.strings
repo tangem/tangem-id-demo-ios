@@ -27,3 +27,20 @@
 "issuer" = "Issuer";
 "verifier" = "Verifier";
 "holder" = "Holder";
+
+"did_issuer_address" = "DID Address of the Issuer";
+
+
+
+
+
+
+// MARK: - Tangem Id Core messages
+"scan_issuer_card" = "Tap Issuer's Card";
+"scan_holder_card" = "Tap Holder's Card";
+
+// MARK: - Tangem Id Core error messages
+"you_not_authorized" = "You not authorized. Please Authorize yourself as Issuer, Holder of Verifier";
+"wrong_authorization" = "Action you trying to perform is not valid for this Role";
+"invalid_issuer_card" = "To issue credentials please use ID Issuer card";
+"failed_to_read_issuer_card" = "Something went wrong in interaction with a card";

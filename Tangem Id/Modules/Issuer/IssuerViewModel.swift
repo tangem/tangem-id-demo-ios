@@ -72,16 +72,19 @@ class IssuerViewModel: ObservableObject, Equatable {
 	@Published var isCreatingCredentials: Bool? = false
 	
 	private(set) var createCredentialsLink: AnyView = AnyView(EmptyView())
+	private(set) var issuerInfo: IssuerRoleInfoType
 	
 	var disposable = Set<AnyCancellable>()
 	
-	init(moduleAssembly: ModuleAssemblyType) {
+	init(moduleAssembly: ModuleAssemblyType, issuerInfo: IssuerRoleInfoType) {
 		self.moduleAssembly = moduleAssembly
+		self.issuerInfo = issuerInfo
 	}
 	
 	func createNewCredentials() {
 		createCredentialsLink = try! moduleAssembly.assembledView(for: .issuerCreateCredentials)
 		isCreatingCredentials = true
+//		TangemIdSdk().execute(action: .)
 	}
 	
 }

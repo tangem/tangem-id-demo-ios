@@ -11,5 +11,7 @@ import Swinject
 struct ServiceAssembly: Assembly {
 	func assemble(container: Container) {
 		container.register(ModuleAssemblyType.self, factory: { r in ModuleAssembly(resolver: r) } ).inObjectScope(.container)
+		
+//		container.register(TangemIdSdk.self) { _ in TangemIdSdk() }.inObjectScope(.container)
 	}
 }

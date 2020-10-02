@@ -16,7 +16,8 @@ struct LocalizationKeys {
 		struct RoleSelector {
 			static let descriptionText: LocalizedStringKey = "role_selector_rescription"
 		}
-		struct CreateCredentials {
+		struct Issuer {
+			static let didIssuerAddress: LocalizedStringKey = "did_issuer_address"
 			static let photo: LocalizedStringKey = "photo"
 			static let personalInfo: LocalizedStringKey = "personal_info"
 		}

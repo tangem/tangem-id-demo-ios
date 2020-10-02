@@ -24,7 +24,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var showingImagePicker = false
 	
 	func photoCard() -> some View {
-		let title = LocalizationKeys.Modules.CreateCredentials.photo
+		let title = LocalizationKeys.Modules.Issuer.photo
 		let addPhotoButton = ButtonWithImage(image: UIImage(systemName: "plus")!,
 											 color: .tangemBlue,
 											 text: LocalizationKeys.Common.addPhoto,
@@ -53,7 +53,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			ScrollView {
 				photoCard()
 				CredentialCard(
-					title: LocalizationKeys.Modules.CreateCredentials.personalInfo,
+					title: LocalizationKeys.Modules.Issuer.personalInfo,
 					contentBuilder: {
 						VStack {
 							TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { (newText) in

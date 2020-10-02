@@ -31,9 +31,9 @@ struct IssuerView: View, Equatable {
 					Image("qr")
 					Spacer()
 						.frame(height: 48)
-					Text("Ministry of Internal Affairs")
+					Text(viewModel.issuerInfo.title)
 						.font(Font.system(size: 20, weight: .regular))
-					Text("did:ethr:0x91901762C7d20d2894396c189d74483aFa118f4")
+					Text(viewModel.issuerInfo.didWalletAddress)
 						.font(Font.system(size: 11, weight: .light))
 						.foregroundColor(.gray)
 						.padding(.leading, 66)
@@ -69,7 +69,7 @@ struct IssuerView: View, Equatable {
 
 struct IssuerView_Previews: PreviewProvider {
 	static var previews: some View {
-		ApplicationAssembly.resolve(IssuerView.self)!
+		ApplicationAssembly.assembler.resolver.resolve(IssuerView.self, argument: IssuerInfo(walletAddress: "did:ethr:someEtheriumAddress", name: "Some rangom affairs"))!
 			.deviceForPreview(.iPhone7)
 	}
 }

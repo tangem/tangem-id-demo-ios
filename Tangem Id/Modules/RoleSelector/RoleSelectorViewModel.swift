@@ -8,6 +8,7 @@
 
 import Combine
 import SwiftUI
+import TangemSdk
 
 final class RoleSelectorViewModel: ObservableObject, Equatable {
 	
@@ -26,6 +27,7 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 			}
 		}
 	}
+	@Published var error: Error?
 	
 	private var disposable = Set<AnyCancellable>()
 	
@@ -57,12 +59,56 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 
 extension RoleSelectorViewModel {
 	func issuerButtonAction() {
-		issuerLink = try! moduleAssembly.assembledView(for: .issuer)
-		state = .issuer
+		let sdk = TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: TangemSdk()))
+		sdk.execute(action: .authorizeAsIssuer({ [weak self] (result) in
+			guard let self = self else { return }
+			switch result {
+			case .success:
+				let info = sdk.executionerInfo
+				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(roleInfo: info))
+				self.state = .issuer
+			case .failure(let error):
+				self.error = error
+			}
+		}))
+//		tangemId.authorize(as: .issuer) { [weak self] (result) in
+//			guard let self = self else { return }
+//			switch result {
+//			case .success:
+//				let info = self.tangemId.authorizedRoleInfo
+////				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(roleInfo: info))
+//				self.state = .issuer
+//			case .failure(let error):
+//				self.error = error
+//			}
+//		}
+//		tangemId.issuer.readIssuerCard { [weak self] (result) in
+//			guard let self = self else { return }
+//			switch result {
+//			case .success(let issuerInfo):
+//				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(issuerInfo: issuerInfo))
+//				self.state = .issuer
+//			case .failure(let error):
+//				if
+//					case let TangemSdkError.underlying(error) = error,
+//					let idError = error as? TangemIdError
+//				{
+//					self.state = .error(error: .idCoreError(error: idError))
+//				}
+//			}
+//		}
+		
 	}
 	
 	func verifierButtonAction() {
-		state = .verifier
+//		tangemId.authorize(as: .verifier) { (_) in
+//
+//		}
+		let sdk = TangemIdSdk(executioner: TangemIdVerifier())
+		sdk.execute(action: .readHoldersCredentials(completion: { [weak self] (result) in
+			guard let self = self else { return }
+			self.state = .verifier
+		}))
 	}
 	
 	func holderButtonAction() {

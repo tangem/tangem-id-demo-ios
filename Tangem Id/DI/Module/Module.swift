@@ -9,6 +9,6 @@
 import Foundation
 
 enum Module {
-	case issuer
+	case issuer(roleInfo: RoleInfo)
 	case issuerCreateCredentials
 }

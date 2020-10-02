@@ -10,16 +10,19 @@ import Swinject
 
 struct IssuerAssembly: Assembly {
 	func assemble(container: Container) {
-		container.register(IssuerView.self) { r in
-			guard let viewModel = r.resolve(IssuerViewModel.self) else {
+		container.register(IssuerView.self) { (r, roleInfo: RoleInfo) in
+			guard let viewModel = r.resolve(IssuerViewModel.self, argument: roleInfo) else {
 				fatalError()
 			}
 			let view = IssuerView(viewModel: viewModel)
 			return view
 		}
-		container.register(IssuerViewModel.self) { r in
+		container.register(IssuerViewModel.self) { (r, roleInfo: RoleInfo) in
 			let moduleAssembly = self.moduleAssembly(r)
-			return IssuerViewModel(moduleAssembly: moduleAssembly)
+			guard let issuerRoleInfo = roleInfo as? IssuerRoleInfoType else {
+				fatalError("Wrong role info was created for Issuer role")
+			}
+			return IssuerViewModel(moduleAssembly: moduleAssembly, issuerInfo: issuerRoleInfo)
 		}
 		
 		container.register(IssuerCreateCredentialsView.self) { r in
