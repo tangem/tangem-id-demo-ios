@@ -8,7 +8,23 @@
 
 import SwiftUI
 
-struct RoleSelectorView: View {
+extension UINavigationController: UIGestureRecognizerDelegate {
+	override open func viewDidLoad() {
+		super.viewDidLoad()
+		interactivePopGestureRecognizer?.delegate = self
+	}
+
+	public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+		return viewControllers.count > 1
+	}
+}
+
+struct RoleSelectorView: View, Equatable {
+	static func == (lhs: RoleSelectorView, rhs: RoleSelectorView) -> Bool {
+		print("Comparing role selector views")
+		return lhs.viewModel == rhs.viewModel
+	}
+	
 	@ObservedObject var viewModel: RoleSelectorViewModel
 	
 	var body: some View {
@@ -22,7 +38,7 @@ struct RoleSelectorView: View {
 					.font(Font.system(size: 28, weight: .light))
 				Spacer()
 					.frame(width: 100, height: 56)
-				(Text("This application demonstrates the Tangem ID solution. Conformant with W3C DID and Verifiable Credential. Try for yourself! Get ID cards kit at ") +
+				(Text(LocalizationKeys.Modules.RoleSelector.descriptionText) +
 					Text("shop.tangem.com")
 					.foregroundColor(.tangemBlue)
 				)
@@ -38,19 +54,18 @@ struct RoleSelectorView: View {
 					.frame(minHeight: 96)
 				VStack(spacing: 16) {
 					NavigationButton(
-						action: { viewModel.issuerButtonAction() },
-						contentView: Text("Issuer"),
+						action: { self.viewModel.issuerButtonAction() },
+						text: LocalizationKeys.Common.issuer,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.issuerLink,
 							tag: RoleSelectorViewModel.ViewState.issuer,
 							selection: $viewModel.state
 						),
-						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding
-					)
+						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
-						action: { viewModel.verifierButtonAction() },
-						text: "Verifier",
+						action: { self.viewModel.verifierButtonAction() },
+						text: LocalizationKeys.Common.verifier,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.veridierLink,
@@ -58,8 +73,8 @@ struct RoleSelectorView: View {
 							selection: $viewModel.state),
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
-						action: { viewModel.holderButtonAction() },
-						text: "Holder",
+						action: { self.viewModel.holderButtonAction() },
+						text: LocalizationKeys.Common.holder,
 						navigationLink: NavigationLink(
 							destination: viewModel.holderLink,
 							tag: RoleSelectorViewModel.ViewState.holder,
@@ -70,26 +85,14 @@ struct RoleSelectorView: View {
 				.padding(.horizontal, 46)
 				.padding(.bottom, 40)
 			}
-			.navigationBarTitle(Text(" "), displayMode: .inline)
-			.background(NavigationController() { navi in
-				let bar = navi.navigationBar
-				bar.titleTextAttributes = [
-					.font: UIFont.systemFont(ofSize: 20, weight: .bold),
-					.foregroundColor: UIColor.tangemBlack
-				]
-				bar.backgroundColor = .clear
-				bar.setBackgroundImage(UIColor.clear.image(), for: .default)
-				bar.shadowImage = UIColor.clear.image()
-			})
+			.modifier(HiddenSystemNavigation())
 		}
 	}
 }
 
 struct RoleSelector_Previews: PreviewProvider {
-	static let resolver = ApplicationAssembly.assembler.resolver
 	static var previews: some View {
-		resolver
-			.resolve(RoleSelectorView.self)!
-			.previewGroup()
+		ApplicationAssembly.resolve(RoleSelectorView.self)!
+			.deviceForPreview(.iPhone7)
 	}
 }

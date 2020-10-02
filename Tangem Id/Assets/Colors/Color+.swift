@@ -25,6 +25,14 @@ extension Color {
 		Color(UIColor.tangemBlack)
 	}
 	
+	static var photoBackground: Color {
+		Color(UIColor.photoBackground)
+	}
+	
+	static var placeholderTextColor: Color {
+		Color(UIColor.placeholderTextColor)
+	}
+	
 }
 
 extension UIColor {
@@ -42,6 +50,14 @@ extension UIColor {
 	
 	@nonobjc static var tangemBlack: UIColor {
 		UIColor(named: "TangemBlack")!
+	}
+	
+	@nonobjc static var photoBackground: UIColor {
+		UIColor(named: "PhotoBackground")!
+	}
+	
+	@nonobjc static var placeholderTextColor: UIColor {
+		UIColor(named: "PlaceholderTextColor")!
 	}
 	
 }

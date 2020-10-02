@@ -16,13 +16,6 @@ struct NavigationButton<CV: View, NL: View, Style: ButtonStyle>: View {
 		self.buttonStyle = buttonStyle
 	}
 	
-	internal init(action: @escaping () -> Void, text: String, navigationLink: NL, buttonStyle: Style) where CV == Text {
-		self.action = action
-		self.contentView = Text(text)
-		self.navigationLink = navigationLink
-		self.buttonStyle = buttonStyle
-	}
-	
 	var action: () -> Void
 	var contentView: CV
 	var navigationLink: NL
@@ -34,5 +27,14 @@ struct NavigationButton<CV: View, NL: View, Style: ButtonStyle>: View {
 				.background(navigationLink)
 		}
 		.buttonStyle(buttonStyle)
+	}
+}
+
+extension NavigationButton where CV == Text {
+	internal init(action: @escaping () -> Void, text: LocalizedStringKey, navigationLink: NL, buttonStyle: Style) {
+		self.action = action
+		self.contentView = Text(text)
+		self.navigationLink = navigationLink
+		self.buttonStyle = buttonStyle
 	}
 }

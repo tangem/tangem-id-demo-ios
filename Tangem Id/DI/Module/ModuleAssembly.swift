@@ -9,6 +9,10 @@
 import SwiftUI
 import Swinject
 
+protocol ModuleAssemblyType {
+	func assembledView(for module: Module) throws -> AnyView
+}
+
 class ModuleAssembly {
 	private let resolver: Resolver
 	
@@ -16,19 +20,23 @@ class ModuleAssembly {
 		self.resolver = resolver
 	}
 	
-	private func resolveView<T>(for type: T.Type) throws -> T {
+	private func resolveView<T: View>(for type: T.Type) throws -> AnyView {
 		guard let view = resolver.resolve(type) else {
 			throw ModuleAssemblyError.dependencyResolvingError
 		}
-		return view
+		return AnyView(view)
 	}
+	
 }
 
-extension ModuleAssembly {
-	func assembledView(for module: Module) throws -> some View {
+extension ModuleAssembly: ModuleAssemblyType {
+	func assembledView(for module: Module) throws -> AnyView {
 		switch module {
 		case .issuer:
 			return try resolveView(for: IssuerView.self)
+		case .issuerCreateCredentials:
+//			return AnyView(resolver.resolve(IssuerCreateCredentialsView.self))
+			return try resolveView(for: IssuerCreateCredentialsView.self)
 		}
 	}
 }

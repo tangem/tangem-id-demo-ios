@@ -20,3 +20,9 @@ final class ApplicationAssembly {
 	)
 	
 }
+
+extension ApplicationAssembly {
+	static func resolve<T>(_ type: T.Type) -> T? {
+		assembler.resolver.resolve(type)
+	}
+}

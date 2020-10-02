@@ -1,0 +1,29 @@
+/* 
+  Localizable.strings
+  Tangem Id
+
+  Created by Andrew Son on 9/30/20.
+  Copyright © 2020 Tangem AG. All rights reserved.
+*/
+
+// MARK: - Navigation bar
+"issue_credentials" = "Issue Credentials";
+"personal_info" = "Personal information";
+
+"photo" = "Photo";
+"name" = "Name";
+"surname" = "Surname";
+"date_of_birth" = "Date of birth";
+"age_over_18" = "Age over 18";
+"ssn" = "SSN";
+
+"add_photo" = "Add photo";
+
+"male" = "Male";
+"female" = "Female";
+"other" = "Other";
+
+"role_selector_rescription" = "This application demonstrates the Tangem ID solution. Conformant with W3C DID and Verifiable Credential. Try for yourself! Get ID cards kit at ";
+"issuer" = "Issuer";
+"verifier" = "Verifier";
+"holder" = "Holder";
