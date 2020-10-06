@@ -18,7 +18,7 @@ import Combine
 protocol ActionExecutioner {
 	associatedtype Action: ActionType
 	var executionerInfo: RoleInfo { get }
-	func execute(action: Action, completion: @escaping ActionResult)
+	func execute(action: Action)
 }
 
 typealias ActionResult = (Result<Void, Error>) -> Void
@@ -35,13 +35,11 @@ final class TangemIdSdk<T: ActionExecutioner> {
 		self.executioner = executioner
 	}
 	
-	func execute(action: T.Action, completion: @escaping ActionResult = { _ in }) {
-		executioner.execute(action: action, completion: completion)
+	func execute(action: T.Action) {
+		executioner.execute(action: action)
 	}
 	
 }
-
-typealias TangemIssuerManager = TangemIdSdk<TangemIdIssuer>
 
 //final class TangemIdSdk {
 //

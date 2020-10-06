@@ -20,7 +20,7 @@ struct IssuerView: View, Equatable {
 	@State var isCreatingCredentials: Bool = false
 	
 	var body: some View {
-		return VStack {
+		VStack {
 			NavigationBar(
 				title: LocalizationKeys.NavigationBar.issueCredentials,
 				presentationMode: presentationMode
@@ -59,6 +59,7 @@ struct IssuerView: View, Equatable {
 				}
 			}
 		}
+		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.onAppear(perform: {
 			print("Issuer view appeared")
 		})

@@ -8,7 +8,39 @@
 
 import Foundation
 
-struct PersonalInformationCredential: Codable {
+protocol DictConvertible { }
+
+extension DictConvertible {
+	func toStringDict() -> [String: String] {
+		var dict = [String: String]()
+		let mirror = Mirror(reflecting: self)
+		for child in mirror.children {
+			guard
+				let key = child.label,
+				case Optional<Any>.some = child.value
+			else { continue }
+			let value = "\(child.value)"
+			dict[key] = value
+		}
+		return dict
+	}
+}
+
+struct PersonalInformationCredential: Codable, DictConvertible {
+	internal init(id: String, givenName: String, familyName: String, gender: String, born: String, photoHash: String) {
+		self.id = id
+		self.givenName = givenName
+		self.familyName = familyName
+		self.gender = gender
+		self.born = born
+		self.photoHash = photoHash
+	}
+	
+	init(id: String, input: CredentialInput, photoHash: String) {
+		let formatter = DateFormatter.monthDayYear
+		self.init(id: id, givenName: input.name, familyName: input.surname, gender: input.gender, born: formatter.string(from: input.dateOfBirth), photoHash: photoHash)
+	}
+	
 	let id: String
 	let givenName: String
 	let familyName: String
@@ -17,28 +49,37 @@ struct PersonalInformationCredential: Codable {
 	let photoHash: String
 }
 
+struct PhotoCredentialSubject: DictConvertible {
+	let id: String
+	let photo: String
+}
+
 enum VerifiableCredentialType: String, Codable, CaseIterable {
-	case VerifiableCredential, TangemEthCredential, TangemPersonalInformationCredential, TangemSsnCredential, TangemAgeOver21Credential
+	case VerifiableCredential, TangemEthCredential, TangemPhotoCredential, TangemPersonalInformationCredential, TangemSsnCredential, TangemAgeOver21Credential
 }
 
-struct CredentialProof: Codable {
-	let verificationMethod: String
-	let jws: String
-}
-
-struct VerifiableCredential<Subject: Codable>: Codable {
+class VerifiableCredential: Codable, DictConvertible {
+	
 	let context: [String]
 	let type: [VerifiableCredentialType]
-	let credentialSubject: Subject
+	let credentialSubject: [String: String]
 	let issuer: String
 	let issuanceDate: String
-	let validFrom: Date?
-	let ethCredentialStatus: String
-	let proof: CredentialProof
+	var validFrom: Date? = nil
+	var ethCredentialStatus: String? = nil
+	var proof: Secp256k1Proof? = nil
 	
 	private enum CodingKeys: String, CodingKey {
 		case context = "@context"
 		case type, credentialSubject, issuer, issuanceDate, ethCredentialStatus, proof, validFrom
+	}
+	
+	internal init(context: [String], type: [VerifiableCredentialType], credentialSubject: [String : String], issuer: String, issuanceDate: String) {
+		self.context = context
+		self.type = type
+		self.credentialSubject = credentialSubject
+		self.issuer = issuer
+		self.issuanceDate = issuanceDate
 	}
 }
 

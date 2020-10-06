@@ -10,20 +10,25 @@ import Foundation
 import TangemSdk
 
 protocol TangemIdFactoryType {
-	func makeManager<T: ActionExecutioner>(for role: Role) -> TangemIdSdk<T>
+	func createIssuerManager() -> TangemIssuerManager
+//	func makeManager<T: ActionExecutioner>(for role: Role) -> TangemIdSdk<T>
 }
 
 struct TangemIdFactory: TangemIdFactoryType {
 	
 	let tangemSdk: TangemSdk
 	
-	func makeManager<T: ActionExecutioner>(for role: Role) -> TangemIdSdk<T> {
-		switch role {
-		case .issuer:
-			return TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk) as! T)
-		default:
-			return TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk) as! T)
-		}
+	func createIssuerManager() -> TangemIssuerManager {
+		TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: CredentialCreatorFactory()))
 	}
+	
+//	func makeManager<T: ActionExecutioner>(for role: Role) -> TangemIdSdk<T> {
+//		switch role {
+//		case .issuer:
+//			return TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: <#CredentialCreatorFactoryType#>) as! T)
+//		default:
+//			return TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: <#CredentialCreatorFactoryType#>) as! T)
+//		}
+//	}
 	
 }

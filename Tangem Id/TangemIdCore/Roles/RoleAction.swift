@@ -8,17 +8,18 @@
 
 import Foundation
 import TangemSdk
+import Combine
 
 protocol ActionType {}
 
 typealias EmptyResponse = (Result<Void, TangemIdError>) -> Void
 
-
 enum IssuerAction: ActionType {
 	case authorizeAsIssuer(EmptyResponse)
 	case getHolderAddress(EmptyResponse)
-	case createAndSignCredentials
+	case signCredentials(CredentialInput, EmptyResponse)
 	case saveCredentialsToCard
+	case showCredentialsAsJson((Result<String, TangemIdError>) -> Void)
 }
 
 enum VerifierAction: ActionType {

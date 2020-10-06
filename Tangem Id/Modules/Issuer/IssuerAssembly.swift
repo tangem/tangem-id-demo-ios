@@ -35,5 +35,12 @@ struct IssuerAssembly: Assembly {
 			let moduleAssembly = self.moduleAssembly(r)
 			return IssuerCreateCredentialsViewModel(moduleAssembly: moduleAssembly, issuerManager: manager)
 		}
+		
+		// used for creating preview
+		container.register(IssuerCreateCredentialsView.self) { r in
+			let tangemFactory = self.tangemIdManagerFactory(r)
+			let issuer = tangemFactory.createIssuerManager()
+			return r.resolve(IssuerCreateCredentialsView.self, argument: issuer)!
+		}
 	}
 }

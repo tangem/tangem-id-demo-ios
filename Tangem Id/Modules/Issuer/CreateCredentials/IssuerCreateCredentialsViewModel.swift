@@ -18,14 +18,14 @@ extension Gender {
 	}
 }
 
-class IssuerCreateCredentialsViewModel: ObservableObject, Equatable {
+class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 	
 	static func == (lhs: IssuerCreateCredentialsViewModel, rhs: IssuerCreateCredentialsViewModel) -> Bool {
 		lhs.dateOfBirth == rhs.dateOfBirth &&
 			lhs.name == rhs.name &&
 			lhs.surname == rhs.surname &&
 			lhs.selectedGender == rhs.selectedGender &&
-			lhs.isOver18 == rhs.isOver18
+			lhs.isOver21 == rhs.isOver21
 	}
 	
 	private var selectedGender: Gender = .notSelected
@@ -33,12 +33,25 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable {
 	var availableGenders: [SegmentData] = Gender.genderSegments
 	
 	@Published var photo: UIImage?
-	@Published var name: String = ""
-	@Published var surname: String = ""
-	@Published var selectedGenderIndex: Int = -1
-	@Published var dateOfBirth: Date?
-	@Published var isOver18: Bool = false
 	
+	@Published var selectedGenderIndex: Int = -1
+	@Published var dateOfBirth: Date? {
+		didSet {
+			guard let birth = dateOfBirth else { return }
+			let calendar = Calendar.current
+			let components = calendar.dateComponents([.year], from: birth, to: Date())
+			isOver21 = components.year ?? 0 >= 21
+		}
+	}
+	@Published var isOver21: Bool = false
+	
+	@Published var snackMessage: SnackData = SnackData(message: "Not filled info", type: .error)
+	@Published var isShowingSnack: Bool = false
+	@Published var isCredentialsCreated: Bool = false
+	
+	private(set) var name: String = ""
+	private(set) var surname: String = ""
+	private(set) var ssn: String = ""
 	
 	private let moduleAssembly: ModuleAssemblyType
 	private let issuerManager: TangemIssuerManager
@@ -63,16 +76,45 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable {
 		surname = text
 	}
 	
-	func inputSsn(_ text: String) {
-		print("Updating ssn: \(text)")
+	func inputSsn(_ ssn: String) {
+		self.ssn = ssn
 	}
 	
-	func isOver18Action() {
-		isOver18.toggle()
+	func signEnteredInfo() {
+		guard
+			isDataValid(),
+			let credsInput = formatCredsInput()
+		else {
+			showErrorSnack(message: LocalizedStrings.Snacks.issuerSomeEmptyFields)
+			return
+		}
+		isCredentialsCreated.toggle()
+		issuerManager.execute(action: .signCredentials(credsInput, { [weak self] (result) in
+			
+		}))
 	}
 	
-	func loadNewPhoto(image: UIImage) {
-		photo = image
+	private func isDataValid() -> Bool {
+		return photo != nil &&
+			!name.isEmpty &&
+			!surname.isEmpty &&
+			!ssn.isEmpty &&
+			selectedGender != .notSelected &&
+			dateOfBirth != nil
+	}
+	
+	private func formatCredsInput() -> CredentialInput? {
+		guard
+			let photo = photo,
+			let dateOfBirth = dateOfBirth
+		else { return nil }
+		return CredentialInput(photo: photo,
+							   name: name,
+							   surname: surname,
+							   gender: selectedGender.titleStr,
+							   dateOfBirth: dateOfBirth,
+							   ssn: ssn,
+							   isOver21: isOver21)
 	}
 	
 }

@@ -14,10 +14,12 @@
 "name" = "Name";
 "surname" = "Surname";
 "date_of_birth" = "Date of birth";
-"age_over_18" = "Age over 18";
+"age_over_21" = "Age over 21";
 "ssn" = "SSN";
 
 "add_photo" = "Add photo";
+"sign_credentials" = "Sign";
+"write_to_card_credentials" = "Write to card";
 
 "male" = "Male";
 "female" = "Female";
@@ -30,6 +32,8 @@
 
 "did_issuer_address" = "DID Address of the Issuer";
 
+// MARK: Snack messages
+"issuer_empty_fields" = "You must fill in all data in the form";
 
 
 

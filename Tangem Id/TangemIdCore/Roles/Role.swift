@@ -10,6 +10,4 @@ import Foundation
 
 enum Role {
 	case issuer, verifier, holder
-	
-	
 }

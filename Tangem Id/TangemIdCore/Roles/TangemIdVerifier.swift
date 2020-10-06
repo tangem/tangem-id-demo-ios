@@ -13,7 +13,7 @@ final class TangemIdVerifier: ActionExecutioner {
 		VerifierRoleInfo()
 	}
 	
-	func execute(action: VerifierAction, completion: @escaping ActionResult) {
+	func execute(action: VerifierAction) {
 		switch action {
 		case .readHoldersCredentials(let completion):
 			completion(.success(()))

@@ -15,6 +15,7 @@ enum TangemIdError: Error, Hashable {
 	case wrongAuthorization
 	case notValidIssuerCard
 	case notValidHolderCard
+	case credentialSigningError(error: String)
 	case readingCardError
 	
 	var localizedDescription: String {
@@ -24,6 +25,7 @@ enum TangemIdError: Error, Hashable {
 		case .wrongAuthorization: return IdLocalization.Errors.wrongAuthorization
 		case .notValidIssuerCard: return IdLocalization.Errors.invalidIssuerCard
 		case .notValidHolderCard: return IdLocalization.Errors.invalidHolderCard
+		case .credentialSigningError(let error): return error
 		case .readingCardError: return IdLocalization.Errors.failedToReadIssuerCard
 		}
 	}

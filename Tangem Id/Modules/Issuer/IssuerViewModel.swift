@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-class IssuerViewModel: ObservableObject, Equatable {
+class IssuerViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 	static func == (lhs: IssuerViewModel, rhs: IssuerViewModel) -> Bool {
 		lhs.isCreatingCredentials == rhs.isCreatingCredentials
 	}
@@ -18,6 +18,8 @@ class IssuerViewModel: ObservableObject, Equatable {
 	private let issuerManager: TangemIssuerManager
 	
 	@Published var isCreatingCredentials: Bool? = false
+	@Published var snackMessage: SnackData = .emptySnack
+	@Published var isShowingSnack: Bool = false
 	
 	private(set) var createCredentialsLink: AnyView = AnyView(EmptyView())
 	private(set) var issuerInfo: IssuerRoleInfoType
@@ -38,7 +40,7 @@ class IssuerViewModel: ObservableObject, Equatable {
 				self.createCredentialsLink = try! self.moduleAssembly.assembledView(for: .issuerCreateCredentials(manager: self.issuerManager))
 				self.isCreatingCredentials = true
 			case .failure(let error):
-				print(error)
+				self.showErrorSnack(message: error.localizedDescription)
 			}
 		})
 	}

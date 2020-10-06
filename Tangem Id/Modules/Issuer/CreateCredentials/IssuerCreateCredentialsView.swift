@@ -22,6 +22,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@ObservedObject var keyboardHandler: KeyboardFollower = KeyboardFollower()
 	
 	@State private var showingImagePicker = false
+	@State private var isShowingSnack = false
 	
 	func photoCard() -> some View {
 		let title = LocalizationKeys.Modules.Issuer.photo
@@ -51,60 +52,64 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials, presentationMode: presentationMode)
 				.foregroundColor(.tangemBlack)
 			ScrollView {
-				photoCard()
-				CredentialCard(
-					title: LocalizationKeys.Modules.Issuer.personalInfo,
-					contentBuilder: {
-						VStack {
-							TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { (newText) in
-								self.viewModel.inputName(newText)
+				VStack {
+					photoCard()
+					CredentialCard(
+						title: LocalizationKeys.Modules.Issuer.personalInfo,
+						contentBuilder: {
+							VStack {
+								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { self.viewModel.inputName($0) }
+								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.surname) { self.viewModel.inputSurname($0) }
+								RadioSegmentSelector(
+									segments: viewModel.availableGenders,
+									selectedIndex: viewModel.selectedGenderIndex,
+									selectionAction: viewModel.selectGender(at:)
+								)
+								DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth.localizedString(), date: $viewModel.dateOfBirth)
 							}
-							TextFieldWithClearButton(placeholder: LocalizedStrings.Common.surname) {
-								self.viewModel.inputSurname($0)
+					})
+						.frame(height: 300)
+					CredentialCard(
+						title: LocalizationKeys.Common.ssn,
+						supplementBuilder: {
+							MaskedTextField(
+								placeholder: "000 - 00 - 0000",
+								isWithClearButton: false,
+								keyType: .numberPad) {
+									self.viewModel.inputSsn($0)
 							}
-							RadioSegmentSelector(
-								segments: viewModel.availableGenders,
-								selectedIndex: viewModel.selectedGenderIndex,
-								selectionAction: viewModel.selectGender(at:)
-							)
-							DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth.localizedString(), date: $viewModel.dateOfBirth)
-						}
-				})
-					.frame(height: 300)
-				CredentialCard(
-					title: LocalizationKeys.Common.ssn,
-					supplementBuilder: {
-						MaskedTextField(
-							placeholder: "000 - 00 - 0000",
-							isWithClearButton: false,
-							keyType: .numberPad) {
-								self.viewModel.inputSsn($0)
-						}
-						.font(.credentialCardContent)
-						.frame(width: 130)
-				})
-				CredentialCard(
-					title: LocalizationKeys.Common.ageOver18,
-					contentBuilder: {
-						ClickableRowWithCheckbox(
-							isSelected: viewModel.isOver18,
-							action: {
-								self.viewModel.isOver18Action()
-						})
-				})
+							.font(.credentialCardContent)
+							.frame(width: 130)
+					})
+					CredentialCard(
+						title: LocalizationKeys.Common.ageOver21,
+						contentBuilder: {
+							ClickableRowWithCheckbox(
+								isSelected: viewModel.isOver21,
+								action: {
+							})
+					})
+				}
+				Button(LocalizationKeys.Modules.Issuer.signCredentials) {
+					self.viewModel.signEnteredInfo()
+				}
 				Spacer()
 					.frame(width: 10, height: 100)
 			}
 			.padding(.horizontal, 8)
 		}
+		
 		.padding(.bottom, keyboardHandler.keyboardHeight)
+		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.sheet(isPresented: $showingImagePicker, onDismiss: { print("Image picked") }, content: {
 			ImagePicker(image: self.$viewModel.photo)
 		})
 			.onAppear(perform: {
+				if #available(iOS 14, *) { return }
 				self.keyboardHandler.subscribe()
 			})
 			.onDisappear(perform: {
+				if #available(iOS 14, *) { return }
 				self.keyboardHandler.unsubscribe()
 			})
 			.modifier(HiddenSystemNavigation())
