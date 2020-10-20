@@ -88,7 +88,7 @@ class DemoCredentialCreator {
 		let calendar = Calendar.current
 		if let over21Date = calendar.date(byAdding: .year, value: 21, to: input.dateOfBirth),
 		   over21Date > Date() {
-			creds.validFrom = over21Date
+			creds.validFrom = calendar.startOfDay(for: over21Date) 
 		}
 		return creds
 	}

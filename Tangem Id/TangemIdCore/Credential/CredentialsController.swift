@@ -108,6 +108,7 @@ extension DemoCredentialsController: CredentialsControllerType {
 	
 	func credentialsAsJson(completion: @escaping (JsonCredentialsResult) -> Void) {
 		let encoder = JSONEncoder()
+		encoder.dateEncodingStrategy = .formatted(.iso8601WithSlashes)
 		encoder.outputFormatting = .prettyPrinted
 		do {
 			let encodedData = try encoder.encode(signedCreds)
