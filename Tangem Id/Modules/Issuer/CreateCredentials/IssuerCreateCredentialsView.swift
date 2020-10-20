@@ -23,6 +23,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@ObservedObject var keyboardHandler: KeyboardFollower = KeyboardFollower()
 	
 	@State private var showingImagePicker = false
+	@State private var showingJsonRepresentation = false
 	@State private var isShowingSnack = false
 	@State private var isShowingBackAlert = false
 	
@@ -70,6 +71,9 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			ScrollView {
 				VStack {
 					photoCard()
+						.sheet(isPresented: $showingImagePicker, onDismiss: { print("Image picked") }, content: {
+							ImagePicker(image: self.$viewModel.photo)
+						})
 					CredentialCard(
 						title: LocalizationKeys.Modules.Issuer.personalInfo,
 						contentBuilder: {
@@ -125,9 +129,12 @@ struct IssuerCreateCredentialsView: View, Equatable {
 						Spacer()
 							.frame(width: 10, height: 18, alignment: .center)
 						Button(LocalizationKeys.Common.showJsonCreds) {
-							
+							viewModel.showJsonRepresentation()
 						}
 						.buttonStyle(ScreenPaddingButtonStyle.transparentBackWithBlueText)
+						.sheet(isPresented: $showingJsonRepresentation, content: {
+							JsonViewer(jsonMessage: viewModel.jsonRepresentation)
+						})
 					}
 					Spacer()
 						.frame(width: 10, height: 100)
@@ -136,12 +143,8 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			}
 			.padding(.horizontal, 8)
 		}
-		
 		.padding(.bottom, keyboardHandler.keyboardHeight)
 		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
-		.sheet(isPresented: $showingImagePicker, onDismiss: { print("Image picked") }, content: {
-			ImagePicker(image: self.$viewModel.photo)
-		})
 		.onAppear(perform: {
 			if #available(iOS 14, *) { return }
 			self.keyboardHandler.subscribe()
@@ -154,6 +157,10 @@ struct IssuerCreateCredentialsView: View, Equatable {
 		.onReceive(viewModel.$shouldDismissToRoot) { shouldDismiss in
 			guard shouldDismiss else { return }
 			rootPresentationMode.wrappedValue.dismiss()
+		}
+		.onReceive(viewModel.$jsonRepresentation) { jsonRepresenation in
+			if jsonRepresenation.isEmpty { return }
+			showingJsonRepresentation = true
 		}
 	}
 }

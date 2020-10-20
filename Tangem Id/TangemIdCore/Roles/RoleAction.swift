@@ -19,7 +19,7 @@ enum IssuerAction: ActionType {
 	case getHolderAddress(EmptyResponse)
 	case signCredentials(CredentialInput, EmptyResponse)
 	case saveCredentialsToCard(EmptyResponse)
-	case showCredentialsAsJson((Result<String, TangemIdError>) -> Void)
+	case showCredentialsAsJson((JsonCredentialsResult) -> Void)
 }
 
 enum VerifierAction: ActionType {

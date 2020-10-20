@@ -10,9 +10,12 @@ import Foundation
 import TangemSdk
 import SwiftCBOR
 
+typealias JsonCredentialsResult = Result<String, TangemIdError>
+
 protocol CredentialsControllerType: class {
 	func signCredentials(for input: CredentialInput, subjectEthAddress: String, completion: @escaping EmptyResponse)
 	func writeCredentialsToCard(completion: @escaping EmptyResponse)
+	func credentialsAsJson(completion: @escaping (JsonCredentialsResult) -> Void)
 }
 
 class DemoCredentialsController {
@@ -92,7 +95,7 @@ extension DemoCredentialsController: CredentialsControllerType {
 	func writeCredentialsToCard(completion: @escaping EmptyResponse) {
 		let cborFiles = signedCreds.map { $0.cborData() }
 		let writeTask = WriteIssuerFilesTask(files: cborFiles, issuerKeys: signerKeys)
-		tangemSdk.startSession(with: writeTask) { (result) in
+		tangemSdk.startSession(with: writeTask, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: IdLocalization.Common.writeFilesHint)) { (result) in
 			switch result {
 			case .success(let response):
 				completion(.success(()))
@@ -100,6 +103,21 @@ extension DemoCredentialsController: CredentialsControllerType {
 			case .failure(let error):
 				completion(.failure(.cardSdkError(sdkError: error.localizedDescription)))
 			}
+		}
+	}
+	
+	func credentialsAsJson(completion: @escaping (JsonCredentialsResult) -> Void) {
+		let encoder = JSONEncoder()
+		encoder.outputFormatting = .prettyPrinted
+		do {
+			let encodedData = try encoder.encode(signedCreds)
+			guard let string = String(data: encodedData, encoding: .utf8) else {
+				completion(.failure(.failedToCreateJsonRepresentation))
+				return
+			}
+			completion(.success(string))
+		} catch {
+			completion(.failure(.failedToCreateJsonRepresentation))
 		}
 	}
 	

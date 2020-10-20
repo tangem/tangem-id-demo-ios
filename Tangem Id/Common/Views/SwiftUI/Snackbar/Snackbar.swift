@@ -13,6 +13,16 @@ struct SnackData {
 	var type: SnackType
 	
 	static let emptySnack = SnackData(message: "", type: .info)
+	
+	init(message: String, type: SnackType) {
+		self.message = message
+		self.type = type
+	}
+	
+	init(error: TangemIdError) {
+		self.message = error.localizedDescription
+		self.type = .error
+	}
 }
 
 enum SnackType {
@@ -24,7 +34,7 @@ enum SnackType {
 	var tintColor: Color {
 		switch self {
 		case .info:
-			return Color(red: 67/255, green: 154/255, blue: 215/255)
+			return Color.gray
 		case .success:
 			return Color.green
 		case .warning:

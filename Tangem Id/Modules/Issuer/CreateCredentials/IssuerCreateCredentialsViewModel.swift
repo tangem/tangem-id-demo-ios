@@ -50,6 +50,9 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 	@Published var isCredentialsCreated: Bool = false
 	@Published var shouldDismissToRoot: Bool = false
 	
+	@Published var jsonRepresentation: String = ""
+	@Published var isShowingJson: Bool = false
+	
 	private(set) var name: String = ""
 	private(set) var surname: String = ""
 	private(set) var ssn: String = ""
@@ -92,10 +95,10 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 		issuerManager.execute(action: .signCredentials(credsInput, { [weak self] (result) in
 			switch result {
 			case .success:
-				self?.snackMessage = SnackData(message: "Credentials signed successfully. Write them on Holders card now", type: .info)
+				self?.showSnack(message: LocalizedStrings.Snacks.credentialsSignedSuccess, type: .info)
 				self?.isCredentialsCreated = true
 			case .failure(let error):
-				self?.snackMessage = SnackData(message: "Failed to sign credentials: \(error.localizedDescription)", type: .error)
+				self?.showErrorSnack(message: String(format: LocalizedStrings.Snacks.failedToSignCredentials, error.localizedDescription))
 			}
 		}))
 	}
@@ -104,12 +107,24 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 		issuerManager.execute(action: .saveCredentialsToCard { [weak self] (result) in
 			switch result {
 			case .success:
-				self?.snackMessage = SnackData(message: "Credentials successfully written to card", type: .info)
+				self?.showInfoSnack(message: LocalizedStrings.Snacks.credentialsSavedOnCard)
 				self?.shouldDismissToRoot = true
 			case .failure(let error):
-				self?.snackMessage = SnackData(message: "Failed to write credentials: \(error.localizedDescription)", type: .error)
+				self?.showErrorSnack(message: String(format: LocalizedStrings.Snacks.failedToWriteCredentials, error.localizedDescription))
 			}
 		})
+	}
+	
+	func showJsonRepresentation() {
+		issuerManager.execute(action: .showCredentialsAsJson({ (result) in
+			switch result {
+			case .success(let json):
+				self.jsonRepresentation = json
+				self.isShowingJson = true
+			case .failure(let error):
+				self.snackMessage = SnackData(error: error)
+			}
+		}))
 	}
 	
 	private func isDataValid() -> Bool {

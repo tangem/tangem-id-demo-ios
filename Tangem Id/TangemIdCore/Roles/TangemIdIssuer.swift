@@ -59,8 +59,8 @@ final class TangemIdIssuer: ActionExecutioner {
 			sign(input: input, completion: completionHandler)
 		case .saveCredentialsToCard(let handler):
 			writeCredsToCard(completion: handler)
-		case .showCredentialsAsJson(_):
-			break
+		case .showCredentialsAsJson(let handler):
+			displayCredsAsJson(completion: handler)
 		}
 	}
 	
@@ -129,6 +129,10 @@ final class TangemIdIssuer: ActionExecutioner {
 	
 	private func writeCredsToCard(completion: @escaping EmptyResponse) {
 		credsController?.writeCredentialsToCard(completion: completion)
+	}
+	
+	private func displayCredsAsJson(completion: @escaping (JsonCredentialsResult) -> Void) {
+		credsController?.credentialsAsJson(completion: completion)
 	}
 	
 	private func isValidIssuerCard(_ card: Card) -> Bool {

@@ -17,6 +17,7 @@ enum TangemIdError: Error, Hashable {
 	case notValidHolderCard
 	case credentialSigningError(error: String)
 	case readingCardError
+	case failedToCreateJsonRepresentation
 	
 	var localizedDescription: String {
 		switch self {
@@ -27,6 +28,7 @@ enum TangemIdError: Error, Hashable {
 		case .notValidHolderCard: return IdLocalization.Errors.invalidHolderCard
 		case .credentialSigningError(let error): return error
 		case .readingCardError: return IdLocalization.Errors.failedToReadIssuerCard
+		case .failedToCreateJsonRepresentation: return IdLocalization.Errors.failedToCreateJsonRepresentation
 		}
 	}
 }

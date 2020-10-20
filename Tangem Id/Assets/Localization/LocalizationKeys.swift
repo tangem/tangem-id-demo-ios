@@ -43,6 +43,9 @@ struct LocalizationKeys {
 		static let ssn: LocalizedStringKey = "ssn"
 		static let ageOver21: LocalizedStringKey = "age_over_21"
 		
+		static let share: LocalizedStringKey = "share"
+		static let hide: LocalizedStringKey = "hide"
+		
 		static let male: LocalizedStringKey = "male"
 		static let female: LocalizedStringKey = "female"
 		static let other: LocalizedStringKey = "other"
@@ -64,6 +67,11 @@ struct LocalizedStrings {
 	}
 	struct Snacks {
 		static let issuerSomeEmptyFields = "issuer_empty_fields".localizedString()
+		static let credentialsSignedSuccess = "creds_signed".localizedString()
+		static let credentialsSavedOnCard = "creds_saved_on_card".localizedString()
+		
+		static let failedToSignCredentials = "failed_to_sign_error".localizedString()
+		static let failedToWriteCredentials = "failed_to_write_creds_error".localizedString()
 	}
 }
 

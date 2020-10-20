@@ -16,6 +16,8 @@
 		B00F00AA253F0AA100D16E66 /* String+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00A9253F0AA100D16E66 /* String+CBOR.swift */; };
 		B00F00AF253F0ABC00D16E66 /* Array+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */; };
 		B00F00B4253F0AD300D16E66 /* Dict+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00B3253F0AD300D16E66 /* Dict+CBOR.swift */; };
+		B00F00B9253F221300D16E66 /* JsonViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00B8253F221300D16E66 /* JsonViewer.swift */; };
+		B00F00BE253F241500D16E66 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00BD253F241500D16E66 /* ShareView.swift */; };
 		B0298AB625230B7D004A2985 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AB525230B7D004A2985 /* Gender.swift */; };
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
 		B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFF25232F5E004A2985 /* NavigationBar.swift */; };
@@ -130,6 +132,8 @@
 		B00F00A9253F0AA100D16E66 /* String+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CBOR.swift"; sourceTree = "<group>"; };
 		B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CBOR.swift"; sourceTree = "<group>"; };
 		B00F00B3253F0AD300D16E66 /* Dict+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dict+CBOR.swift"; sourceTree = "<group>"; };
+		B00F00B8253F221300D16E66 /* JsonViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonViewer.swift; sourceTree = "<group>"; };
+		B00F00BD253F241500D16E66 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		B01A675B251E19C100D08C8D /* Tangem Id.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tangem Id.entitlements"; sourceTree = "<group>"; };
 		B0298AB525230B7D004A2985 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		B0298AFA25232638004A2985 /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
@@ -721,6 +725,8 @@
 				B068AB042524678F006559F9 /* ImagePicker.swift */,
 				B0C529582524AF1100BBCD27 /* KeyboardFollower.swift */,
 				B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */,
+				B00F00B8253F221300D16E66 /* JsonViewer.swift */,
+				B00F00BD253F241500D16E66 /* ShareView.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -967,6 +973,7 @@
 				B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */,
 				B08D47A4252B10DE00E10DAB /* ImageHasher.swift in Sources */,
 				B0298AB625230B7D004A2985 /* Gender.swift in Sources */,
+				B00F00BE253F241500D16E66 /* ShareView.swift in Sources */,
 				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
 				B0993F5D2521C5E1003BEB85 /* IssuerCreateCredentialsView.swift in Sources */,
 				B0B82C3E25275BA1002D71FF /* CredentialCreator.swift in Sources */,
@@ -1007,6 +1014,7 @@
 				B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */,
 				B08F0885251F9C2B00AEA1C1 /* UIImage+Color.swift in Sources */,
 				B08F0891251FA36300AEA1C1 /* NavigationController.swift in Sources */,
+				B00F00B9253F221300D16E66 /* JsonViewer.swift in Sources */,
 				B00F00AF253F0ABC00D16E66 /* Array+CBOR.swift in Sources */,
 				B0C529642524B49F00BBCD27 /* UITextField+Done.swift in Sources */,
 				B05FE388251E0D080002D338 /* SceneDelegate.swift in Sources */,
