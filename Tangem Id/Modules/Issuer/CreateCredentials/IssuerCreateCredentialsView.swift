@@ -106,6 +106,8 @@ struct IssuerCreateCredentialsView: View, Equatable {
 							})
 					})
 				}
+				.disabled(viewModel.isCredentialsCreated)
+				.opacity(viewModel.isCredentialsCreated ? 0.6 : 1.0)
 				Group {
 					Spacer()
 						.frame(width: 10, height: 45, alignment: .center)
