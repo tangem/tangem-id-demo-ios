@@ -77,7 +77,6 @@ struct SsnCredentialSubject: DictConvertible {
 
 struct AgeOver21CredentialSubject: DictConvertible {
 	let id: String
-	let ageOver21: Bool
 	let photoHash: String
 }
 
@@ -122,12 +121,6 @@ class VerifiableCredential: Codable, DictConvertible {
 		self.issuanceDate = issuanceDate
 	}
 	
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(context)
-		hasher.combine(type)
-		hasher.combine(credentialSubject)
-	}
-	
 	func cborData() -> Data {
 		var map = CBOR.map(
 			[
@@ -139,7 +132,8 @@ class VerifiableCredential: Codable, DictConvertible {
 			]
 		)
 		if let valid = validFrom {
-			map[CodingKeys.validFrom.rawValue.cbor()] = CBOR.date(valid)
+			let formatter = DateFormatter.iso8601WithSlashes
+			map[CodingKeys.validFrom.rawValue.cbor()] = CBOR.utf8String(formatter.string(from: valid))
 		}
 		if let ethStatus = ethCredentialStatus {
 			map[CodingKeys.ethCredentialStatus.rawValue.cbor()] = ethStatus.cbor()

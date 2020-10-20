@@ -28,6 +28,7 @@ struct LocalizationKeys {
 	}
 	
 	struct NavigationBar {
+		static let issuerDetails: LocalizedStringKey = "issuer_details"
 		static let issueCredentials: LocalizedStringKey = "issue_credentials"
 	}
 	

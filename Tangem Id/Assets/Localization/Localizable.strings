@@ -37,6 +37,7 @@
 "cancel" = "Cancel";
 
 "show_json_creds" = "Show credentials JSON";
+"issuer_details" = "Issuer's Details";
 
 "credentials_signed_title" = "Progress will be lost";
 "credentials_signed_body" = "Do you want to go back and cancel your input?";

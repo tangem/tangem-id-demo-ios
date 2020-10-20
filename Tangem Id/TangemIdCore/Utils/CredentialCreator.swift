@@ -83,8 +83,14 @@ class DemoCredentialCreator {
 	}
 	
 	private func ageOver21Creds(issuerAddress: String, subjectAddress: String, input: CredentialInput) -> VerifiableCredential {
-		let ageOverCreds = AgeOver21CredentialSubject(id: subjectAddress, ageOver21: input.dateOfBirth.distance(to: Date()) > 21 * 3600, photoHash: imageHasher.hash)
-		return verifiableCredential(from: issuerAddress, for: ageOverCreds, credType: .isOver21)
+		let ageOverCreds = AgeOver21CredentialSubject(id: subjectAddress, photoHash: imageHasher.hash)
+		let creds = verifiableCredential(from: issuerAddress, for: ageOverCreds, credType: .isOver21)
+		let calendar = Calendar.current
+		if let over21Date = calendar.date(byAdding: .year, value: 21, to: input.dateOfBirth),
+		   over21Date > Date() {
+			creds.validFrom = over21Date
+		}
+		return creds
 	}
 	
 }

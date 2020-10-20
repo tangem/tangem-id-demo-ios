@@ -23,7 +23,7 @@ struct IssuerView: View, Equatable {
 	var body: some View {
 		VStack {
 			NavigationBar(
-				title: LocalizationKeys.NavigationBar.issueCredentials,
+				title: LocalizationKeys.NavigationBar.issuerDetails,
 				presentationMode: presentationMode
 			)
 			.foregroundColor(.tangemBlack)
@@ -32,7 +32,7 @@ struct IssuerView: View, Equatable {
 					Image("qr")
 					Spacer()
 						.frame(height: 48)
-					Text(viewModel.issuerInfo.title)
+					Text(LocalizationKeys.Modules.Issuer.didIssuerAddress)
 						.font(Font.system(size: 20, weight: .regular))
 					Text(viewModel.issuerInfo.didWalletAddress)
 						.font(Font.system(size: 11, weight: .light))
