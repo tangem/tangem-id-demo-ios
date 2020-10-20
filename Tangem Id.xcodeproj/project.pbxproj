@@ -13,6 +13,9 @@
 		B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */; };
 		B00A67BF253DDE96002D7D53 /* RootPresentationModeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */; };
 		B00F0086253EFC6200D16E66 /* WriteIssuerFilesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */; };
+		B00F00AA253F0AA100D16E66 /* String+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00A9253F0AA100D16E66 /* String+CBOR.swift */; };
+		B00F00AF253F0ABC00D16E66 /* Array+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */; };
+		B00F00B4253F0AD300D16E66 /* Dict+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00B3253F0AD300D16E66 /* Dict+CBOR.swift */; };
 		B0298AB625230B7D004A2985 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AB525230B7D004A2985 /* Gender.swift */; };
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
 		B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFF25232F5E004A2985 /* NavigationBar.swift */; };
@@ -124,6 +127,9 @@
 		B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModeKey.swift; sourceTree = "<group>"; };
 		B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteIssuerFilesTask.swift; sourceTree = "<group>"; };
+		B00F00A9253F0AA100D16E66 /* String+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CBOR.swift"; sourceTree = "<group>"; };
+		B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CBOR.swift"; sourceTree = "<group>"; };
+		B00F00B3253F0AD300D16E66 /* Dict+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dict+CBOR.swift"; sourceTree = "<group>"; };
 		B01A675B251E19C100D08C8D /* Tangem Id.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tangem Id.entitlements"; sourceTree = "<group>"; };
 		B0298AB525230B7D004A2985 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		B0298AFA25232638004A2985 /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
@@ -450,6 +456,9 @@
 			isa = PBXGroup;
 			children = (
 				B08D47A8252B2A4300E10DAB /* Date+String+ISO8601.swift */,
+				B00F00A9253F0AA100D16E66 /* String+CBOR.swift */,
+				B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */,
+				B00F00B3253F0AD300D16E66 /* Dict+CBOR.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -961,6 +970,7 @@
 				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
 				B0993F5D2521C5E1003BEB85 /* IssuerCreateCredentialsView.swift in Sources */,
 				B0B82C3E25275BA1002D71FF /* CredentialCreator.swift in Sources */,
+				B00F00B4253F0AD300D16E66 /* Dict+CBOR.swift in Sources */,
 				B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */,
 				B0C5297C2525B9E600BBCD27 /* TangemIdError.swift in Sources */,
 				B07DE5F52528EBB2003F8D9D /* UIImage+ScaleCrop.swift in Sources */,
@@ -997,11 +1007,13 @@
 				B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */,
 				B08F0885251F9C2B00AEA1C1 /* UIImage+Color.swift in Sources */,
 				B08F0891251FA36300AEA1C1 /* NavigationController.swift in Sources */,
+				B00F00AF253F0ABC00D16E66 /* Array+CBOR.swift in Sources */,
 				B0C529642524B49F00BBCD27 /* UITextField+Done.swift in Sources */,
 				B05FE388251E0D080002D338 /* SceneDelegate.swift in Sources */,
 				B0993F322521B1C2003BEB85 /* ModuleAssemblyError.swift in Sources */,
 				B0C529662524B54400BBCD27 /* DatePicker.swift in Sources */,
 				B0C529722524EFF300BBCD27 /* TangemIdIssuer.swift in Sources */,
+				B00F00AA253F0AA100D16E66 /* String+CBOR.swift in Sources */,
 				B08D47A9252B2A4300E10DAB /* Date+String+ISO8601.swift in Sources */,
 				B0800F5B252C339B007E04EE /* IdConstants.swift in Sources */,
 				B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */,
