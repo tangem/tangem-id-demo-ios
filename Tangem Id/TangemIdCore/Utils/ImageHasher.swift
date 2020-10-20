@@ -24,7 +24,15 @@ class JpegSha3ImageHasher: ImageHasher {
 		guard let imageData = image.jpegData(compressionQuality: quality) else {
 			return
 		}
-		base64 = imageData.base64EncodedString()
-		hash = imageData.sha3(.sha256).base64EncodedString()
+		base64 = base64ToBase64url(base64: imageData.base64EncodedString())
+		hash = base64ToBase64url(base64: imageData.sha3(.sha256).base64EncodedString())
+	}
+	
+	func base64ToBase64url(base64: String) -> String {
+		let base64url = base64
+			.replacingOccurrences(of: "+", with: "-")
+			.replacingOccurrences(of: "/", with: "_")
+			.replacingOccurrences(of: "=", with: "")
+		return base64url
 	}
 }

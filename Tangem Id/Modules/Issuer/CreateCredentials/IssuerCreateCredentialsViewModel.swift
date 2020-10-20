@@ -48,6 +48,7 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 	@Published var snackMessage: SnackData = SnackData(message: "Not filled info", type: .error)
 	@Published var isShowingSnack: Bool = false
 	@Published var isCredentialsCreated: Bool = false
+	@Published var shouldDismissToRoot: Bool = false
 	
 	private(set) var name: String = ""
 	private(set) var surname: String = ""
@@ -88,10 +89,27 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 			showErrorSnack(message: LocalizedStrings.Snacks.issuerSomeEmptyFields)
 			return
 		}
-		isCredentialsCreated.toggle()
 		issuerManager.execute(action: .signCredentials(credsInput, { [weak self] (result) in
-			
+			switch result {
+			case .success:
+				self?.snackMessage = SnackData(message: "Credentials signed successfully. Write them on Holders card now", type: .info)
+				self?.isCredentialsCreated = true
+			case .failure(let error):
+				self?.snackMessage = SnackData(message: "Failed to sign credentials: \(error.localizedDescription)", type: .error)
+			}
 		}))
+	}
+	
+	func writeCredentialsToCard() {
+		issuerManager.execute(action: .saveCredentialsToCard { [weak self] (result) in
+			switch result {
+			case .success:
+				self?.snackMessage = SnackData(message: "Credentials successfully written to card", type: .info)
+				self?.shouldDismissToRoot = true
+			case .failure(let error):
+				self?.snackMessage = SnackData(message: "Failed to write credentials: \(error.localizedDescription)", type: .error)
+			}
+		})
 	}
 	
 	private func isDataValid() -> Bool {

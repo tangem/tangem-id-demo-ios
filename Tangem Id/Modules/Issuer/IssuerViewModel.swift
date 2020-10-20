@@ -21,6 +21,8 @@ class IssuerViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 	@Published var snackMessage: SnackData = .emptySnack
 	@Published var isShowingSnack: Bool = false
 	
+	@Environment(\.rootPresentationMode) private var rootPresentationMode: Binding<RootPresentationMode>
+	
 	private(set) var createCredentialsLink: AnyView = AnyView(EmptyView())
 	private(set) var issuerInfo: IssuerRoleInfoType
 	

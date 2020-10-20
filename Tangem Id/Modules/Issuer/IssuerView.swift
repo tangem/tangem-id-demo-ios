@@ -14,6 +14,7 @@ struct IssuerView: View, Equatable {
 	}
 	
 	@Environment(\.presentationMode) var presentationMode
+	@Environment(\.rootPresentationMode) private var rootMode: Binding<RootPresentationMode>
 	
 	@ObservedObject var viewModel: IssuerViewModel
 	

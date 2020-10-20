@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		113E01595C413ACF3067056F /* Pods_Tangem_IdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */; };
 		B007E1A22525F9F600B16E93 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E1A12525F9F600B16E93 /* Command.swift */; };
+		B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67A8253D7122002D7D53 /* AlertBinder.swift */; };
+		B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */; };
+		B00A67BF253DDE96002D7D53 /* RootPresentationModeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */; };
 		B0298AB625230B7D004A2985 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AB525230B7D004A2985 /* Gender.swift */; };
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
 		B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFF25232F5E004A2985 /* NavigationBar.swift */; };
@@ -116,6 +119,9 @@
 		5FDE8B3725CF46D1E1FB58F7 /* Pods-Tangem IdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.debug.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_IdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B007E1A12525F9F600B16E93 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		B00A67A8253D7122002D7D53 /* AlertBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBinder.swift; sourceTree = "<group>"; };
+		B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
+		B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModeKey.swift; sourceTree = "<group>"; };
 		B01A675B251E19C100D08C8D /* Tangem Id.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Tangem Id.entitlements"; sourceTree = "<group>"; };
 		B0298AB525230B7D004A2985 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		B0298AFA25232638004A2985 /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
@@ -263,6 +269,14 @@
 				B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */,
 			);
 			path = DI;
+			sourceTree = "<group>";
+		};
+		B00A67A7253D7114002D7D53 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				B00A67A8253D7122002D7D53 /* AlertBinder.swift */,
+			);
+			path = Alert;
 			sourceTree = "<group>";
 		};
 		B0298AB425230B74004A2985 /* Model */ = {
@@ -516,6 +530,7 @@
 				B08F0884251F9C2B00AEA1C1 /* UIImage+Color.swift */,
 				B0C529632524B49F00BBCD27 /* UITextField+Done.swift */,
 				B07DE5F42528EBB2003F8D9D /* UIImage+ScaleCrop.swift */,
+				B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -678,6 +693,7 @@
 		B0DF08FB2520D9820077479E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B00A67A7253D7114002D7D53 /* Alert */,
 				B07DE5EB2528BD91003F8D9D /* Snackbar */,
 				B0C529602524B41C00BBCD27 /* DatePicker */,
 				B0413BCE2522ED8C00140A70 /* RadioSegmentSelector */,
@@ -692,6 +708,7 @@
 				B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */,
 				B068AB042524678F006559F9 /* ImagePicker.swift */,
 				B0C529582524AF1100BBCD27 /* KeyboardFollower.swift */,
+				B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */,
 			);
 			path = SwiftUI;
 			sourceTree = "<group>";
@@ -914,6 +931,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00A67BF253DDE96002D7D53 /* RootPresentationModeKey.swift in Sources */,
 				B0C529752525B16F00BBCD27 /* Assembly+TangemId.swift in Sources */,
 				B0C5295F2524B17100BBCD27 /* DateFormatter+.swift in Sources */,
 				B0C529592524AF1100BBCD27 /* KeyboardFollower.swift in Sources */,
@@ -926,6 +944,7 @@
 				B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */,
 				B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */,
 				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
+				B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */,
 				B07DE5FD2528EC1B003F8D9D /* ByteCountFormatter+.swift in Sources */,
 				B0C529702524EFE400BBCD27 /* TangemIdSdk.swift in Sources */,
 				B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */,
@@ -943,6 +962,7 @@
 				B07DE5F52528EBB2003F8D9D /* UIImage+ScaleCrop.swift in Sources */,
 				B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */,
 				B03A3C1125220C0300937676 /* Checkbox.swift in Sources */,
+				B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */,
 				B07524382529C37100DFE1B0 /* Secp256k1Proof.swift in Sources */,
 				B0C5297A2525B3A700BBCD27 /* IdLocalization.swift in Sources */,
 				B0993F652521C5F4003BEB85 /* IssuerCreateCredentialsViewModel.swift in Sources */,

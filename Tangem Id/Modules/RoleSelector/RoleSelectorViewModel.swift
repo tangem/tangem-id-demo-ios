@@ -27,6 +27,9 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 			}
 		}
 	}
+	@Published var isIssuer: Bool = false
+	@Published var isVerifier: Bool = false
+	@Published var isHolder: Bool = false
 	@Published var error: Error?
 	
 	private var disposable = Set<AnyCancellable>()
@@ -36,7 +39,7 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 	
 	private(set) var issuerLink: AnyView = AnyView(EmptyView())
 	
-	var veridierLink: AnyView {
+	var verifierLink: AnyView {
 		AnyView(EmptyView())
 	}
 	
@@ -44,9 +47,12 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 		AnyView(EmptyView())
 	}
 	
+	private let verifierManager: TangemVerifierManager
+	
 	init(moduleAssembly: ModuleAssemblyType, tangemIdFactory: TangemIdFactoryType) {
 		self.moduleAssembly = moduleAssembly
 		self.tangemIdFactory = tangemIdFactory
+		verifierManager = tangemIdFactory.createVerifierManager()
 	}
 	
 }
@@ -60,6 +66,7 @@ extension RoleSelectorViewModel {
 			case .success:
 				let info = manager.executionerInfo
 				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(roleInfo: info, manager: manager))
+				self.isIssuer = true
 				self.state = .issuer
 			case .failure(let error):
 				self.error = error
@@ -68,10 +75,14 @@ extension RoleSelectorViewModel {
 	}
 	
 	func verifierButtonAction() {
+		verifierManager.execute(action: .readHoldersCredentials(completion: { (result) in
+			
+		}))
 		state = .verifier
 	}
 	
 	func holderButtonAction() {
+		verifierManager.execute(action: .deleteSavedFiles)
 		state = .holder
 	}
 	

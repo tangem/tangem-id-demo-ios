@@ -18,12 +18,13 @@ enum IssuerAction: ActionType {
 	case authorizeAsIssuer(EmptyResponse)
 	case getHolderAddress(EmptyResponse)
 	case signCredentials(CredentialInput, EmptyResponse)
-	case saveCredentialsToCard
+	case saveCredentialsToCard(EmptyResponse)
 	case showCredentialsAsJson((Result<String, TangemIdError>) -> Void)
 }
 
 enum VerifierAction: ActionType {
-	case readHoldersCredentials(completion: EmptyResponse)
+	case readHoldersCredentials(completion: CompletionResult<File>)
+	case deleteSavedFiles
 }
 
 //enum RoleAction {

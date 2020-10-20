@@ -17,12 +17,14 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	}
 	
 	@Environment(\.presentationMode) var presentationMode
+	@Environment(\.rootPresentationMode) private var rootPresentationMode: Binding<RootPresentationMode>
 	
 	@ObservedObject var viewModel: IssuerCreateCredentialsViewModel
 	@ObservedObject var keyboardHandler: KeyboardFollower = KeyboardFollower()
 	
 	@State private var showingImagePicker = false
 	@State private var isShowingSnack = false
+	@State private var isShowingBackAlert = false
 	
 	func photoCard() -> some View {
 		let title = LocalizationKeys.Modules.Issuer.photo
@@ -49,8 +51,22 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	
 	var body: some View {
 		VStack {
-			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials, presentationMode: presentationMode)
-				.foregroundColor(.tangemBlack)
+			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials) {
+				if self.viewModel.isCredentialsCreated {
+					self.isShowingBackAlert = true
+				} else {
+					self.presentationMode.wrappedValue.dismiss()
+				}
+			}
+			.alert(isPresented: $isShowingBackAlert, content: {
+				Alert(title: Text(LocalizationKeys.Modules.Issuer.credentialsSignedWarningTitle),
+					  message: Text(LocalizationKeys.Modules.Issuer.credentialsSignedWarningBody),
+					  primaryButton: .destructive(Text(LocalizationKeys.Common.dismiss), action: {
+						self.isShowingBackAlert = false
+						self.presentationMode.wrappedValue.dismiss()
+					  }),
+					  secondaryButton: .default(Text(LocalizationKeys.Common.stay)))
+			})
 			ScrollView {
 				VStack {
 					photoCard()
@@ -90,11 +106,31 @@ struct IssuerCreateCredentialsView: View, Equatable {
 							})
 					})
 				}
-				Button(LocalizationKeys.Modules.Issuer.signCredentials) {
-					self.viewModel.signEnteredInfo()
+				Group {
+					Spacer()
+						.frame(width: 10, height: 45, alignment: .center)
+					Button(viewModel.isCredentialsCreated ?
+							LocalizationKeys.Modules.Issuer.writeToCardCredentials :
+							LocalizationKeys.Modules.Issuer.signCredentials) {
+						if self.viewModel.isCredentialsCreated {
+							self.viewModel.writeCredentialsToCard()
+						} else {
+							self.viewModel.signEnteredInfo()
+						}
+					}
+					.buttonStyle(ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
+					if viewModel.isCredentialsCreated {
+						Spacer()
+							.frame(width: 10, height: 18, alignment: .center)
+						Button(LocalizationKeys.Common.showJsonCreds) {
+							
+						}
+						.buttonStyle(ScreenPaddingButtonStyle.transparentBackWithBlueText)
+					}
+					Spacer()
+						.frame(width: 10, height: 100)
 				}
-				Spacer()
-					.frame(width: 10, height: 100)
+				.padding(.horizontal, 46)
 			}
 			.padding(.horizontal, 8)
 		}
@@ -104,15 +140,19 @@ struct IssuerCreateCredentialsView: View, Equatable {
 		.sheet(isPresented: $showingImagePicker, onDismiss: { print("Image picked") }, content: {
 			ImagePicker(image: self.$viewModel.photo)
 		})
-			.onAppear(perform: {
-				if #available(iOS 14, *) { return }
-				self.keyboardHandler.subscribe()
-			})
-			.onDisappear(perform: {
-				if #available(iOS 14, *) { return }
-				self.keyboardHandler.unsubscribe()
-			})
-			.modifier(HiddenSystemNavigation())
+		.onAppear(perform: {
+			if #available(iOS 14, *) { return }
+			self.keyboardHandler.subscribe()
+		})
+		.onDisappear(perform: {
+			if #available(iOS 14, *) { return }
+			self.keyboardHandler.unsubscribe()
+		})
+		.modifier(HiddenSystemNavigation())
+		.onReceive(viewModel.$shouldDismissToRoot) { shouldDismiss in
+			guard shouldDismiss else { return }
+			rootPresentationMode.wrappedValue.dismiss()
+		}
 	}
 }
 

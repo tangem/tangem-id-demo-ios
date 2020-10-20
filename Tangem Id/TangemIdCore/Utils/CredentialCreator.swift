@@ -77,6 +77,16 @@ class DemoCredentialCreator {
 		return verifiableCredential(from: issuerAddress, for: personalInfoCreds, credType: .personalInfo)
 	}
 	
+	private func ssnCreds(issuerAddress: String, subjectAddress: String, input: CredentialInput) -> VerifiableCredential {
+		let ssnCreds = SsnCredentialSubject(id: subjectAddress, ssn: input.ssn, photoHash: imageHasher.hash)
+		return verifiableCredential(from: issuerAddress, for: ssnCreds, credType: .ssn)
+	}
+	
+	private func ageOver21Creds(issuerAddress: String, subjectAddress: String, input: CredentialInput) -> VerifiableCredential {
+		let ageOverCreds = AgeOver21CredentialSubject(id: subjectAddress, ageOver21: input.dateOfBirth.distance(to: Date()) > 21 * 3600, photoHash: imageHasher.hash)
+		return verifiableCredential(from: issuerAddress, for: ageOverCreds, credType: .isOver21)
+	}
+	
 }
 
 extension DemoCredentialCreator: CredentialCreator {
@@ -85,7 +95,9 @@ extension DemoCredentialCreator: CredentialCreator {
 		imageHasher.hash(image: input.photo, withQuality: 0.1)
 		let credentials = [
 			photoCreds(issuerAddress: issuerDidAddress, subjectAddress: didHolder),
-			personalInfoCreds(issuerAddress: issuerDidAddress, subjectAddress: didHolder, input: input)
+			personalInfoCreds(issuerAddress: issuerDidAddress, subjectAddress: didHolder, input: input),
+			ssnCreds(issuerAddress: issuerDidAddress, subjectAddress: didHolder, input: input),
+			ageOver21Creds(issuerAddress: issuerDidAddress, subjectAddress: didHolder, input: input)
 		]
 		
 		let jsonEncoder = JSONEncoder()

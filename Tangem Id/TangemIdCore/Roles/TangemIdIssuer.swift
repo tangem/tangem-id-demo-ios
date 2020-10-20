@@ -9,6 +9,7 @@
 import TangemSdk
 import BlockchainSdk
 import Combine
+import SwiftCBOR
 
 typealias TangemIssuerManager = TangemIdSdk<TangemIdIssuer>
 
@@ -56,7 +57,9 @@ final class TangemIdIssuer: ActionExecutioner {
 			scanHolderCard(completion: handler)
 		case let .signCredentials(input, completionHandler):
 			sign(input: input, completion: completionHandler)
-		default:
+		case .saveCredentialsToCard(let handler):
+			writeCredsToCard(completion: handler)
+		case .showCredentialsAsJson(_):
 			break
 		}
 	}
@@ -122,6 +125,10 @@ final class TangemIdIssuer: ActionExecutioner {
 			self?.credsController?.signCredentials(for: input, subjectEthAddress: holderEthAddress, completion: completion)
 		}
 		processingQueue.async(execute: signWorkItem!)
+	}
+	
+	private func writeCredsToCard(completion: @escaping EmptyResponse) {
+		credsController?.writeCredentialsToCard(completion: completion)
 	}
 	
 	private func isValidIssuerCard(_ card: Card) -> Bool {

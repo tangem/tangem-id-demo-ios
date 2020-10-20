@@ -26,6 +26,7 @@ struct RoleSelectorView: View, Equatable {
 	}
 	
 	@ObservedObject var viewModel: RoleSelectorViewModel
+	@State private var isActive : Bool = false 
 	
 	var body: some View {
 		NavigationView {
@@ -56,19 +57,17 @@ struct RoleSelectorView: View, Equatable {
 					NavigationButton(
 						action: { self.viewModel.issuerButtonAction() },
 						text: LocalizationKeys.Common.issuer,
-						navigationLink: NavigationLink(
-							"",
-							destination: viewModel.issuerLink,
-							tag: RoleSelectorViewModel.ViewState.issuer,
-							selection: $viewModel.state
-						),
+						navigationLink:
+							NavigationLink("",
+										   destination: viewModel.issuerLink,
+										   isActive: $viewModel.isIssuer),
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
 						action: { self.viewModel.verifierButtonAction() },
 						text: LocalizationKeys.Common.verifier,
 						navigationLink: NavigationLink(
 							"",
-							destination: viewModel.veridierLink,
+							destination: viewModel.verifierLink,
 							tag: RoleSelectorViewModel.ViewState.verifier,
 							selection: $viewModel.state),
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
@@ -87,6 +86,8 @@ struct RoleSelectorView: View, Equatable {
 			}
 			.modifier(HiddenSystemNavigation())
 		}
+		.navigationViewStyle(StackNavigationViewStyle())
+		.environment(\.rootPresentationMode, $viewModel.isIssuer)
 	}
 }
 

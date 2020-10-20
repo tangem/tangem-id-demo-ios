@@ -32,6 +32,15 @@
 
 "did_issuer_address" = "DID Address of the Issuer";
 
+"dismiss" = "Dismiss";
+"stay" = "Stay";
+"cancel" = "Cancel";
+
+"show_json_creds" = "Show credentials JSON";
+
+"credentials_signed_title" = "Progress will be lost";
+"credentials_signed_body" = "Do you want to go back and cancel your input?";
+
 // MARK: Snack messages
 "issuer_empty_fields" = "You must fill in all data in the form";
 

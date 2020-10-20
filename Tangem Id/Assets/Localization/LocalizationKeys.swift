@@ -22,6 +22,8 @@ struct LocalizationKeys {
 			static let personalInfo: LocalizedStringKey = "personal_info"
 			static let signCredentials: LocalizedStringKey = "sign_credentials"
 			static let writeToCardCredentials: LocalizedStringKey = "write_to_card_credentials"
+			static let credentialsSignedWarningTitle: LocalizedStringKey = "credentials_signed_title"
+			static let credentialsSignedWarningBody: LocalizedStringKey = "credentials_signed_body"
 		}
 	}
 	
@@ -43,6 +45,12 @@ struct LocalizationKeys {
 		static let male: LocalizedStringKey = "male"
 		static let female: LocalizedStringKey = "female"
 		static let other: LocalizedStringKey = "other"
+		
+		static let showJsonCreds: LocalizedStringKey = "show_json_creds"
+		
+		static let dismiss: LocalizedStringKey = "dismiss"
+		static let stay: LocalizedStringKey = "stay"
+		static let cancel: LocalizedStringKey = "cancel"
 	}
 }
 

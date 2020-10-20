@@ -11,7 +11,7 @@ import TangemSdk
 
 protocol TangemIdFactoryType {
 	func createIssuerManager() -> TangemIssuerManager
-//	func makeManager<T: ActionExecutioner>(for role: Role) -> TangemIdSdk<T>
+	func createVerifierManager() -> TangemVerifierManager
 }
 
 struct TangemIdFactory: TangemIdFactoryType {
@@ -22,13 +22,8 @@ struct TangemIdFactory: TangemIdFactoryType {
 		TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: CredentialCreatorFactory()))
 	}
 	
-//	func makeManager<T: ActionExecutioner>(for role: Role) -> TangemIdSdk<T> {
-//		switch role {
-//		case .issuer:
-//			return TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: <#CredentialCreatorFactoryType#>) as! T)
-//		default:
-//			return TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: <#CredentialCreatorFactoryType#>) as! T)
-//		}
-//	}
+	func createVerifierManager() -> TangemVerifierManager {
+		TangemIdSdk(executioner: TangemIdVerifier(tangemSdk: tangemSdk))
+	}
 	
 }

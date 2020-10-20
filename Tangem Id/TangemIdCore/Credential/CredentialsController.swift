@@ -8,9 +8,11 @@
 
 import Foundation
 import TangemSdk
+import SwiftCBOR
 
 protocol CredentialsControllerType: class {
 	func signCredentials(for input: CredentialInput, subjectEthAddress: String, completion: @escaping EmptyResponse)
+	func writeCredentialsToCard(completion: @escaping EmptyResponse)
 }
 
 class DemoCredentialsController {
@@ -75,6 +77,25 @@ extension DemoCredentialsController: CredentialsControllerType {
 			}
 		} catch {
 			completion(.failure(.credentialSigningError(error: error.localizedDescription)))
+		}
+	}
+	
+	func writeCredentialsToCard(completion: @escaping EmptyResponse) {
+		let filesToWrite = signedCreds.map {
+			$0.cborData()
+		}.map {
+			FileDataProtectedByPasscode(data: $0)
+		}
+		
+		tangemSdk.writeFiles(files: filesToWrite, writeFilesSettings: [.overwriteAllFiles]) { (result) in
+			switch result {
+			case .success(let filesResponse):
+				print(filesResponse)
+				completion(.success(()))
+			case .failure(let error):
+				print("Failed to write files to card")
+				completion(.failure(.cardSdkError(sdkError: error.localizedDescription)))
+			}
 		}
 	}
 }
