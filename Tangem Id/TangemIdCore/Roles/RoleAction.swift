@@ -23,8 +23,8 @@ enum IssuerAction: ActionType {
 }
 
 enum VerifierAction: ActionType {
-	case readHoldersCredentials(completion: CompletionResult<File>)
-	case deleteSavedFiles
+	case readHoldersCredentials(completion: CompletionResult<[VerifiableCredential]>)
+	case showCredentialsAsJson((JsonCredentialsResult) -> Void)
 }
 
 //enum RoleAction {

@@ -22,6 +22,7 @@
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
 		B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFF25232F5E004A2985 /* NavigationBar.swift */; };
 		B0298B052523426A004A2985 /* ClickableRowWithCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */; };
+		B03295AA2540030800FACC8B /* CredentialJsonPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */; };
 		B03A3BEE252200F800937676 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3BED252200F800937676 /* ButtonWithImage.swift */; };
 		B03A3C1125220C0300937676 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3C1025220C0300937676 /* Checkbox.swift */; };
 		B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */; };
@@ -139,6 +140,7 @@
 		B0298AFA25232638004A2985 /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		B0298AFF25232F5E004A2985 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableRowWithCheckbox.swift; sourceTree = "<group>"; };
+		B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialJsonPrinter.swift; sourceTree = "<group>"; };
 		B03A3BED252200F800937676 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		B03A3C1025220C0300937676 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
 		B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithClearButton.swift; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				B0B82C2C252752D7002D71FF /* VerifiableCredential.swift */,
 				B075242A2529A59600DFE1B0 /* CredentialInput.swift */,
 				B08D4792252AE33700E10DAB /* CredentialsController.swift */,
+				B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -1019,6 +1022,7 @@
 				B0C529642524B49F00BBCD27 /* UITextField+Done.swift in Sources */,
 				B05FE388251E0D080002D338 /* SceneDelegate.swift in Sources */,
 				B0993F322521B1C2003BEB85 /* ModuleAssemblyError.swift in Sources */,
+				B03295AA2540030800FACC8B /* CredentialJsonPrinter.swift in Sources */,
 				B0C529662524B54400BBCD27 /* DatePicker.swift in Sources */,
 				B0C529722524EFF300BBCD27 /* TangemIdIssuer.swift in Sources */,
 				B00F00AA253F0AA100D16E66 /* String+CBOR.swift in Sources */,

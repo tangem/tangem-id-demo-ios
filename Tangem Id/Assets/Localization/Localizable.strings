@@ -53,6 +53,7 @@
 
 "failed_to_sign_error" = " Failed to sign credentials: %@";
 "failed_to_write_creds_error" = "Failed to write credentials: %@";
+"failed_to_create_creds_from_cbor" = "Failed to create credentials from provided info";
 
 
 

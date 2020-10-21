@@ -23,7 +23,7 @@ struct TangemIdFactory: TangemIdFactoryType {
 	}
 	
 	func createVerifierManager() -> TangemVerifierManager {
-		TangemIdSdk(executioner: TangemIdVerifier(tangemSdk: tangemSdk))
+		TangemIdSdk(executioner: TangemIdVerifier(tangemSdk: tangemSdk, credentialCreator: CredentialCreatorFactory().makeCreator(.demo)))
 	}
 	
 }

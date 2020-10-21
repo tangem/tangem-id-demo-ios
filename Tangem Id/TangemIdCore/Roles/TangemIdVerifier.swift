@@ -15,43 +15,45 @@ typealias TangemVerifierManager = TangemIdSdk<TangemIdVerifier>
  final class TangemIdVerifier: ActionExecutioner {
 
 	private let tangemSdk: TangemSdk
+	private let credentialCreator: CredentialCreator
+	
+	private var readCredentials: [VerifiableCredential] = []
 
-	init(tangemSdk: TangemSdk) {
+	init(tangemSdk: TangemSdk, credentialCreator: CredentialCreator) {
 		self.tangemSdk = tangemSdk
+		self.credentialCreator = credentialCreator
 	}
 
 	var executionerInfo: RoleInfo {
 		VerifierRoleInfo()
 	}
-	
-	private var savedFiles: [File] = []
 
 	func execute(action: VerifierAction) {
 		switch action {
-		case .readHoldersCredentials:
-			break
-		case .deleteSavedFiles:
+		case .readHoldersCredentials(let completion):
+			readFiles(completion: completion)
+		case .showCredentialsAsJson(_):
 //			readFiles()
 			break
 		}
 	}
 
-	private func readFiles() {
-		tangemSdk.readFiles { (result) in
+	private func readFiles(completion: @escaping CompletionResult<[VerifiableCredential]>) {
+		tangemSdk.readFiles(readSettings: ReadFilesTaskSettings(readPrivateFiles: false)) { (result) in
 			switch result {
 			case .success(let response):
-				print(response)
-				print("Number of files on card", response.files.count)
-				response.files.forEach {
-					guard let cbor = try? CBOR.decode($0.fileData.bytes) else {
-						return
-					}
-					print(cbor)
-				}
-				self.savedFiles = response.files
+				self.convertFilesToCreds(response.files, completion: completion)
 			case .failure(let error):
-				print(error)
+				completion(.failure(error))
 			}
 		}
 	}
+	
+	private func convertFilesToCreds(_ files: [File], completion: @escaping CompletionResult<[VerifiableCredential]>) {
+		let readCredentials = credentialCreator.createCredentials(from: files)
+		self.readCredentials = readCredentials
+		completion(.success(readCredentials))
+	}
  }
+
+extension TangemIdVerifier: CredentialJsonPrinter { }

@@ -131,7 +131,7 @@ final class TangemIdIssuer: ActionExecutioner {
 		credsController?.writeCredentialsToCard(completion: completion)
 	}
 	
-	private func displayCredsAsJson(completion: @escaping (JsonCredentialsResult) -> Void) {
+	private func displayCredsAsJson(completion: (JsonCredentialsResult) -> Void) {
 		credsController?.credentialsAsJson(completion: completion)
 	}
 	
