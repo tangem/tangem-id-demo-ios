@@ -107,6 +107,7 @@
 		B0E6A292254048BF0023681A /* VerifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A291254048BF0023681A /* VerifierView.swift */; };
 		B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A299254048C90023681A /* VerifierViewModel.swift */; };
 		B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A29E254048D40023681A /* VerifierAssembly.swift */; };
+		B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */; };
 		D739EAD27536E56B2A5880F2 /* Pods_Tangem_Id.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */; };
 /* End PBXBuildFile section */
 
@@ -238,6 +239,7 @@
 		B0E6A291254048BF0023681A /* VerifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierView.swift; sourceTree = "<group>"; };
 		B0E6A299254048C90023681A /* VerifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewModel.swift; sourceTree = "<group>"; };
 		B0E6A29E254048D40023681A /* VerifierAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierAssembly.swift; sourceTree = "<group>"; };
+		B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewCredentials.swift; sourceTree = "<group>"; };
 		E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_Id.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F0F669173C1ECAE064488 /* Pods-Tangem Id.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem Id.release.xcconfig"; path = "Target Support Files/Pods-Tangem Id/Pods-Tangem Id.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -651,6 +653,7 @@
 				B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */,
 				B0E6A28B2540471B0023681A /* DemoCredentials.swift */,
 				B03B520B2540744F00424CFE /* VerificationStatus.swift */,
+				B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -1073,6 +1076,7 @@
 				B03B52072540738F00424CFE /* CredentialValidityFooter.swift in Sources */,
 				B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */,
 				B0C529772525B26600BBCD27 /* IssuerInfo.swift in Sources */,
+				B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

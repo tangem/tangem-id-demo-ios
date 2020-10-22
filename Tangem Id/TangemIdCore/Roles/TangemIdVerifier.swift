@@ -53,6 +53,10 @@ typealias TangemVerifierManager = TangemIdSdk<TangemIdVerifier>
 	
 	private func convertFilesToCreds(_ files: [File], completion: @escaping CompletionResult<VerifierViewCredentials>) {
 		let readCredentials = credentialCreator.createCredentials(from: files)
+		guard readCredentials.count > 0 else {
+			completion(.failure(.underlying(error: TangemIdError.noAvailableCredentials)))
+			return
+		}
 		self.readCredentials = readCredentials
 		let viewCredentials = createViewCredentials(for: readCredentials)
 		self.viewCredentials = viewCredentials
