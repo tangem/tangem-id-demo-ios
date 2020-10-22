@@ -41,17 +41,11 @@ struct VerifierRoleInfo: RoleInfo {
 	var image: UIImage?
 }
 
-//class RoleInfo {
-//	internal init(role: Role, title: String, description: String?, image: UIImage?) {
-//		self.role = role
-//		self.title = title
-//		self.description = description
-//		self.image = image
-//	}
-//
-//	let role: Role
-//	let title: String
-//	let description: String?
-//	let image: UIImage?
-//}
-
+struct HolderRoleInfo: RoleInfo {
+	var role: Role { .holder }
+	
+	var title: String = ""
+	var description: String?
+	var image: UIImage?
+	
+}

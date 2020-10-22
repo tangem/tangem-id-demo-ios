@@ -21,10 +21,10 @@ typealias TangemVerifierManager = TangemIdSdk<TangemIdVerifier>
 	private var readCredentials: [VerifiableCredential] = []
 	private var viewCredentials: VerifierViewCredentials?
 
-	init(tangemSdk: TangemSdk, credentialCreator: CredentialCreator) {
+	init(tangemSdk: TangemSdk, credentialCreator: CredentialCreator, imageHasher: ImageHasher) {
 		self.tangemSdk = tangemSdk
 		self.credentialCreator = credentialCreator
-		imageHasher = JpegSha3ImageHasher()
+		self.imageHasher = imageHasher
 	}
 
 	var executionerInfo: RoleInfo {
