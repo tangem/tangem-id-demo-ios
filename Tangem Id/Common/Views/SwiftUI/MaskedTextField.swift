@@ -15,7 +15,7 @@ struct MaskedTextField: UIViewRepresentable {
 	var placeholderColor: UIColor = .placeholderTextColor
 	var isWithClearButton: Bool = true
 	var keyType: UIKeyboardType
-	var format = "[000] - [00] - [0000]"
+	var format = "[000]-[00]-[0000]"
 	
 	var textChangeAction: ((String) -> Void)?
 	
@@ -42,23 +42,6 @@ struct MaskedTextField: UIViewRepresentable {
 		return coordinator
 	}
 	
-//	class TextFieldListener: NSObject, MaskedTextFieldDelegateListener {
-//		var parent: MaskedTextField
-//		
-//		init(parent: MaskedTextField) {
-//			self.parent = parent
-//		}
-//		
-//		func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//			true
-//		}
-//		
-//		func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
-//			parent.textChangeAction?(value)
-//		}
-//		
-//	}
-	
 	class Coordinator: NSObject, MaskedTextFieldDelegateListener {
 		var parent: MaskedTextField
 		
@@ -67,7 +50,7 @@ struct MaskedTextField: UIViewRepresentable {
 		}
 		
 		func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
-			parent.textChangeAction?(value)
+			parent.textChangeAction?(textField.text ?? "")
 		}
 	}
 }

@@ -16,11 +16,13 @@
 "date_of_birth" = "Date of birth";
 "age_over_21" = "Age over 21";
 "ssn" = "SSN";
+"covid_immunity" = "Covid 19 Immunity Passport";
 
 "add_photo" = "Add photo";
 "sign_credentials" = "Sign";
 "write_to_card_credentials" = "Write to card";
 
+"gender" = "Gender";
 "male" = "Male";
 "female" = "Female";
 "other" = "Other";
@@ -29,6 +31,10 @@
 "issuer" = "Issuer";
 "verifier" = "Verifier";
 "holder" = "Holder";
+
+"i_am_issuer" = "I'm an issuer";
+"i_am_verifier" = "I'm a verifier";
+"i_am_holder" = "I'm a holder";
 
 "did_issuer_address" = "DID Address of the Issuer";
 
@@ -40,6 +46,14 @@
 
 "show_json_creds" = "Show credentials JSON";
 "issuer_details" = "Issuer's Details";
+"verifier_navigation" = "ID Validator";
+
+"status" = "Status: ";
+"issued_by" = "Issued by ";
+"issuer" = " issuer ";
+"trusted" = "Trusted";
+"unknown" = "Unknown";
+"valid" = "Valid";
 
 "credentials_signed_title" = "Progress will be lost";
 "credentials_signed_body" = "Do you want to go back and cancel your input?";
@@ -61,6 +75,11 @@
 // MARK: - Tangem Id Core messages
 "scan_issuer_card" = "Tap Issuer's Card";
 "scan_holder_card" = "Tap Holder's Card";
+
+"offline" = "Offline";
+"valid" = "Valid";
+"invalid" = "Invalid";
+"revoked" = "Revoked";
 
 // MARK: - Tangem Id Core error messages
 "you_not_authorized" = "You not authorized. Please Authorize yourself as Issuer, Holder of Verifier";

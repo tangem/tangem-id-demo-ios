@@ -41,9 +41,7 @@ final class RoleSelectorViewModel: ObservableObject, Equatable, SnackMessageDisp
 	
 	private(set) var issuerLink: AnyView = AnyView(EmptyView())
 	
-	var verifierLink: AnyView {
-		AnyView(EmptyView())
-	}
+	private(set) var verifierLink: AnyView = AnyView(EmptyView())
 	
 	var holderLink: AnyView {
 		AnyView(EmptyView())
@@ -77,15 +75,16 @@ extension RoleSelectorViewModel {
 	}
 	
 	func verifierButtonAction() {
-		verifierManager.execute(action: .readHoldersCredentials(completion: { (result) in
+		let manager = tangemIdFactory.createVerifierManager()
+		manager.execute(action: .readHoldersCredentials(completion: { (result) in
 			switch result {
 			case .success(let creds):
-				print("Creds on card: \(creds)")
+				self.verifierLink = try! self.moduleAssembly.assembledView(for: .verifier(manager: manager, credentials: creds))
+				self.state = .verifier
 			case .failure(let error):
 				self.showErrorSnack(message: error.localizedDescription)
 			}
 		}))
-		state = .verifier
 	}
 	
 	func holderButtonAction() {

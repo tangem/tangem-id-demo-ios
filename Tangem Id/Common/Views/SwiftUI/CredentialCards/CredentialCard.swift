@@ -8,20 +8,23 @@
 
 import SwiftUI
 
-struct CredentialCard<Supplement: View, Content: View>: View {
+struct CredentialCard<Supplement: View, Content: View, Footer: View>: View {
 	
 	let title: LocalizedStringKey
 	let supplementView: Supplement
 	let content: Content
+	let footer: Footer
 	
 	init(
 		title: LocalizedStringKey,
 		@ViewBuilder supplementBuilder: () -> Supplement,
-		@ViewBuilder contentBuilder: () -> Content
+		@ViewBuilder contentBuilder: () -> Content,
+		@ViewBuilder footerBuilder: () -> Footer
 	) {
 		self.title = title
 		supplementView = supplementBuilder()
 		content = contentBuilder()
+		footer = footerBuilder()
 	}
 	
 	@ViewBuilder
@@ -37,6 +40,7 @@ struct CredentialCard<Supplement: View, Content: View>: View {
 			}
 			.padding(16)
 			content
+			footer
 		}
 		.background(Color.white)
 		.cornerRadius(4)
@@ -48,19 +52,48 @@ struct CredentialCard<Supplement: View, Content: View>: View {
     }
 }
 
-extension CredentialCard where Content == EmptyView {
-	init(title: LocalizedStringKey, @ViewBuilder supplementBuilder: () -> Supplement) {
+extension CredentialCard where Footer == EmptyView {
+	init(title: LocalizedStringKey, @ViewBuilder supplementBuilder: () -> Supplement, @ViewBuilder contentBuilder: () -> Content) {
 		self.title = title
-		supplementView = supplementBuilder()
-		content = EmptyView()
+		self.supplementView = supplementBuilder()
+		self.content = contentBuilder()
+		footer = EmptyView()
 	}
 }
 
 extension CredentialCard where Supplement == EmptyView {
+	init(title: LocalizedStringKey, @ViewBuilder contentBuilder: () -> Content,  @ViewBuilder footerBuilder: () -> Footer) {
+		self.title = title
+		self.supplementView = EmptyView()
+		self.content = contentBuilder()
+		self.footer = footerBuilder()
+	}
+}
+
+extension CredentialCard where Content == EmptyView {
+	init(title: LocalizedStringKey, @ViewBuilder supplementBuilder: () -> Supplement,  @ViewBuilder footerBuilder: () -> Footer) {
+		self.title = title
+		self.supplementView = supplementBuilder()
+		self.content = EmptyView()
+		self.footer = footerBuilder()
+	}
+}
+
+extension CredentialCard where Content == EmptyView, Footer == EmptyView {
+	init(title: LocalizedStringKey, @ViewBuilder supplementBuilder: () -> Supplement) {
+		self.title = title
+		supplementView = supplementBuilder()
+		content = EmptyView()
+		footer = EmptyView()
+	}
+}
+
+extension CredentialCard where Supplement == EmptyView, Footer == EmptyView {
 	init (title: LocalizedStringKey, @ViewBuilder contentBuilder: () -> Content) {
 		self.title = title
 		supplementView = EmptyView()
 		content = contentBuilder()
+		footer = EmptyView()
 	}
 }
 
@@ -80,8 +113,29 @@ struct CredentialCard_Previews: PreviewProvider {
 				},
 				contentBuilder: {
 					CredentialPhotoContent(image: UIImage(named: "dude")!)
+				},
+				footerBuilder: {
+					CredentialValidityFooter(status: .invalid)
 				})
-				.previewLayout(.fixed(width: 375, height: 260))
+				.previewLayout(.fixed(width: 375, height: 400))
+			CredentialCard(title: LocalizationKeys.Common.personalInfo, contentBuilder: {
+				VStack(alignment: .leading) {
+					PersonalInformationView(title: LocalizationKeys.Common.name,
+											bodyText: "Tangem")
+					PersonalInformationView(title: LocalizationKeys.Common.surname,
+											bodyText: "Holder")
+					PersonalInformationView(title: LocalizationKeys.Common.dateOfBirth,
+											bodyText: "10/4/2020")
+					PersonalInformationView(title: LocalizationKeys.Common.gender,
+											bodyText: "Other")
+				}
+				.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+				.padding(.bottom, 8)
+				.padding(.horizontal)
+			}, footerBuilder: {
+				CredentialValidityFooter(status: .valid, issuerInfo: .init(address: "someaddressveryveryverylongaddress", isTrusted: false))
+			})
+			.previewLayout(.fixed(width: 375, height: 400))
 			CredentialCard(
 				title: "SSN",
 				supplementBuilder: {

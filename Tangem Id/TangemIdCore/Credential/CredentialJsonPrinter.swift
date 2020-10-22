@@ -14,18 +14,23 @@ protocol CredentialJsonPrinter {
 
 extension CredentialJsonPrinter {
 	func createJson(for creds: [VerifiableCredential], completion: (JsonCredentialsResult) -> Void) {
+		var json = ""
 		let encoder = JSONEncoder()
 		encoder.dateEncodingStrategy = .formatted(.iso8601WithSlashes)
 		encoder.outputFormatting = .prettyPrinted
-		do {
-			let encodedData = try encoder.encode(creds)
-			guard let string = String(data: encodedData, encoding: .utf8) else {
+		creds.forEach {
+			do {
+				let encodedData = try encoder.encode($0)
+				guard let string = String(data: encodedData, encoding: .utf8) else {
+					completion(.failure(.failedToCreateJsonRepresentation))
+					return
+				}
+				json.append(string)
+				json.append("\n")
+			} catch {
 				completion(.failure(.failedToCreateJsonRepresentation))
-				return
 			}
-			completion(.success(string))
-		} catch {
-			completion(.failure(.failedToCreateJsonRepresentation))
 		}
+		completion(.success(json))
 	}
 }

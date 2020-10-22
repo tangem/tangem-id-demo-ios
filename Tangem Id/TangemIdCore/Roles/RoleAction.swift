@@ -23,7 +23,7 @@ enum IssuerAction: ActionType {
 }
 
 enum VerifierAction: ActionType {
-	case readHoldersCredentials(completion: CompletionResult<[VerifiableCredential]>)
+	case readHoldersCredentials(completion: CompletionResult<VerifierViewCredentials>)
 	case showCredentialsAsJson((JsonCredentialsResult) -> Void)
 }
 

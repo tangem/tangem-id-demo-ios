@@ -56,6 +56,10 @@ struct PersonalInformationCredential: Codable, DictConvertible {
 		self.init(id: id, givenName: input.name, familyName: input.surname, gender: input.gender, born: formatter.string(from: input.dateOfBirth), photoHash: photoHash)
 	}
 	
+	enum CodingKeys: String, CodingKey {
+		case id, givenName, familyName, gender, born, photoHash
+	}
+	
 	let id: String
 	let givenName: String
 	let familyName: String
@@ -67,21 +71,47 @@ struct PersonalInformationCredential: Codable, DictConvertible {
 struct PhotoCredentialSubject: DictConvertible {
 	let id: String
 	let photo: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id, photo
+	}
 }
 
 struct SsnCredentialSubject: DictConvertible {
 	let id: String
 	let ssn: String
 	let photoHash: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id, ssn, photoHash
+	}
 }
 
 struct AgeOver21CredentialSubject: DictConvertible {
 	let id: String
 	let photoHash: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id, photoHash
+	}
 }
 
+enum CovidStatus: String {
+	case negative, positive
+}
+
+struct CovidCredentialSubject: DictConvertible {
+	let id: String
+	let result: CovidStatus
+	
+	enum CodingKeys: String, CodingKey {
+		case id, result
+	}
+}
+
+
 enum VerifiableCredentialType: String, Codable, CaseIterable, CBOREncodable {
-	case VerifiableCredential, TangemEthCredential, TangemPhotoCredential, TangemPersonalInformationCredential, TangemSsnCredential, TangemAgeOver21Credential
+	case VerifiableCredential, TangemEthCredential, TangemPhotoCredential, TangemPersonalInformationCredential, TangemSsnCredential, TangemAgeOver21Credential, TangemCovidCredential
 	
 	func encode() -> [UInt8] {
 		self.rawValue.encode()

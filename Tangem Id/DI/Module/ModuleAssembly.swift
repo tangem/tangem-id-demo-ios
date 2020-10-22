@@ -42,6 +42,11 @@ extension ModuleAssembly: ModuleAssemblyType {
 				throw ModuleAssemblyError.dependencyResolvingError
 			}
 			return AnyView(view)
+		case let .verifier(manager, credentials):
+			guard let view = resolver.resolve(VerifierView.self, arguments: manager, credentials) else {
+				throw ModuleAssemblyError.dependencyResolvingError
+			}
+			return AnyView(view)
 		}
 	}
 }

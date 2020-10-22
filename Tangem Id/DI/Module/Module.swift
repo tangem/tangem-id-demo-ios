@@ -11,4 +11,5 @@ import Foundation
 enum Module {
 	case issuer(roleInfo: RoleInfo, manager: TangemIssuerManager)
 	case issuerCreateCredentials(manager: TangemIssuerManager)
+	case verifier(manager: TangemVerifierManager, credentials: VerifierViewCredentials)
 }

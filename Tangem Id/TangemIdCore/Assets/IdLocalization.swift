@@ -14,6 +14,14 @@ struct IdLocalization {
 		static let scanHolderCard = "scan_holder_card".localizedString()
 		
 		static let writeFilesHint = "write_creds_files_hint".localizedString()
+		
+	}
+	
+	struct VerificationStatus {
+		static let offline = "offline".localizedString()
+		static let valid = "valid".localizedString()
+		static let invalid = "invalid".localizedString()
+		static let revoked = "revoked".localizedString()
 	}
 	
 	struct Errors {

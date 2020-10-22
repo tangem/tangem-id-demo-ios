@@ -28,7 +28,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var isShowingBackAlert = false
 	
 	func photoCard() -> some View {
-		let title = LocalizationKeys.Modules.Issuer.photo
+		let title = LocalizationKeys.Common.photo
 		let addPhotoButton = ButtonWithImage(image: UIImage(systemName: "plus")!,
 											 color: .tangemBlue,
 											 text: LocalizationKeys.Common.addPhoto,
@@ -75,7 +75,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 							ImagePicker(image: self.$viewModel.photo)
 						})
 					CredentialCard(
-						title: LocalizationKeys.Modules.Issuer.personalInfo,
+						title: LocalizationKeys.Common.personalInfo,
 						contentBuilder: {
 							VStack {
 								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { self.viewModel.inputName($0) }
@@ -93,7 +93,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 						title: LocalizationKeys.Common.ssn,
 						supplementBuilder: {
 							MaskedTextField(
-								placeholder: "000 - 00 - 0000",
+								placeholder: "000-00-0000",
 								isWithClearButton: false,
 								keyType: .numberPad) {
 									self.viewModel.inputSsn($0)
@@ -129,11 +129,11 @@ struct IssuerCreateCredentialsView: View, Equatable {
 						Spacer()
 							.frame(width: 10, height: 18, alignment: .center)
 						Button(LocalizationKeys.Common.showJsonCreds) {
-							viewModel.showJsonRepresentation()
+							self.viewModel.showJsonRepresentation()
 						}
 						.buttonStyle(ScreenPaddingButtonStyle.transparentBackWithBlueText)
 						.sheet(isPresented: $showingJsonRepresentation, content: {
-							JsonViewer(jsonMessage: viewModel.jsonRepresentation)
+							JsonViewer(jsonMessage: self.viewModel.jsonRepresentation)
 						})
 					}
 					Spacer()
@@ -156,11 +156,11 @@ struct IssuerCreateCredentialsView: View, Equatable {
 		.modifier(HiddenSystemNavigation())
 		.onReceive(viewModel.$shouldDismissToRoot) { shouldDismiss in
 			guard shouldDismiss else { return }
-			rootPresentationMode.wrappedValue.dismiss()
+			self.rootPresentationMode.wrappedValue.dismiss()
 		}
 		.onReceive(viewModel.$jsonRepresentation) { jsonRepresenation in
 			if jsonRepresenation.isEmpty { return }
-			showingJsonRepresentation = true
+			self.showingJsonRepresentation = true
 		}
 	}
 }

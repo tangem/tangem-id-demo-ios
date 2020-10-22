@@ -18,30 +18,47 @@ struct LocalizationKeys {
 		}
 		struct Issuer {
 			static let didIssuerAddress: LocalizedStringKey = "did_issuer_address"
-			static let photo: LocalizedStringKey = "photo"
-			static let personalInfo: LocalizedStringKey = "personal_info"
 			static let signCredentials: LocalizedStringKey = "sign_credentials"
 			static let writeToCardCredentials: LocalizedStringKey = "write_to_card_credentials"
 			static let credentialsSignedWarningTitle: LocalizedStringKey = "credentials_signed_title"
 			static let credentialsSignedWarningBody: LocalizedStringKey = "credentials_signed_body"
+		}
+		
+		struct Verifier {
+			static let status: LocalizedStringKey = "status"
+			static let issuedBy: LocalizedStringKey = "issued_by"
+			static let issuer: LocalizedStringKey = "issuer"
+			static let trusted: LocalizedStringKey = "trusted"
+			static let unknown: LocalizedStringKey = "unknown"
 		}
 	}
 	
 	struct NavigationBar {
 		static let issuerDetails: LocalizedStringKey = "issuer_details"
 		static let issueCredentials: LocalizedStringKey = "issue_credentials"
+		static let idValidator: LocalizedStringKey = "verifier_navigation"
 	}
 	
 	struct Common {
 		static let issuer: LocalizedStringKey = "issuer"
 		static let verifier: LocalizedStringKey = "verifier"
 		static let holder: LocalizedStringKey = "holder"
+		static let iIssuer: LocalizedStringKey = "i_am_issuer"
+		static let iVerifier: LocalizedStringKey = "i_am_verifier"
+		static let iHolder: LocalizedStringKey = "i_am_holder"
+		
+		static let photo: LocalizedStringKey = "photo"
+		static let personalInfo: LocalizedStringKey = "personal_info"
+		static let gender: LocalizedStringKey = "gender"
 		static let addPhoto: LocalizedStringKey = "add_photo"
 		static let dateOfBirth: LocalizedStringKey = "date_of_birth"
 		static let name: LocalizedStringKey = "name"
 		static let surname: LocalizedStringKey = "surname"
 		static let ssn: LocalizedStringKey = "ssn"
 		static let ageOver21: LocalizedStringKey = "age_over_21"
+		static let covidImmunity: LocalizedStringKey = "covid_immunity"
+		
+		static let valid: LocalizedStringKey = "valid"
 		
 		static let share: LocalizedStringKey = "share"
 		static let hide: LocalizedStringKey = "hide"
