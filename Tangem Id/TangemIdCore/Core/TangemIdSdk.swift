@@ -9,11 +9,6 @@
 import Foundation
 import TangemSdk
 import Combine
-//
-//protocol ActionExecutioner {
-//	var executionerInfo: RoleInfo { get }
-//	func execute(action: RoleAction, completion: @escaping ActionResult)
-//}
 
 protocol ActionExecutioner {
 	associatedtype Action: ActionType

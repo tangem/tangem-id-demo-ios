@@ -107,6 +107,7 @@
 		B0E6A292254048BF0023681A /* VerifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A291254048BF0023681A /* VerifierView.swift */; };
 		B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A299254048C90023681A /* VerifierViewModel.swift */; };
 		B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A29E254048D40023681A /* VerifierAssembly.swift */; };
+		B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */; };
 		B0FD187D2541676500C4FDB5 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD187C2541676500C4FDB5 /* HolderView.swift */; };
 		B0FD18852541676F00C4FDB5 /* HolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */; };
 		B0FD188A2541683A00C4FDB5 /* TangemIdHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */; };
@@ -241,6 +242,7 @@
 		B0E6A291254048BF0023681A /* VerifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierView.swift; sourceTree = "<group>"; };
 		B0E6A299254048C90023681A /* VerifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewModel.swift; sourceTree = "<group>"; };
 		B0E6A29E254048D40023681A /* VerifierAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierAssembly.swift; sourceTree = "<group>"; };
+		B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewCredentials.swift; sourceTree = "<group>"; };
 		B0FD187C2541676500C4FDB5 /* HolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderViewModel.swift; sourceTree = "<group>"; };
 		B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdHolder.swift; sourceTree = "<group>"; };
@@ -658,6 +660,7 @@
 				B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */,
 				B0E6A28B2540471B0023681A /* DemoCredentials.swift */,
 				B03B520B2540744F00424CFE /* VerificationStatus.swift */,
+				B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				B03B52072540738F00424CFE /* CredentialValidityFooter.swift in Sources */,
 				B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */,
 				B0C529772525B26600BBCD27 /* IssuerInfo.swift in Sources */,
+				B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

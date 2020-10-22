@@ -70,8 +70,6 @@
 "failed_to_create_creds_from_cbor" = "Failed to create credentials from provided info";
 
 
-
-
 // MARK: - Tangem Id Core messages
 "scan_issuer_card" = "Tap Issuer's Card";
 "scan_holder_card" = "Tap Holder's Card";
@@ -88,3 +86,4 @@
 "invalid_holder_card" = "Tapped card is not an ID Card. Please, tap ID Card";
 "failed_to_read_issuer_card" = "Something went wrong in interaction with a card";
 "failed_to_create_json_representation" = "Can't create JSON representation of provided data";
+"no_available_credentials_on_card" = "This card doesn't contain credentials. Please, use another card";

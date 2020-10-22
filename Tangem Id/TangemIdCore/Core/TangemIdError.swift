@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TangemIdError: Error, Hashable {
+public enum TangemIdError: LocalizedError, Hashable {
 	
 	case cardSdkError(sdkError: String)
 	case youNotAuthorized
@@ -19,8 +19,9 @@ enum TangemIdError: Error, Hashable {
 	case readingCardError
 	case failedToCreateJsonRepresentation
 	case notValidCborData
+	case noAvailableCredentials
 	
-	var localizedDescription: String {
+	public var errorDescription: String? {
 		switch self {
 		case .cardSdkError(let sdkError): return sdkError
 		case .youNotAuthorized: return IdLocalization.Errors.youNotAuthorized
@@ -31,6 +32,8 @@ enum TangemIdError: Error, Hashable {
 		case .readingCardError: return IdLocalization.Errors.failedToReadIssuerCard
 		case .failedToCreateJsonRepresentation: return IdLocalization.Errors.failedToCreateJsonRepresentation
 		case .notValidCborData: return IdLocalization.Errors.failedToCreateCredsFromCbor
+		case .noAvailableCredentials: return IdLocalization.Errors.noAvailableCredentialsOnCard
 		}
+
 	}
 }
