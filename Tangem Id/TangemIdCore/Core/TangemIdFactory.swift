@@ -18,19 +18,22 @@ protocol TangemIdFactoryType {
 struct TangemIdFactory: TangemIdFactoryType {
 	
 	private let factory = CredentialCreatorFactory()
+	private let tangemSdk: TangemSdk
 	
-	let tangemSdk: TangemSdk
+	public init(tangemSdk: TangemSdk) {
+		self.tangemSdk = tangemSdk
+	}
 	
 	func createIssuerManager() -> TangemIssuerManager {
-		TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreatorFactory: factory))
+		TangemIdSdk(executioner: TangemIdIssuer(tangemSdk: tangemSdk, credentialCreator: factory.makeCreator(.demo)))
 	}
 	
 	func createVerifierManager() -> TangemVerifierManager {
-		TangemIdSdk(executioner: TangemIdVerifier(tangemSdk: tangemSdk, credentialCreator: factory.makeCreator(.demo), imageHasher: JpegSha3ImageHasher()))
+		TangemIdSdk(executioner: TangemIdVerifier(tangemSdk: tangemSdk, viewCredentialFactory: DemoCredentialFactory(imageHasher: JpegSha3ImageHasher(), credentialCreator: factory.makeCreator(.demo))))
 	}
 	
 	func createHolderManager() -> TangemHolderManager {
-		TangemIdSdk(executioner: TangemIdHolder(tangemSdk: tangemSdk, credentialCreator: factory.makeCreator(.demo), imageHasher: JpegSha3ImageHasher()))
+		TangemIdSdk(executioner: TangemIdHolder(tangemSdk: tangemSdk, viewCredentialFactory: DemoCredentialFactory(imageHasher: JpegSha3ImageHasher(), credentialCreator: factory.makeCreator(.demo))))
 	}
 	
 }

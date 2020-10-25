@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct VerifierCredentials<T: DemoCredential> {
-	let credentials: T
-	let issuer: IssuerVerificationInfo
-	let status: VerificationStatus
-}
 
 class VerifierViewModel: ObservableObject, SnackMessageDisplayable {
 	

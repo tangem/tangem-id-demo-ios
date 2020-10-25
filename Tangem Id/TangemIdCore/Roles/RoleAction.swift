@@ -28,5 +28,6 @@ enum VerifierAction: ActionType {
 }
 
 enum HolderAction: ActionType {
-	case scanHolderCredentials(completion: CompletionResult<VerifierViewCredentials>)
+	case scanHolderCredentials(completion: CompletionResult<HolderViewCredentials>)
+	case saveChanges(filesToDelete: [File], filesToUpdateSettings: [File], completion: CompletionResult<SimpleResponse>)
 }

@@ -44,6 +44,13 @@
 "share" = "Share";
 "hide" = "Hide";
 
+"personal_card" = "Personal card";
+"request_new_credentials" = "Request new credential";
+"save_changes" = "Save changes";
+"json_representation" = "JSON representation:";
+"share_json" = "Share JSON";
+"credentials" = "Credentials";
+
 "show_json_creds" = "Show credentials JSON";
 "issuer_details" = "Issuer's Details";
 "verifier_navigation" = "ID Validator";

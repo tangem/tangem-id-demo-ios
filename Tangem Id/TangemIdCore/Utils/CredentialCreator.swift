@@ -31,6 +31,7 @@ struct CredentialCreatorFactory: CredentialCreatorFactoryType {
 protocol CredentialCreator: class {
 	func createCredentialsToSign(issuerDidAddress: String, input: CredentialInput, holderEthereumAddress: String) throws -> [VerifiableCredential]
 	func createCredentials(from files: [File]) -> [VerifiableCredential]
+	func createCredentials(from file: File) -> VerifiableCredential?
 }
 
 class DemoCredentialCreator {
@@ -124,20 +125,24 @@ extension DemoCredentialCreator: CredentialCreator {
 	}
 	
 	func createCredentials(from files: [File]) -> [VerifiableCredential] {
-		var cborData = [CBOR]()
-		files.forEach {
-			guard let cbor = try? CBOR.decode($0.fileData.bytes) else { return }
-			cborData.append(cbor)
-		}
 		var credentials = [VerifiableCredential]()
-		cborData.forEach {
-			do {
-				let creds = try VerifiableCredential(cbor: $0)
-				credentials.append(creds)
-			} catch {
-				print("Failed to create creds for item: \($0)")
-			}
+		files.forEach {
+			guard let creds = createCredentials(from: $0) else { return }
+			credentials.append(creds)
 		}
 		return credentials
+	}
+	
+	func createCredentials(from file: File) -> VerifiableCredential? {
+		guard let cbor = try? CBOR.decode(file.fileData.bytes) else {
+			return nil
+		}
+		do {
+			let creds = try VerifiableCredential(cbor: cbor)
+			return creds
+		} catch {
+			print("Failed to create credential for: \(cbor)")
+			return nil
+		}
 	}
 }

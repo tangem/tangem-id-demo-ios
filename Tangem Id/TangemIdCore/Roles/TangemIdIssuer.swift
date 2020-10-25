@@ -18,10 +18,9 @@ final class TangemIdIssuer: ActionExecutioner {
 	private let tangemSdk: TangemSdk
 	private let walletFactory = WalletManagerFactory()
 	private let ethereumBlockchain = Blockchain.ethereum(testnet: false)
-	private let credentialCreatorFactory: CredentialCreatorFactoryType
+	private let credentialCreator: CredentialCreator
 	
 	private var credsController: CredentialsControllerType?
-	private var credentialCreator: CredentialCreator?
 	
 	// MARK: Issuer info
 	private var issuerCardId: String?
@@ -44,9 +43,9 @@ final class TangemIdIssuer: ActionExecutioner {
 		return IssuerRoleInfo(didWalletAddress: IdConstants.didPrefix + wallet, qrImage: #imageLiteral(resourceName: "qr"), title: "Issuer", description: "My soft issuer", image: nil)
 	}
 	
-	init(tangemSdk: TangemSdk, credentialCreatorFactory: CredentialCreatorFactoryType) {
+	init(tangemSdk: TangemSdk, credentialCreator: CredentialCreator) {
 		self.tangemSdk = tangemSdk
-		self.credentialCreatorFactory = credentialCreatorFactory
+		self.credentialCreator = credentialCreator
 	}
 	
 	func execute(action: IssuerAction) {
@@ -82,7 +81,7 @@ final class TangemIdIssuer: ActionExecutioner {
 				self.issuerWallet = wallet
 				self.issuerCardId = cardId
 				self.credsController = DemoCredentialsController(tangemSdk: self.tangemSdk,
-																 credentialCreator: self.credentialCreatorFactory.makeCreator(.demo),
+																 credentialCreator: self.credentialCreator,
 																 issuerCardId: cardId,
 																 issuerWalletAddress: wallet!.wallet.address,
 																 proofCreator: Secp256k1ProofCreator())

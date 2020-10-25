@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct PersonalInformationView: View {
+struct PersonalInformationLineView: View {
 	
 	var title: LocalizedStringKey
 	var bodyText: String
@@ -21,6 +21,30 @@ struct PersonalInformationView: View {
 			Text(bodyText)
 		}
 		.padding(.bottom, 8)
+	}
+}
+
+struct PersonalInformationView: View {
+	var name: String
+	var surname: String
+	var dateOfBirth: String
+	var gender: String
+	
+	var body: some View {
+		VStack(alignment: .leading) {
+			PersonalInformationLineView(title: LocalizationKeys.Common.name,
+									bodyText: name)
+			PersonalInformationLineView(title: LocalizationKeys.Common.surname,
+									bodyText: surname)
+			PersonalInformationLineView(title: LocalizationKeys.Common.dateOfBirth,
+									bodyText: dateOfBirth)
+			PersonalInformationLineView(title: LocalizationKeys.Common.gender,
+									bodyText: gender)
+			Divider()
+		}
+		.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+		.padding(.bottom, 8)
+		.padding(.horizontal)
 	}
 }
 
@@ -66,20 +90,10 @@ struct VerifierView: View {
 				}
 				if let personalInfoCreds = viewModel.credentials.personalInfo {
 					CredentialCard(title: LocalizationKeys.Common.personalInfo, contentBuilder: {
-						VStack(alignment: .leading) {
-							PersonalInformationView(title: LocalizationKeys.Common.name,
-													bodyText: personalInfoCreds.credentials.name)
-							PersonalInformationView(title: LocalizationKeys.Common.surname,
-													bodyText: personalInfoCreds.credentials.surname)
-							PersonalInformationView(title: LocalizationKeys.Common.dateOfBirth,
-													bodyText: personalInfoCreds.credentials.dateOfBirth)
-							PersonalInformationView(title: LocalizationKeys.Common.gender,
-													bodyText: personalInfoCreds.credentials.gender)
-							Divider()
-						}
-						.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-						.padding(.bottom, 8)
-						.padding(.horizontal)
+						PersonalInformationView(name: personalInfoCreds.credentials.name,
+												surname: personalInfoCreds.credentials.surname,
+												dateOfBirth: personalInfoCreds.credentials.dateOfBirth,
+												gender: personalInfoCreds.credentials.gender)
 					}, footerBuilder: {
 						CredentialValidityFooter(status: personalInfoCreds.status, issuerInfo: personalInfoCreds.issuer)
 					})

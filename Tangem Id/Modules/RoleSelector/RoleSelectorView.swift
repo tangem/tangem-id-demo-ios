@@ -68,17 +68,15 @@ struct RoleSelectorView: View, Equatable {
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.verifierLink,
-							tag: RoleSelectorViewModel.ViewState.verifier,
-							selection: $viewModel.state),
+							isActive: $viewModel.isVerifier),
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
 						action: { self.viewModel.holderButtonAction() },
 						text: LocalizationKeys.Common.iHolder,
 						navigationLink: NavigationLink(
+							"",
 							destination: viewModel.holderLink,
-							tag: RoleSelectorViewModel.ViewState.holder,
-							selection: $viewModel.state,
-							label: { EmptyView() }),
+							isActive: $viewModel.isHolder),
 						buttonStyle: ScreenPaddingButtonStyle.defaultWhiteButtonStyleWithPadding)
 				}
 				.padding(.horizontal, 46)

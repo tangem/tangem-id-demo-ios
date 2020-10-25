@@ -31,6 +31,9 @@
 		B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */; };
 		B0413BCA2522ED8900140A70 /* RadioSegmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BC92522ED8900140A70 /* RadioSegmentSelector.swift */; };
 		B0413BD32522EEB500140A70 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BD22522EEB500140A70 /* RadioButton.swift */; };
+		B044F9C3254593D1003BF413 /* ChangeFilesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */; };
+		B044F9C825459E70003BF413 /* HolderCredentialLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9C725459E70003BF413 /* HolderCredentialLine.swift */; };
+		B04962732541A99C004FBEDE /* HolderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04962722541A99C004FBEDE /* HolderAssembly.swift */; };
 		B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */; };
 		B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */; };
 		B05CCAEF2520F6340033093C /* RoleSelectorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */; };
@@ -51,6 +54,9 @@
 		B07DE5F52528EBB2003F8D9D /* UIImage+ScaleCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07DE5F42528EBB2003F8D9D /* UIImage+ScaleCrop.swift */; };
 		B07DE5FD2528EC1B003F8D9D /* ByteCountFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07DE5FC2528EC1B003F8D9D /* ByteCountFormatter+.swift */; };
 		B0800F5B252C339B007E04EE /* IdConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0800F5A252C339B007E04EE /* IdConstants.swift */; };
+		B08B37D82542B44D00FC5D59 /* HolderCredentialViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B37D72542B44D00FC5D59 /* HolderCredentialViewer.swift */; };
+		B08B37DD2542D40500FC5D59 /* DemoCredentialFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B37DC2542D40500FC5D59 /* DemoCredentialFactory.swift */; };
+		B08B37E32542FC5800FC5D59 /* ReadHolderCardTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */; };
 		B08C33ED2527743200194BF1 /* TangemIdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C33EC2527743200194BF1 /* TangemIdFactory.swift */; };
 		B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */; };
 		B08D4793252AE33700E10DAB /* CredentialsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D4792252AE33700E10DAB /* CredentialsController.swift */; };
@@ -107,10 +113,11 @@
 		B0E6A292254048BF0023681A /* VerifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A291254048BF0023681A /* VerifierView.swift */; };
 		B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A299254048C90023681A /* VerifierViewModel.swift */; };
 		B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A29E254048D40023681A /* VerifierAssembly.swift */; };
-		B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */; };
 		B0FD187D2541676500C4FDB5 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD187C2541676500C4FDB5 /* HolderView.swift */; };
 		B0FD18852541676F00C4FDB5 /* HolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */; };
 		B0FD188A2541683A00C4FDB5 /* TangemIdHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */; };
+		B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */; };
+		B0FFE3972541A79B00DE1C7E /* HolderViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FFE3962541A79B00DE1C7E /* HolderViewCredentials.swift */; };
 		D739EAD27536E56B2A5880F2 /* Pods_Tangem_Id.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */; };
 /* End PBXBuildFile section */
 
@@ -160,6 +167,9 @@
 		B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithClearButton.swift; sourceTree = "<group>"; };
 		B0413BC92522ED8900140A70 /* RadioSegmentSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSegmentSelector.swift; sourceTree = "<group>"; };
 		B0413BD22522EEB500140A70 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilesTask.swift; sourceTree = "<group>"; };
+		B044F9C725459E70003BF413 /* HolderCredentialLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderCredentialLine.swift; sourceTree = "<group>"; };
+		B04962722541A99C004FBEDE /* HolderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderAssembly.swift; sourceTree = "<group>"; };
 		B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorViewModel.swift; sourceTree = "<group>"; };
 		B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
 		B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorAssembly.swift; sourceTree = "<group>"; };
@@ -186,6 +196,9 @@
 		B07DE5F42528EBB2003F8D9D /* UIImage+ScaleCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ScaleCrop.swift"; sourceTree = "<group>"; };
 		B07DE5FC2528EC1B003F8D9D /* ByteCountFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ByteCountFormatter+.swift"; sourceTree = "<group>"; };
 		B0800F5A252C339B007E04EE /* IdConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdConstants.swift; sourceTree = "<group>"; };
+		B08B37D72542B44D00FC5D59 /* HolderCredentialViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderCredentialViewer.swift; sourceTree = "<group>"; };
+		B08B37DC2542D40500FC5D59 /* DemoCredentialFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCredentialFactory.swift; sourceTree = "<group>"; };
+		B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHolderCardTask.swift; sourceTree = "<group>"; };
 		B08C33EC2527743200194BF1 /* TangemIdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdFactory.swift; sourceTree = "<group>"; };
 		B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdVerifier.swift; sourceTree = "<group>"; };
 		B08D4792252AE33700E10DAB /* CredentialsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsController.swift; sourceTree = "<group>"; };
@@ -242,10 +255,11 @@
 		B0E6A291254048BF0023681A /* VerifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierView.swift; sourceTree = "<group>"; };
 		B0E6A299254048C90023681A /* VerifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewModel.swift; sourceTree = "<group>"; };
 		B0E6A29E254048D40023681A /* VerifierAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierAssembly.swift; sourceTree = "<group>"; };
-		B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewCredentials.swift; sourceTree = "<group>"; };
 		B0FD187C2541676500C4FDB5 /* HolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
 		B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderViewModel.swift; sourceTree = "<group>"; };
 		B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdHolder.swift; sourceTree = "<group>"; };
+		B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewCredentials.swift; sourceTree = "<group>"; };
+		B0FFE3962541A79B00DE1C7E /* HolderViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderViewCredentials.swift; sourceTree = "<group>"; };
 		E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_Id.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F0F669173C1ECAE064488 /* Pods-Tangem Id.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem Id.release.xcconfig"; path = "Target Support Files/Pods-Tangem Id/Pods-Tangem Id.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -483,6 +497,15 @@
 			path = AppSettings;
 			sourceTree = "<group>";
 		};
+		B08B37E12542FC4000FC5D59 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */,
+				B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
 		B08D4797252B02A700E10DAB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +684,8 @@
 				B0E6A28B2540471B0023681A /* DemoCredentials.swift */,
 				B03B520B2540744F00424CFE /* VerificationStatus.swift */,
 				B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */,
+				B0FFE3962541A79B00DE1C7E /* HolderViewCredentials.swift */,
+				B08B37DC2542D40500FC5D59 /* DemoCredentialFactory.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -710,6 +735,7 @@
 		B0C5296D2524EFB300BBCD27 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B08B37E12542FC4000FC5D59 /* Tasks */,
 				B0C5296F2524EFE400BBCD27 /* TangemIdSdk.swift */,
 				B0C5297B2525B9E600BBCD27 /* TangemIdError.swift */,
 				B08C33EC2527743200194BF1 /* TangemIdFactory.swift */,
@@ -779,6 +805,9 @@
 			children = (
 				B0FD187C2541676500C4FDB5 /* HolderView.swift */,
 				B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */,
+				B04962722541A99C004FBEDE /* HolderAssembly.swift */,
+				B08B37D72542B44D00FC5D59 /* HolderCredentialViewer.swift */,
+				B044F9C725459E70003BF413 /* HolderCredentialLine.swift */,
 			);
 			path = Holder;
 			sourceTree = "<group>";
@@ -1007,6 +1036,7 @@
 				B0C529592524AF1100BBCD27 /* KeyboardFollower.swift in Sources */,
 				B075242B2529A59600DFE1B0 /* CredentialInput.swift in Sources */,
 				B0B82C2125270A34002D71FF /* RoleInfo.swift in Sources */,
+				B08B37E32542FC5800FC5D59 /* ReadHolderCardTask.swift in Sources */,
 				B0FD187D2541676500C4FDB5 /* HolderView.swift in Sources */,
 				B0B82C332527532E002D71FF /* JsonLdConvertor.swift in Sources */,
 				B08D47AF252B560800E10DAB /* Secp256k1ProofSettings.swift in Sources */,
@@ -1018,6 +1048,7 @@
 				B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */,
 				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
 				B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */,
+				B04962732541A99C004FBEDE /* HolderAssembly.swift in Sources */,
 				B07DE5FD2528EC1B003F8D9D /* ByteCountFormatter+.swift in Sources */,
 				B0C529702524EFE400BBCD27 /* TangemIdSdk.swift in Sources */,
 				B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */,
@@ -1028,8 +1059,10 @@
 				B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */,
 				B08D47A4252B10DE00E10DAB /* ImageHasher.swift in Sources */,
 				B0E6A28C2540471B0023681A /* DemoCredentials.swift in Sources */,
+				B0FFE3972541A79B00DE1C7E /* HolderViewCredentials.swift in Sources */,
 				B0298AB625230B7D004A2985 /* Gender.swift in Sources */,
 				B00F00BE253F241500D16E66 /* ShareView.swift in Sources */,
+				B08B37D82542B44D00FC5D59 /* HolderCredentialViewer.swift in Sources */,
 				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
 				B0993F5D2521C5E1003BEB85 /* IssuerCreateCredentialsView.swift in Sources */,
 				B0B82C3E25275BA1002D71FF /* CredentialCreator.swift in Sources */,
@@ -1088,12 +1121,15 @@
 				B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */,
 				B068AB052524678F006559F9 /* ImagePicker.swift in Sources */,
 				B007E1A22525F9F600B16E93 /* Command.swift in Sources */,
+				B08B37DD2542D40500FC5D59 /* DemoCredentialFactory.swift in Sources */,
+				B044F9C3254593D1003BF413 /* ChangeFilesTask.swift in Sources */,
 				B05FE38A251E0D080002D338 /* RoleSelectorView.swift in Sources */,
 				B0A99DDE2526EF7A006F4A5D /* Role.swift in Sources */,
 				B08D4793252AE33700E10DAB /* CredentialsController.swift in Sources */,
 				B07524222529A2C200DFE1B0 /* SnackMessageDisplayable.swift in Sources */,
 				B0298B052523426A004A2985 /* ClickableRowWithCheckbox.swift in Sources */,
 				B03B52072540738F00424CFE /* CredentialValidityFooter.swift in Sources */,
+				B044F9C825459E70003BF413 /* HolderCredentialLine.swift in Sources */,
 				B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */,
 				B0C529772525B26600BBCD27 /* IssuerInfo.swift in Sources */,
 				B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */,

@@ -15,16 +15,14 @@ typealias TangemVerifierManager = TangemIdSdk<TangemIdVerifier>
  final class TangemIdVerifier: ActionExecutioner {
 
 	private let tangemSdk: TangemSdk
-	private let credentialCreator: CredentialCreator
-	private let imageHasher: ImageHasher
+	private let viewCredentialFactory: ViewCredentialFactory
 	
 	private var readCredentials: [VerifiableCredential] = []
 	private var viewCredentials: VerifierViewCredentials?
 
-	init(tangemSdk: TangemSdk, credentialCreator: CredentialCreator, imageHasher: ImageHasher) {
+	init(tangemSdk: TangemSdk, viewCredentialFactory: ViewCredentialFactory) {
 		self.tangemSdk = tangemSdk
-		self.credentialCreator = credentialCreator
-		self.imageHasher = imageHasher
+		self.viewCredentialFactory = viewCredentialFactory
 	}
 
 	var executionerInfo: RoleInfo {
@@ -52,53 +50,15 @@ typealias TangemVerifierManager = TangemIdSdk<TangemIdVerifier>
 	}
 	
 	private func convertFilesToCreds(_ files: [File], completion: @escaping CompletionResult<VerifierViewCredentials>) {
-		let readCredentials = credentialCreator.createCredentials(from: files)
-		guard readCredentials.count > 0 else {
-			completion(.failure(.underlying(error: TangemIdError.noAvailableCredentials)))
-			return
+		let factoryResult = viewCredentialFactory.createVerifierViewCreds(files)
+		switch factoryResult {
+		case .success(let tuplet):
+			self.readCredentials = tuplet.creds
+			self.viewCredentials = tuplet.viewCreds
+			completion(.success(tuplet.viewCreds))
+		case .failure(let error):
+			completion(.failure(.underlying(error: error)))
 		}
-		self.readCredentials = readCredentials
-		let viewCredentials = createViewCredentials(for: readCredentials)
-		self.viewCredentials = viewCredentials
-		completion(.success(viewCredentials))
-	}
-	
-	private func createViewCredentials(for readCredentials: [VerifiableCredential]) -> VerifierViewCredentials {
-		var viewCreds = VerifierViewCredentials()
-		readCredentials.forEach {
-			let issuerInfo = IssuerVerificationInfo(address: $0.issuer, isTrusted: true)
-			if $0.type.contains(.TangemPhotoCredential),
-			   let photoBase64 = $0.credentialSubject[PhotoCredentialSubject.CodingKeys.photo.rawValue],
-			   let photoData = imageHasher.imageData(from: photoBase64) {
-				viewCreds.photo = .init(credentials: PhotoCredential(photo: photoData), issuer: issuerInfo, status: .valid)
-			}
-			
-			if $0.type.contains(.TangemPersonalInformationCredential),
-			   let name = $0.credentialSubject[PersonalInformationCredential.CodingKeys.givenName.rawValue],
-			   let surname = $0.credentialSubject[PersonalInformationCredential.CodingKeys.familyName.rawValue],
-			   let gender = $0.credentialSubject[PersonalInformationCredential.CodingKeys.gender.rawValue],
-			   let dateOfBirth = $0.credentialSubject[PersonalInformationCredential.CodingKeys.born.rawValue] {
-				
-				viewCreds.personalInfo = .init(credentials: PersonalInfoCredential(name: name, surname: surname, gender: gender, dateOfBirth: dateOfBirth), issuer: issuerInfo, status: .valid)
-			}
-			
-			if $0.type.contains(.TangemSsnCredential),
-			   let ssn = $0.credentialSubject[SsnCredentialSubject.CodingKeys.ssn.rawValue] {
-				
-				viewCreds.ssn = .init(credentials: SsnCredential(ssn: ssn), issuer: issuerInfo, status: .valid)
-			}
-			
-			if $0.type.contains(.TangemAgeOver21Credential) {
-				viewCreds.ageOver21 = .init(credentials: AgeOver21Credential(isOver21: $0.validFrom == nil ? true : $0.validFrom! <= Date()), issuer: issuerInfo, status: .valid)
-			}
-			
-			if $0.type.contains(.TangemCovidCredential) {
-				let covidResultStr = $0.credentialSubject[CovidCredentialSubject.CodingKeys.result.rawValue]
-				let status = CovidStatus(rawValue: covidResultStr ?? "") ?? .negative
-				viewCreds.covid = .init(credentials: CovidCredential(isCovidPositive: status == .positive), issuer: issuerInfo, status: .valid)
-			}
-		}
-		return viewCreds
 	}
 	
  }

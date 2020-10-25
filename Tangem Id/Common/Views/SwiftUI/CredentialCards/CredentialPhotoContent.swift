@@ -11,6 +11,12 @@ import SwiftUI
 struct CredentialPhotoContent: View {
 	
 	var image: UIImage
+	var isSquare: Bool = false
+	
+	init(image: UIImage, isSquare: Bool = false) {
+		self.image = image
+		self.isSquare = isSquare
+	}
 	
     var body: some View {
 		ZStack {
@@ -19,7 +25,7 @@ struct CredentialPhotoContent: View {
 			Image(uiImage: image)
 				.resizable(resizingMode: .stretch)
 				.aspectRatio(contentMode: .fill)
-				.frame(width: 201, height: 133)
+				.frame(width: !isSquare ? 201 : 150, height: !isSquare ? 133 : 150)
 				.clipped()
 				.padding(.vertical, 8)
 				.padding(.bottom, 16)

@@ -10,11 +10,12 @@ import SwiftUI
 
 struct ArrowBack: View {
 	let action: () -> Void
+	var color: Color = .tangemBlack
 	
 	var body: some View {
 		Button(action: action, label: {
 			Image(systemName: "arrow.left")
-				.foregroundColor(.tangemBlack)
+				.foregroundColor(color)
 		})
 		.padding()
 	}
@@ -88,5 +89,11 @@ extension NavigationBar where LeftButtons == ArrowBack, RightButtons == EmptyVie
 		self.title = title
 		self.titleFont = titleFont
 		self.titleColor = titleColor
+	}
+}
+
+struct NavigationBar_Previews: PreviewProvider {
+	static var previews: some View {
+		NavigationBar(title: "Hello, World!", backAction: {})
 	}
 }

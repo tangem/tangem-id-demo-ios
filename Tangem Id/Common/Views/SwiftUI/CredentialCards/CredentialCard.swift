@@ -119,19 +119,7 @@ struct CredentialCard_Previews: PreviewProvider {
 				})
 				.previewLayout(.fixed(width: 375, height: 400))
 			CredentialCard(title: LocalizationKeys.Common.personalInfo, contentBuilder: {
-				VStack(alignment: .leading) {
-					PersonalInformationView(title: LocalizationKeys.Common.name,
-											bodyText: "Tangem")
-					PersonalInformationView(title: LocalizationKeys.Common.surname,
-											bodyText: "Holder")
-					PersonalInformationView(title: LocalizationKeys.Common.dateOfBirth,
-											bodyText: "10/4/2020")
-					PersonalInformationView(title: LocalizationKeys.Common.gender,
-											bodyText: "Other")
-				}
-				.frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-				.padding(.bottom, 8)
-				.padding(.horizontal)
+				PersonalInformationView(name: "Tangem", surname: "Holder", dateOfBirth: "10/4/2020", gender: "Other")
 			}, footerBuilder: {
 				CredentialValidityFooter(status: .valid, issuerInfo: .init(address: "someaddressveryveryverylongaddress", isTrusted: false))
 			})

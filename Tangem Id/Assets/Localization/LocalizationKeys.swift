@@ -31,6 +31,15 @@ struct LocalizationKeys {
 			static let trusted: LocalizedStringKey = "trusted"
 			static let unknown: LocalizedStringKey = "unknown"
 		}
+		
+		struct Holder {
+			static let personalCard: LocalizedStringKey = "personal_card"
+			static let requestNewCreds: LocalizedStringKey = "request_new_credentials"
+			static let saveChanges: LocalizedStringKey = "save_changes"
+			static let jsonRepresentation: LocalizedStringKey = "json_representation"
+			static let shareJson: LocalizedStringKey = "share_json"
+			static let credentials: LocalizedStringKey = "credentials"
+		}
 	}
 	
 	struct NavigationBar {
