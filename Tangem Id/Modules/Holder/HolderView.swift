@@ -13,13 +13,12 @@ struct HolderView: View {
 	@Environment(\.presentationMode) var presentationMode
 	@ObservedObject var viewModel: HolderViewModel
 	
-	@State var isDisplayingPopup: Bool = false
-	@State var popupTitle: LocalizedStringKey = ""
-	@State var isShowingPhotoCreds: Bool = false
-	@State var isShowingPersonalInfo: Bool = false
-	@State var isShowingSsnCreds: Bool = false
-	@State var isShowingAgeOver21Creds: Bool = false
-	@State var isShowingCovidCreds: Bool = false
+	@State private var isShowingPhotoCreds = false
+	@State private var isShowingPersonalInfo = false
+	@State private var isShowingSsnCreds = false
+	@State private var isShowingAgeOver21Creds = false
+	@State private var isShowingCovidCreds = false
+	@State private var isShowingScanner = false
 	
 	var body: some View {
 		ZStack {
@@ -95,9 +94,9 @@ struct HolderView: View {
 								.background(Color.white.opacity(0.01))
 								.onTapGesture(perform: {
 									if self.viewModel.isEditing { return }
-									self.isDisplayingPopup = true
+									self.isShowingPhotoCreds = true
 								})
-								.sheet(isPresented: $isDisplayingPopup, content: {
+								.sheet(isPresented: $isShowingPhotoCreds, content: {
 									HolderCredentialViewer<PhotoCredential>(credential: photoCreds)
 								})
 							}
@@ -198,9 +197,12 @@ struct HolderView: View {
 						if self.viewModel.isEditing {
 							self.viewModel.saveChanges()
 						} else {
-							self.viewModel.requestNewCreds()
+							self.isShowingScanner = true
 						}
 					}
+					.sheet(isPresented: $isShowingScanner, content: {
+						self.scannerSheet
+					})
 					.transition(.opacity)
 					.buttonStyle(ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					.padding(.horizontal, 46)
@@ -212,6 +214,18 @@ struct HolderView: View {
 		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.modifier(HiddenSystemNavigation())
 	}
+	
+	var scannerSheet : some View {
+			CodeScannerView(
+				codeTypes: [.qr],
+				completion: { result in
+					if case let .success(code) = result {
+						self.isShowingScanner = false
+						self.viewModel.qrCodeScanned(code)
+					}
+				}
+			)
+		}
 }
 
 struct HolderView_Previews: PreviewProvider {

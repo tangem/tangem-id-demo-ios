@@ -98,6 +98,8 @@ struct LocalizedStrings {
 		
 		static let failedToSignCredentials = "failed_to_sign_error".localizedString()
 		static let failedToWriteCredentials = "failed_to_write_creds_error".localizedString()
+		
+		static let alreadyHasCredential = "already_has_credential".localizedString()
 	}
 }
 

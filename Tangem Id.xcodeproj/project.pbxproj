@@ -33,6 +33,7 @@
 		B0413BD32522EEB500140A70 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BD22522EEB500140A70 /* RadioButton.swift */; };
 		B044F9C3254593D1003BF413 /* ChangeFilesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */; };
 		B044F9C825459E70003BF413 /* HolderCredentialLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9C725459E70003BF413 /* HolderCredentialLine.swift */; };
+		B044F9D42545D13A003BF413 /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9D32545D13A003BF413 /* CodeScanner.swift */; };
 		B04962732541A99C004FBEDE /* HolderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04962722541A99C004FBEDE /* HolderAssembly.swift */; };
 		B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */; };
 		B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */; };
@@ -169,6 +170,7 @@
 		B0413BD22522EEB500140A70 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
 		B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilesTask.swift; sourceTree = "<group>"; };
 		B044F9C725459E70003BF413 /* HolderCredentialLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderCredentialLine.swift; sourceTree = "<group>"; };
+		B044F9D32545D13A003BF413 /* CodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeScanner.swift; sourceTree = "<group>"; };
 		B04962722541A99C004FBEDE /* HolderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderAssembly.swift; sourceTree = "<group>"; };
 		B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorViewModel.swift; sourceTree = "<group>"; };
 		B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
@@ -368,6 +370,14 @@
 				B0413BD22522EEB500140A70 /* RadioButton.swift */,
 			);
 			path = RadioSegmentSelector;
+			sourceTree = "<group>";
+		};
+		B044F9D22545D0C8003BF413 /* QRScanner */ = {
+			isa = PBXGroup;
+			children = (
+				B044F9D32545D13A003BF413 /* CodeScanner.swift */,
+			);
+			path = QRScanner;
 			sourceTree = "<group>";
 		};
 		B05FE379251E0D080002D338 = {
@@ -768,6 +778,7 @@
 		B0DF08FB2520D9820077479E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B044F9D22545D0C8003BF413 /* QRScanner */,
 				B00A67A7253D7114002D7D53 /* Alert */,
 				B07DE5EB2528BD91003F8D9D /* Snackbar */,
 				B0C529602524B41C00BBCD27 /* DatePicker */,
@@ -830,6 +841,8 @@
 			dependencies = (
 			);
 			name = "Tangem Id";
+			packageProductDependencies = (
+			);
 			productName = "Tangem Id";
 			productReference = B05FE382251E0D080002D338 /* Tangem Id.app */;
 			productType = "com.apple.product-type.application";
@@ -904,6 +917,8 @@
 				Base,
 			);
 			mainGroup = B05FE379251E0D080002D338;
+			packageReferences = (
+			);
 			productRefGroup = B05FE383251E0D080002D338 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1055,6 +1070,7 @@
 				B0993F432521B362003BEB85 /* Assembly+Module.swift in Sources */,
 				B0D4AC692526F59F006F3FA4 /* RoleAction.swift in Sources */,
 				B00F0086253EFC6200D16E66 /* WriteIssuerFilesTask.swift in Sources */,
+				B044F9D42545D13A003BF413 /* CodeScanner.swift in Sources */,
 				B07DE5ED2528BD9C003F8D9D /* Snackbar.swift in Sources */,
 				B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */,
 				B08D47A4252B10DE00E10DAB /* ImageHasher.swift in Sources */,

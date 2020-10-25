@@ -76,6 +76,8 @@
 "failed_to_write_creds_error" = "Failed to write credentials: %@";
 "failed_to_create_creds_from_cbor" = "Failed to create credentials from provided info";
 
+"already_has_credential" = "The holder already has this credential";
+
 
 // MARK: - Tangem Id Core messages
 "scan_issuer_card" = "Tap Issuer's Card";

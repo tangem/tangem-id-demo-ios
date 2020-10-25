@@ -38,6 +38,8 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 	@Published var snackMessage: SnackData = .emptySnack
 	@Published var isShowingSnack: Bool = false
 	
+	var scannedQrCode: String = ""
+	
 	private var originalCredentials: HolderViewCredentials?
 	private var credsToDelete: [File] = []
 	private var credsToUpdateVisibility: [Int: File] = [:]
@@ -121,7 +123,11 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 		}))
 	}
 	
-	func requestNewCreds() {
+	func qrCodeScanned(_ qr: String) {
+		guard holderCredentials.covid == nil else {
+			showInfoSnack(message: LocalizedStrings.Snacks.alreadyHasCredential)
+			return
+		}
 		
 	}
 	
