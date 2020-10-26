@@ -32,12 +32,13 @@ protocol CredentialCreator: class {
 	func createCredentialsToSign(issuerDidAddress: String, input: CredentialInput, holderEthereumAddress: String) throws -> [VerifiableCredential]
 	func createCredentials(from files: [File]) -> [VerifiableCredential]
 	func createCredentials(from file: File) -> VerifiableCredential?
+	func createCovidCredentials(issuerDidAddress: String, holderEthereumAddress: String) throws -> VerifiableCredential
 }
 
 class DemoCredentialCreator {
 	
 	enum DemoCredsType {
-		case photo, personalInfo, ssn, isOver21
+		case photo, personalInfo, ssn, isOver21, covid
 		
 		var verifiableCredsTypes: [VerifiableCredentialType] {
 			[.VerifiableCredential, .TangemEthCredential, self.credUniqueType]
@@ -49,12 +50,18 @@ class DemoCredentialCreator {
 			case .personalInfo: return .TangemPersonalInformationCredential
 			case .ssn: return .TangemSsnCredential
 			case .isOver21: return .TangemAgeOver21Credential
+			case .covid: return .TangemCovidCredential
 			}
 		}
 	}
 	
 	private let blockchain = Blockchain.ethereum(testnet: false)
 	private let imageHasher: ImageHasher
+	private lazy var jsonEncoder: JSONEncoder = {
+		let jsonEncoder = JSONEncoder()
+		jsonEncoder.dateEncodingStrategy = .formatted(DateFormatter.iso8601withMilliSeconds)
+		return jsonEncoder
+	}()
 	
 	internal init(imageHasher: ImageHasher) {
 		self.imageHasher = imageHasher
@@ -96,6 +103,11 @@ class DemoCredentialCreator {
 		return creds
 	}
 	
+	private func covidCreds(issuerAddress: String, subjectAddress: String) -> VerifiableCredential {
+		let covidCreds = CovidCredentialSubject(id: subjectAddress, result: .negative)
+		return verifiableCredential(from: issuerAddress, for: covidCreds, credType: .covid)
+	}
+	
 }
 
 extension DemoCredentialCreator: CredentialCreator {
@@ -109,8 +121,6 @@ extension DemoCredentialCreator: CredentialCreator {
 			ageOver21Creds(issuerAddress: issuerDidAddress, subjectAddress: didHolder, input: input)
 		]
 		
-		let jsonEncoder = JSONEncoder()
-		jsonEncoder.dateEncodingStrategy = .formatted(DateFormatter.iso8601withMilliSeconds)
 		var credsHashes: [Data] = []
 		do {
 			try credsHashes = credentials
@@ -144,5 +154,19 @@ extension DemoCredentialCreator: CredentialCreator {
 			print("Failed to create credential for: \(cbor)")
 			return nil
 		}
+	}
+	
+	func createCovidCredentials(issuerDidAddress: String, holderEthereumAddress: String) throws -> VerifiableCredential {
+		let didHolder = IdConstants.didPrefix + holderEthereumAddress
+		let covidCredential = covidCreds(issuerAddress: issuerDidAddress, subjectAddress: didHolder)
+		let hash: Data
+		do {
+			hash = (try jsonEncoder.encode(covidCredential)).sha3(.sha512)
+		}
+		let singleHash = Data(fromArray: [0]) + hash
+		let ethCredsStatus = blockchain.makeAddress(from: singleHash)
+		covidCredential.ethCredentialStatus = ethCredsStatus
+		
+		return covidCredential
 	}
 }

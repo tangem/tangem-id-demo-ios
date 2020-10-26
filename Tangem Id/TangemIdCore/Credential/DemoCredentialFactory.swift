@@ -49,7 +49,7 @@ struct DemoCredentialFactory: ViewCredentialFactory {
 	}
 	
 	func createHolderViewCreds(cardId: String, files: [File]) -> Result<(creds: [VerifiableCredential], viewCreds: HolderViewCredentials), TangemIdError> {
-		var viewCreds = HolderViewCredentials(cardId: cardId)
+		let viewCreds = HolderViewCredentials(cardId: cardId)
 		var credentials = [VerifiableCredential]()
 		files.forEach {
 			guard let creds = credentialCreator.createCredentials(from: $0) else { return }

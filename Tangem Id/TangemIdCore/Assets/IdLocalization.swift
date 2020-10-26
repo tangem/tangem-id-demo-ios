@@ -33,5 +33,7 @@ struct IdLocalization {
 		static let failedToCreateJsonRepresentation = "failed_to_create_json_representation".localizedString()
 		static let failedToCreateCredsFromCbor = "failed_to_create_creds_from_cbor".localizedString()
 		static let noAvailableCredentialsOnCard = "no_available_credentials_on_card".localizedString()
+		static let noHolderInformation = "no_holder_information".localizedString()
+		static let failedToReceiveCredentialsInfo = "failed_to_receive_credentials_info".localizedString()
 	}
 }

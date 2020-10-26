@@ -139,7 +139,7 @@ CHECKOUT OPTIONS:
     :git: https://bitbucket.org/tangem/hdwallet.git
     :tag: 0.3.8
   TangemSdk:
-    :commit: 60c4e2cce3084bff03b0e2d8b055ee113fd0329c
+    :commit: 25fe75129b4035db76b8e802a06de6b2eb06e539
     :git: "git@bitbucket.org:tangem/card-sdk-swift.git"
   web3swift:
     :git: https://bitbucket.org/tangem/web3swift.git

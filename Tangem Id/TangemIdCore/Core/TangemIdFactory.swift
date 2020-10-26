@@ -33,7 +33,12 @@ struct TangemIdFactory: TangemIdFactoryType {
 	}
 	
 	func createHolderManager() -> TangemHolderManager {
-		TangemIdSdk(executioner: TangemIdHolder(tangemSdk: tangemSdk, viewCredentialFactory: DemoCredentialFactory(imageHasher: JpegSha3ImageHasher(), credentialCreator: factory.makeCreator(.demo))))
+		let credsCreator = factory.makeCreator(.demo)
+		return TangemIdSdk(executioner: TangemIdHolder(tangemSdk: tangemSdk,
+													   viewCredentialFactory: DemoCredentialFactory(imageHasher: JpegSha3ImageHasher(),
+																									credentialCreator: credsCreator),
+													   credentialCreator: credsCreator,
+													   proofCreator: Secp256k1ProofCreator()))
 	}
 	
 }

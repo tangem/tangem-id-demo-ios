@@ -12,6 +12,7 @@
 		B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67A8253D7122002D7D53 /* AlertBinder.swift */; };
 		B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */; };
 		B00A67BF253DDE96002D7D53 /* RootPresentationModeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */; };
+		B00D7A902546B41E00D0B460 /* TangemIdUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */; };
 		B00F0086253EFC6200D16E66 /* WriteIssuerFilesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */; };
 		B00F00AA253F0AA100D16E66 /* String+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00A9253F0AA100D16E66 /* String+CBOR.swift */; };
 		B00F00AF253F0ABC00D16E66 /* Array+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */; };
@@ -148,6 +149,7 @@
 		B00A67A8253D7122002D7D53 /* AlertBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBinder.swift; sourceTree = "<group>"; };
 		B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModeKey.swift; sourceTree = "<group>"; };
+		B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdUtils.swift; sourceTree = "<group>"; };
 		B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteIssuerFilesTask.swift; sourceTree = "<group>"; };
 		B00F00A9253F0AA100D16E66 /* String+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CBOR.swift"; sourceTree = "<group>"; };
 		B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CBOR.swift"; sourceTree = "<group>"; };
@@ -750,6 +752,7 @@
 				B0C5297B2525B9E600BBCD27 /* TangemIdError.swift */,
 				B08C33EC2527743200194BF1 /* TangemIdFactory.swift */,
 				B0800F5A252C339B007E04EE /* IdConstants.swift */,
+				B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1085,6 +1088,7 @@
 				B00F00B4253F0AD300D16E66 /* Dict+CBOR.swift in Sources */,
 				B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */,
 				B0C5297C2525B9E600BBCD27 /* TangemIdError.swift in Sources */,
+				B00D7A902546B41E00D0B460 /* TangemIdUtils.swift in Sources */,
 				B07DE5F52528EBB2003F8D9D /* UIImage+ScaleCrop.swift in Sources */,
 				B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */,
 				B03A3C1125220C0300937676 /* Checkbox.swift in Sources */,

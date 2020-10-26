@@ -20,6 +20,8 @@ public enum TangemIdError: LocalizedError, Hashable {
 	case failedToCreateJsonRepresentation
 	case notValidCborData
 	case noAvailableCredentials
+	case noHolderInformation
+	case failedToReceiveCredentialInformation
 	
 	public var errorDescription: String? {
 		switch self {
@@ -33,6 +35,8 @@ public enum TangemIdError: LocalizedError, Hashable {
 		case .failedToCreateJsonRepresentation: return IdLocalization.Errors.failedToCreateJsonRepresentation
 		case .notValidCborData: return IdLocalization.Errors.failedToCreateCredsFromCbor
 		case .noAvailableCredentials: return IdLocalization.Errors.noAvailableCredentialsOnCard
+		case .noHolderInformation: return IdLocalization.Errors.noHolderInformation
+		case .failedToReceiveCredentialInformation: return IdLocalization.Errors.failedToReceiveCredentialsInfo
 		}
 
 	}

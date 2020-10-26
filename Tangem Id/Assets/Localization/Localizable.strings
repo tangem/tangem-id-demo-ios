@@ -96,3 +96,5 @@
 "failed_to_read_issuer_card" = "Something went wrong in interaction with a card";
 "failed_to_create_json_representation" = "Can't create JSON representation of provided data";
 "no_available_credentials_on_card" = "This card doesn't contain credentials. Please, use another card";
+"no_holder_information" = "Failed to find Holder information. Please, rescan card";
+"failed_to_receive_credentials_info" = "Failed to receive new credential information. Please, try again later";

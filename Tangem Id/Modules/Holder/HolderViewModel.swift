@@ -128,7 +128,16 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 			showInfoSnack(message: LocalizedStrings.Snacks.alreadyHasCredential)
 			return
 		}
-		
+		holderManager.execute(action: .requestCovidCreds(completion: { [weak self] (result) in
+			switch result {
+			case .success(let covidCreds):
+				self?.holderCredentials.covid = covidCreds
+				self?.objectWillChange.send()
+				break
+			case .failure(let error):
+				self?.showErrorSnack(message: error.localizedDescription)
+			}
+		}))
 	}
 	
 }
