@@ -36,7 +36,7 @@ struct HolderView: View {
 									self.presentationMode.wrappedValue.dismiss()
 								}, color: .white)
 							  }, rightItems: {
-								
+								EmptyView()
 							})
 				ScrollView {
 					VStack {
@@ -79,7 +79,7 @@ struct HolderView: View {
 							.padding(18)
 						}
 						Group {
-							if let photoCreds = viewModel.holderCredentials.photo {
+							viewModel.holderCredentials.photo.map { photoCreds in
 								HolderCredentialLine(
 									name: LocalizationKeys.Common.photo,
 									isPrivate: photoCreds.file.fileSettings == .private,
@@ -100,7 +100,7 @@ struct HolderView: View {
 									HolderCredentialViewer<PhotoCredential>(credential: photoCreds)
 								})
 							}
-							if let personalInfo = viewModel.holderCredentials.personalInfo {
+							viewModel.holderCredentials.personalInfo.map { personalInfo in
 								HolderCredentialLine(
 									name: LocalizationKeys.Common.personalInfo,
 									isPrivate: personalInfo.file.fileSettings == .private,
@@ -121,7 +121,7 @@ struct HolderView: View {
 									HolderCredentialViewer<PersonalInfoCredential>(credential: personalInfo)
 								})
 							}
-							if let ssn = viewModel.holderCredentials.ssn {
+							viewModel.holderCredentials.ssn.map { ssn in
 								HolderCredentialLine(
 									name: LocalizationKeys.Common.ssn,
 									isPrivate: ssn.file.fileSettings == .private,
@@ -142,7 +142,7 @@ struct HolderView: View {
 									HolderCredentialViewer<SsnCredential>(credential: ssn)
 								})
 							}
-							if let ageOver21 = viewModel.holderCredentials.ageOver21 {
+							viewModel.holderCredentials.ageOver21.map { ageOver21 in
 								HolderCredentialLine(
 									name: LocalizationKeys.Common.ageOver21,
 									isPrivate: ageOver21.file.fileSettings == .private,
@@ -163,7 +163,7 @@ struct HolderView: View {
 									HolderCredentialViewer<AgeOver21Credential>(credential: ageOver21)
 								})
 							}
-							if let covidCreds = viewModel.holderCredentials.covid {
+							viewModel.holderCredentials.covid.map { covidCreds in
 								HolderCredentialLine(
 									name: LocalizationKeys.Common.covidImmunity,
 									isPrivate: covidCreds.file.fileSettings == .private,
@@ -216,16 +216,16 @@ struct HolderView: View {
 	}
 	
 	var scannerSheet : some View {
-			CodeScannerView(
-				codeTypes: [.qr],
-				completion: { result in
-					if case let .success(code) = result {
-						self.isShowingScanner = false
-						self.viewModel.qrCodeScanned(code)
-					}
+		CodeScannerView(
+			codeTypes: [.qr],
+			completion: { result in
+				if case let .success(code) = result {
+					self.isShowingScanner = false
+					self.viewModel.qrCodeScanned(code)
 				}
-			)
-		}
+			}
+		)
+	}
 }
 
 struct HolderView_Previews: PreviewProvider {

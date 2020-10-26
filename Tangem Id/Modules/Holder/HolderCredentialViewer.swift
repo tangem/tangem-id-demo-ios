@@ -70,7 +70,7 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 				}
 				ScrollView {
 					content
-					if !credential.json.isEmpty, isShowingJson {
+					if !credential.json.isEmpty && self.isShowingJson {
 						VStack {
 							Text(LocalizationKeys.Modules.Holder.jsonRepresentation)
 								.bold()
@@ -84,7 +84,7 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 						.animation(.easeInOut)
 					}
 				}
-			}
+		}
 	}
 	
 	var body: some View {
@@ -100,7 +100,7 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 				.foregroundColor(.tangemBlue)
 				if !credential.json.isEmpty {
 					Button(!isShowingJson ? LocalizationKeys.Common.showJsonCreds : LocalizationKeys.Modules.Holder.shareJson) {
-						if !isShowingJson {
+						if !self.isShowingJson {
 							withAnimation {
 								self.isShowingJson = true
 							}

@@ -81,14 +81,15 @@ struct VerifierView: View {
 				self.presentationMode.wrappedValue.dismiss()
 			}
 			ScrollView {
-				if let photoCreds = viewModel.credentials.photo, let image = UIImage(data: photoCreds.credentials.photo) {
+				viewModel.credentials.photo.map { photoCreds in
+//					let image = UIImage(data: photoCreds.credentials.photo)!
 					CredentialCard(title: LocalizationKeys.Common.photo, contentBuilder: {
-						CredentialPhotoContent(image: image)
+						CredentialPhotoContent(image: UIImage())
 					}, footerBuilder: {
 						CredentialValidityFooter(status: photoCreds.status, issuerInfo: photoCreds.issuer)
 					})
 				}
-				if let personalInfoCreds = viewModel.credentials.personalInfo {
+				viewModel.credentials.personalInfo.map { personalInfoCreds in
 					CredentialCard(title: LocalizationKeys.Common.personalInfo, contentBuilder: {
 						PersonalInformationView(name: personalInfoCreds.credentials.name,
 												surname: personalInfoCreds.credentials.surname,
@@ -99,7 +100,7 @@ struct VerifierView: View {
 					})
 					.frame(minHeight: 420, maxHeight: .infinity)
 				}
-				if let ssn = viewModel.credentials.ssn {
+				viewModel.credentials.ssn.map { ssn in
 					CredentialCard(title: LocalizationKeys.Common.ssn, supplementBuilder: {
 						Text(ssn.credentials.ssn)
 					}, contentBuilder: {
@@ -110,7 +111,7 @@ struct VerifierView: View {
 						CredentialValidityFooter(status: ssn.status, issuerInfo: ssn.issuer)
 					})
 				}
-				if let ageOver21 = viewModel.credentials.ageOver21 {
+				viewModel.credentials.ageOver21.map { ageOver21 in
 					CredentialCard(title: LocalizationKeys.Common.ageOver21, contentBuilder: {
 						CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid,
 														   isCheckboxSelected: ageOver21.credentials.isOver21)
@@ -118,7 +119,7 @@ struct VerifierView: View {
 						CredentialValidityFooter(status: ageOver21.status, issuerInfo: ageOver21.issuer)
 					})
 				}
-				if let covidCreds = viewModel.credentials.covid {
+				viewModel.credentials.covid.map { covidCreds in
 					CredentialCard(title: LocalizationKeys.Common.covidImmunity, contentBuilder: {
 						CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid,
 														   isCheckboxSelected: covidCreds.credentials.isCovidPositive)
@@ -129,11 +130,11 @@ struct VerifierView: View {
 				Spacer()
 					.frame(width: 10, height: 55)
 				Button(LocalizationKeys.Common.showJsonCreds) {
-					viewModel.loadJsonRepresentation()
+					self.viewModel.loadJsonRepresentation()
 				}
 				.buttonStyle(ScreenPaddingButtonStyle.transparentBackWithBlueText)
 				.sheet(isPresented: $isJsonPresentationShown, content: {
-					JsonViewer(jsonMessage: viewModel.jsonRepresentation)
+					JsonViewer(jsonMessage: self.viewModel.jsonRepresentation)
 				})
 				Spacer()
 					.frame(width: 10, height: 18)
@@ -148,7 +149,7 @@ struct VerifierView: View {
 		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.onReceive(viewModel.$jsonRepresentation, perform: { jsonRepresentation in
 			if jsonRepresentation.isEmpty { return }
-			isJsonPresentationShown = true
+			self.isJsonPresentationShown = true
 		})
 	}
 }
