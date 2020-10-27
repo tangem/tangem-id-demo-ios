@@ -76,7 +76,7 @@ extension RoleSelectorViewModel {
 				self.isVerifier = true
 				self.state = .verifier
 			case .failure(let error):
-				self.showErrorSnack(message: error.localizedDescription)
+				self.showErrorSnack(error: error)
 			}
 		}))
 	}
@@ -90,7 +90,7 @@ extension RoleSelectorViewModel {
 				self.isHolder = true
 				self.state = .holder
 			case .failure(let error):
-				self.showErrorSnack(message: error.localizedDescription)
+				self.showErrorSnack(error: error)
 			}
 		}))
 	}

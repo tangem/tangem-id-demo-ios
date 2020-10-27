@@ -75,11 +75,11 @@ extension DemoCredentialsController: CredentialsControllerType {
 					self.signedCreds = creds
 					completion(.success(()))
 				case .failure(let tangemError):
-					completion(.failure(.cardSdkError(sdkError: tangemError.localizedDescription)))
+					completion(.failure(tangemError))
 				}
 			}
 		} catch {
-			completion(.failure(.credentialSigningError(error: error.localizedDescription)))
+			completion(.failure(.underlying(error: TangemIdError.credentialSigningError(error: error.localizedDescription))))
 		}
 	}
 	
@@ -92,7 +92,7 @@ extension DemoCredentialsController: CredentialsControllerType {
 				completion(.success(()))
 				print("Files written to card: \(response)")
 			case .failure(let error):
-				completion(.failure(.cardSdkError(sdkError: error.localizedDescription)))
+				completion(.failure(error))
 			}
 		}
 	}

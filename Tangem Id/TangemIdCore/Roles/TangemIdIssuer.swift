@@ -73,7 +73,7 @@ final class TangemIdIssuer: ActionExecutioner {
 					self.isValidIssuerCard(cardInfo),
 					let cardId = cardInfo.cardId
 				else {
-					completion(.failure(.notValidIssuerCard))
+					completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
 					return
 				}
 				let wallet = self.walletFactory.makeWalletManager(from: cardInfo)
@@ -87,7 +87,7 @@ final class TangemIdIssuer: ActionExecutioner {
 																 proofCreator: Secp256k1ProofCreator())
 				completion(.success(()))
 			case .failure(let error):
-				completion(.failure(.cardSdkError(sdkError: error.localizedDescription)))
+				completion(.failure(error))
 			}
 		}
 	}
@@ -101,14 +101,14 @@ final class TangemIdIssuer: ActionExecutioner {
 					self.isValidHolderCard(card),
 					let walletPublicKey = card.walletPublicKey
 				else {
-					completion(.failure(.notValidHolderCard))
+					completion(.failure(.underlying(error: TangemIdError.notValidHolderCard)))
 					return
 				}
 				self.holderCardId = card.cardId
 				self.holderEthAddress = self.ethereumBlockchain.makeAddress(from: walletPublicKey)
 				completion(.success(()))
 			case .failure(let error):
-				completion(.failure(TangemIdError.cardSdkError(sdkError: error.localizedDescription)))
+				completion(.failure(error))
 			}
 		}
 	}
@@ -117,7 +117,7 @@ final class TangemIdIssuer: ActionExecutioner {
 		guard
 			let holderEthAddress = holderEthAddress
 			else {
-			completion(.failure(.notValidIssuerCard))
+			completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
 			return
 		}
 		signWorkItem = DispatchWorkItem { [weak self] in

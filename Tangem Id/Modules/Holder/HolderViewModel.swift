@@ -118,7 +118,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 				self?.credsToUpdateVisibility.removeAll()
 				self?.objectWillChange.send()
 			case .failure(let error):
-				self?.showErrorSnack(message: error.localizedDescription)
+				self?.showErrorSnack(error: error)
 			}
 		}))
 	}
@@ -135,7 +135,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 				self?.objectWillChange.send()
 				break
 			case .failure(let error):
-				self?.showErrorSnack(message: error.localizedDescription)
+				self?.showErrorSnack(error: error)
 			}
 		}))
 	}

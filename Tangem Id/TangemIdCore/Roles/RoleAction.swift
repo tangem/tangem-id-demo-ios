@@ -12,7 +12,7 @@ import Combine
 
 protocol ActionType {}
 
-typealias EmptyResponse = (Result<Void, TangemIdError>) -> Void
+typealias EmptyResponse = (Result<Void, TangemSdkError>) -> Void
 
 enum IssuerAction: ActionType {
 	case authorizeAsIssuer(EmptyResponse)

@@ -48,7 +48,7 @@ class IssuerViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 				self.createCredentialsLink = try! self.moduleAssembly.assembledView(for: .issuerCreateCredentials(manager: self.issuerManager))
 				self.isCreatingCredentials = true
 			case .failure(let error):
-				self.showErrorSnack(message: error.localizedDescription)
+				self.showErrorSnack(error: error)
 			}
 		})
 	}

@@ -6,11 +6,11 @@
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
-import Foundation
+import TangemSdk
 
-public enum TangemIdError: LocalizedError, Hashable {
+public enum TangemIdError: LocalizedError {
 	
-	case cardSdkError(sdkError: String)
+	case cardSdkError(sdkError: TangemSdkError)
 	case youNotAuthorized
 	case wrongAuthorization
 	case notValidIssuerCard
@@ -25,7 +25,7 @@ public enum TangemIdError: LocalizedError, Hashable {
 	
 	public var errorDescription: String? {
 		switch self {
-		case .cardSdkError(let sdkError): return sdkError
+		case .cardSdkError(let sdkError): return sdkError.localizedDescription
 		case .youNotAuthorized: return IdLocalization.Errors.youNotAuthorized
 		case .wrongAuthorization: return IdLocalization.Errors.wrongAuthorization
 		case .notValidIssuerCard: return IdLocalization.Errors.invalidIssuerCard
