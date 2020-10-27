@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		113E01595C413ACF3067056F /* Pods_Tangem_IdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */; };
+		B00498E3254800F500EE3C5E /* IdMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00498E2254800F500EE3C5E /* IdMessages.swift */; };
 		B007E1A22525F9F600B16E93 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E1A12525F9F600B16E93 /* Command.swift */; };
 		B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67A8253D7122002D7D53 /* AlertBinder.swift */; };
 		B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */; };
@@ -147,6 +148,7 @@
 		528375D1826D7575429E5B5C /* Pods-Tangem IdTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.release.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.release.xcconfig"; sourceTree = "<group>"; };
 		5FDE8B3725CF46D1E1FB58F7 /* Pods-Tangem IdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.debug.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_IdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00498E2254800F500EE3C5E /* IdMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdMessages.swift; sourceTree = "<group>"; };
 		B007E1A12525F9F600B16E93 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		B00A67A8253D7122002D7D53 /* AlertBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBinder.swift; sourceTree = "<group>"; };
 		B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
@@ -758,6 +760,7 @@
 				B08C33EC2527743200194BF1 /* TangemIdFactory.swift */,
 				B0800F5A252C339B007E04EE /* IdConstants.swift */,
 				B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */,
+				B00498E2254800F500EE3C5E /* IdMessages.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1062,6 +1065,7 @@
 				B0B82C2125270A34002D71FF /* RoleInfo.swift in Sources */,
 				B08B37E32542FC5800FC5D59 /* ReadHolderCardTask.swift in Sources */,
 				B0FD187D2541676500C4FDB5 /* HolderView.swift in Sources */,
+				B00498E3254800F500EE3C5E /* IdMessages.swift in Sources */,
 				B0B82C332527532E002D71FF /* JsonLdConvertor.swift in Sources */,
 				B08D47AF252B560800E10DAB /* Secp256k1ProofSettings.swift in Sources */,
 				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,

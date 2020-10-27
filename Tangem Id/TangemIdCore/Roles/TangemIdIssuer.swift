@@ -65,7 +65,7 @@ final class TangemIdIssuer: ActionExecutioner {
 	
 	private func authorizeIssuer(completion: @escaping EmptyResponse) {
 		let readCard = ReadRoleCardTask(targetCardType: .idIssuer)
-		tangemSdk.startSession(with: readCard, initialMessage: Message(header: IdLocalization.Common.scanIssuerCard, body: nil)) { [weak self] (result) in
+		tangemSdk.startSession(with: readCard, initialMessage: IdMessages.scanIssuerCard) { [weak self] (result) in
 			guard let self = self else { return }
 			switch result {
 			case .success(let cardInfo):
@@ -95,7 +95,7 @@ final class TangemIdIssuer: ActionExecutioner {
 	
 	private func scanHolderCard(completion: @escaping EmptyResponse) {
 		let readCard = ReadRoleCardTask(targetCardType: .idCard)
-		tangemSdk.startSession(with: readCard, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil)) { [weak self] (result) in
+		tangemSdk.startSession(with: readCard, initialMessage: IdMessages.scanHolderCard) { [weak self] (result) in
 			guard let self = self else { return }
 			switch result {
 			case .success(let card):

@@ -19,6 +19,7 @@ struct HolderView: View {
 	@State private var isShowingAgeOver21Creds = false
 	@State private var isShowingCovidCreds = false
 	@State private var isShowingScanner = false
+	@State private var isShowingSettings = false
 	
 	var body: some View {
 		ZStack {
@@ -36,7 +37,25 @@ struct HolderView: View {
 									self.presentationMode.wrappedValue.dismiss()
 								}, color: .white)
 							  }, rightItems: {
-								EmptyView()
+								Button(action: { self.isShowingSettings = true }) {
+									Image(systemName: "ellipsis")
+										.resizable()
+										.scaledToFit()
+										.frame(width: 18, height: 18)
+								}
+								.padding()
+								.rotationEffect(.init(degrees: 90))
+								.foregroundColor(.white)
+								.actionSheet(isPresented: $isShowingSettings) {
+									ActionSheet(title: Text(LocalizationKeys.Modules.Holder.selectAction),
+												message: nil,
+												buttons: [
+													.default(Text(LocalizationKeys.Modules.Holder.changePasscode), action: {
+														self.viewModel.changePasscode()
+													}),
+													.cancel()
+									])
+								}
 							})
 				ScrollView {
 					VStack {
@@ -78,7 +97,7 @@ struct HolderView: View {
 							})
 							.padding(18)
 						}
-						Group {
+						VStack(spacing: 0) {
 							viewModel.holderCredentials.photo.map { photoCreds in
 								HolderCredentialLine(
 									name: LocalizationKeys.Common.photo,

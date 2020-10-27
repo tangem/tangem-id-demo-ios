@@ -140,4 +140,16 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 		}))
 	}
 	
+	func changePasscode() {
+		holderManager.execute(action: .changePasscode(completion: { [weak self] (result) in
+			switch result {
+			case .success(let response):
+				print(response)
+				self?.showInfoSnack(message: LocalizedStrings.Snacks.passcodeChanged)
+			case .failure(let error):
+				self?.showErrorSnack(error: error)
+			}
+		}))
+	}
+	
 }

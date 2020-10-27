@@ -39,6 +39,8 @@ struct LocalizationKeys {
 			static let jsonRepresentation: LocalizedStringKey = "json_representation"
 			static let shareJson: LocalizedStringKey = "share_json"
 			static let credentials: LocalizedStringKey = "credentials"
+			static let selectAction: LocalizedStringKey = "select_settings_action"
+			static let changePasscode: LocalizedStringKey = "change_passcode"
 		}
 	}
 	
@@ -100,6 +102,8 @@ struct LocalizedStrings {
 		static let failedToWriteCredentials = "failed_to_write_creds_error".localizedString()
 		
 		static let alreadyHasCredential = "already_has_credential".localizedString()
+		
+		static let passcodeChanged = "passcode_changed".localizedString()
 	}
 }
 

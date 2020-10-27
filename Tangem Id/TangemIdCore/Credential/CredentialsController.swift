@@ -62,7 +62,7 @@ extension DemoCredentialsController: CredentialsControllerType {
 				hashesToSign.append(proofHashTuplet.1)
 			}
 			
-			tangemSdk.sign(hashes: hashesToSign, cardId: issuerCardId, initialMessage: Message(header: IdLocalization.Common.scanIssuerCard, body: nil)) { [weak self] (result) in
+			tangemSdk.sign(hashes: hashesToSign, cardId: issuerCardId, initialMessage: IdMessages.scanIssuerCard) { [weak self] (result) in
 				guard let self = self else { return }
 				switch result {
 				case .success(let signResponse):

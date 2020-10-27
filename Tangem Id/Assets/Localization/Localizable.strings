@@ -50,6 +50,9 @@
 "json_representation" = "JSON representation:";
 "share_json" = "Share JSON";
 "credentials" = "Credentials";
+"select_settings_action" = "Select action";
+"change_passcode" = "Change passcode";
+"passcode_changed" = "Passcode has been changed";
 
 "show_json_creds" = "Show credentials JSON";
 "issuer_details" = "Issuer's Details";

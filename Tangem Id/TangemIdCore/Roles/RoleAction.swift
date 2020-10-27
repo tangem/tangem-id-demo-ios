@@ -31,4 +31,5 @@ enum HolderAction: ActionType {
 	case scanHolderCredentials(completion: CompletionResult<HolderViewCredentials>)
 	case saveChanges(filesToDelete: [File], filesToUpdateSettings: [File], completion: CompletionResult<SimpleResponse>)
 	case requestCovidCreds(completion: CompletionResult<HolderCredential<CovidCredential>>)
+	case changePasscode(completion: CompletionResult<SetPinResponse>)
 }

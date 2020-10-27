@@ -46,12 +46,14 @@ final class TangemIdHolder: ActionExecutioner {
 			updateFiles(filesToDelete: filesToDelete, filesToUpdateSettings: filesToUpdateSettings, completion: completion)
 		case .requestCovidCreds(let completion):
 			createCovidCreds(completion: completion)
+		case .changePasscode(let completion):
+			changePasscode(completion: completion)
 		}
 	}
 	
 	private func scanHolderCreds(completion: @escaping CompletionResult<HolderViewCredentials>) {
 		let holderReadTask = ReadHolderCardTask(settings: ReadFilesTaskSettings(readPrivateFiles: true), role: .holder)
-		tangemSdk.startSession(with: holderReadTask, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil)) { (result) in
+		tangemSdk.startSession(with: holderReadTask, initialMessage: IdMessages.scanHolderCard) { (result) in
 			switch result {
 			case .success(let response):
 				self.createCreds(response: response, completion: completion)
@@ -84,7 +86,7 @@ final class TangemIdHolder: ActionExecutioner {
 	
 	private func updateFiles(filesToDelete: [File], filesToUpdateSettings: [File], completion: @escaping CompletionResult<SimpleResponse>) {
 		let changeFilesTask = ChangeFilesTask(filesToDelete: filesToDelete, filesToUpdateSettings: filesToUpdateSettings)
-		tangemSdk.startSession(with: changeFilesTask, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil), completion: completion)
+		tangemSdk.startSession(with: changeFilesTask, initialMessage: IdMessages.scanHolderCard, completion: completion)
 	}
 	
 	private func createCovidCreds(completion: @escaping CompletionResult<HolderCredential<CovidCredential>>) {
@@ -119,7 +121,7 @@ final class TangemIdHolder: ActionExecutioner {
 	private func writeCovidCredentialOnCard(credential: VerifiableCredential, completion: @escaping CompletionResult<HolderCredential<CovidCredential>>) {
 		let cbor = credential.cborData()
 		let task = WriteIssuerFilesTask(files: [cbor], issuerKeys: TangemIdUtils.signerKeys, writeSettings: [])
-		tangemSdk.startSession(with: task, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil)) { (result) in
+		tangemSdk.startSession(with: task, initialMessage: IdMessages.scanHolderCard) { (result) in
 			switch result {
 			case .success(let response):
 				let indices = response.filesIndices
@@ -137,6 +139,10 @@ final class TangemIdHolder: ActionExecutioner {
 				completion(.failure(error))
 			}
 		}
+	}
+	
+	private func changePasscode(completion: @escaping CompletionResult<SetPinResponse>) {
+		tangemSdk.changePin2(initialMessage: IdMessages.scanHolderCard, completion: completion)
 	}
 	
 }
