@@ -19,15 +19,17 @@ public struct ReadHolderCardTaskResponse: ResponseCodable {
 public class ReadHolderCardTask: CardSessionRunnable {
 	public typealias CommandResponse = ReadHolderCardTaskResponse
 	
-	public init(settings: ReadFilesTaskSettings) {
+	public init(settings: ReadFilesTaskSettings, role: Role) {
 		self.settings = settings
+		self.role = role
 	}
 	
 	private let settings: ReadFilesTaskSettings
+	private let role: Role
 	
 	public func run(in session: CardSession, completion: @escaping CompletionResult<ReadHolderCardTaskResponse>) {
-		guard session.environment.card?.cardData?.productMask?.contains(.idCard) ?? false else {
-			completion(.failure(.cardError))
+		guard isValidCard(for: role, in: session, shouldStopSessionIfNotValid: true) else {
+			completion(.failure(.underlying(error: TangemIdError.cancelledWithoutError)))
 			return
 		}
 		
@@ -44,3 +46,5 @@ public class ReadHolderCardTask: CardSessionRunnable {
 		}
 	}
 }
+
+extension ReadHolderCardTask: RoleCardTypeChecker { }

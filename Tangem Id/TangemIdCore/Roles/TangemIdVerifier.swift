@@ -39,7 +39,8 @@ typealias TangemVerifierManager = TangemIdSdk<TangemIdVerifier>
 	}
 
 	private func readFiles(completion: @escaping CompletionResult<VerifierViewCredentials>) {
-		tangemSdk.readFiles(initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil), readSettings: ReadFilesTaskSettings(readPrivateFiles: false)) { (result) in
+		let task = ReadHolderCardTask(settings: .init(readPrivateFiles: false), role: .verifier)
+		tangemSdk.startSession(with: task, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil)) { (result) in
 			switch result {
 			case .success(let response):
 				self.convertFilesToCreds(response.files, completion: completion)

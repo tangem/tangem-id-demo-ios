@@ -29,6 +29,10 @@ extension SnackMessageDisplayable {
 	
 	func showErrorSnack(error: TangemSdkError) {
 		if case .userCancelled = error { return }
+		
+		if case .underlying(let idError) = error,
+		   case TangemIdError.cancelledWithoutError = idError { return }
+		
 		showErrorSnack(message: error.localizedDescription)
 	}
 }

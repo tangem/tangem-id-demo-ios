@@ -93,8 +93,10 @@
 "wrong_authorization" = "Action you trying to perform is not valid for this Role";
 "invalid_issuer_card" = "To issue credentials please use ID Issuer card";
 "invalid_holder_card" = "Tapped card is not an ID Card. Please, tap ID Card";
+"invalid_card" = "Tapped card neither ID Card nor ID Issuer card. Please, tap another card";
 "failed_to_read_issuer_card" = "Something went wrong in interaction with a card";
 "failed_to_create_json_representation" = "Can't create JSON representation of provided data";
+"no_available_public_credentials_on_card" = "This card doesn't contain public credentials. Please, use another card";
 "no_available_credentials_on_card" = "This card doesn't contain credentials. Please, use another card";
 "no_holder_information" = "Failed to find Holder information. Please, rescan card";
 "failed_to_receive_credentials_info" = "Failed to receive new credential information. Please, try again later";

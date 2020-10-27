@@ -50,7 +50,7 @@ final class TangemIdHolder: ActionExecutioner {
 	}
 	
 	private func scanHolderCreds(completion: @escaping CompletionResult<HolderViewCredentials>) {
-		let holderReadTask = ReadHolderCardTask(settings: ReadFilesTaskSettings(readPrivateFiles: true))
+		let holderReadTask = ReadHolderCardTask(settings: ReadFilesTaskSettings(readPrivateFiles: true), role: .holder)
 		tangemSdk.startSession(with: holderReadTask, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil)) { (result) in
 			switch result {
 			case .success(let response):

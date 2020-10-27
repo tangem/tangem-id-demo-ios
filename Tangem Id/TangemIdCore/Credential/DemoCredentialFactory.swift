@@ -21,7 +21,7 @@ struct DemoCredentialFactory: ViewCredentialFactory {
 	func createVerifierViewCreds(_ files: [File]) -> Result<(creds: [VerifiableCredential], viewCreds: VerifierViewCredentials), TangemIdError> {
 		let creds = credentialCreator.createCredentials(from: files)
 		guard creds.count > 0 else {
-			return .failure(.noAvailableCredentials)
+			return .failure(.noAvailablePublicCredentials)
 		}
 		var viewCreds = VerifierViewCredentials()
 		creds.forEach {

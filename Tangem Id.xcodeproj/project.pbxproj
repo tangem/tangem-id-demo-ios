@@ -23,6 +23,8 @@
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
 		B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFF25232F5E004A2985 /* NavigationBar.swift */; };
 		B0298B052523426A004A2985 /* ClickableRowWithCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */; };
+		B02C168E2547F1FD005A2F79 /* ReadRoleCardTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */; };
+		B02C16932547F3F5005A2F79 /* RoleCardTypeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C16922547F3F5005A2F79 /* RoleCardTypeChecker.swift */; };
 		B03295AA2540030800FACC8B /* CredentialJsonPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */; };
 		B03A3BEE252200F800937676 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3BED252200F800937676 /* ButtonWithImage.swift */; };
 		B03A3C1125220C0300937676 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3C1025220C0300937676 /* Checkbox.swift */; };
@@ -161,6 +163,8 @@
 		B0298AFA25232638004A2985 /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		B0298AFF25232F5E004A2985 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableRowWithCheckbox.swift; sourceTree = "<group>"; };
+		B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRoleCardTask.swift; sourceTree = "<group>"; };
+		B02C16922547F3F5005A2F79 /* RoleCardTypeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleCardTypeChecker.swift; sourceTree = "<group>"; };
 		B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialJsonPrinter.swift; sourceTree = "<group>"; };
 		B03A3BED252200F800937676 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		B03A3C1025220C0300937676 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
@@ -514,6 +518,7 @@
 			children = (
 				B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */,
 				B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */,
+				B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -766,6 +771,7 @@
 				B0B82C2025270A34002D71FF /* RoleInfo.swift */,
 				B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */,
 				B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */,
+				B02C16922547F3F5005A2F79 /* RoleCardTypeChecker.swift */,
 			);
 			path = Roles;
 			sourceTree = "<group>";
@@ -1060,6 +1066,7 @@
 				B08D47AF252B560800E10DAB /* Secp256k1ProofSettings.swift in Sources */,
 				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,
 				B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */,
+				B02C16932547F3F5005A2F79 /* RoleCardTypeChecker.swift in Sources */,
 				B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */,
 				B0FD18852541676F00C4FDB5 /* HolderViewModel.swift in Sources */,
 				B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */,
@@ -1120,6 +1127,7 @@
 				B08F0866251F974A00AEA1C1 /* IssuerView.swift in Sources */,
 				B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */,
 				B0C529622524B42900BBCD27 /* DateField.swift in Sources */,
+				B02C168E2547F1FD005A2F79 /* ReadRoleCardTask.swift in Sources */,
 				B0C5295B2524B0CE00BBCD27 /* DateTextField.swift in Sources */,
 				B0413BD32522EEB500140A70 /* RadioButton.swift in Sources */,
 				B0C5296B2524D31F00BBCD27 /* LocalizationKeys.swift in Sources */,
