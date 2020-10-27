@@ -77,14 +77,18 @@ final class TangemIdIssuer: ActionExecutioner {
 					completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
 					return
 				}
-				let wallet = self.walletFactory.makeWalletManager(from: cardInfo)
-				self.issuerWalletAddress = wallet?.wallet.address
+				guard let wallet = self.walletFactory.makeWalletManager(from: cardInfo) else {
+					completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
+					return
+				}
+				
+				self.issuerWalletAddress = wallet.wallet.address
 				self.issuerWallet = wallet
 				self.issuerCardId = cardId
 				self.credsController = DemoCredentialsController(tangemSdk: self.tangemSdk,
 																 credentialCreator: self.credentialCreator,
 																 issuerCardId: cardId,
-																 issuerWalletAddress: wallet!.wallet.address,
+																 issuerWalletAddress: wallet.wallet.address,
 																 proofCreator: Secp256k1ProofCreator())
 				completion(.success(()))
 			case .failure(let error):

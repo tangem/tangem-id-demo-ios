@@ -82,9 +82,8 @@ struct VerifierView: View {
 			}
 			ScrollView {
 				viewModel.credentials.photo.map { photoCreds in
-//					let image = UIImage(data: photoCreds.credentials.photo)!
 					CredentialCard(title: LocalizationKeys.Common.photo, contentBuilder: {
-						CredentialPhotoContent(image: UIImage())
+						CredentialPhotoContent(image: UIImage(data: photoCreds.credentials.photo) ?? UIImage())
 					}, footerBuilder: {
 						CredentialValidityFooter(status: photoCreds.status, issuerInfo: photoCreds.issuer)
 					})

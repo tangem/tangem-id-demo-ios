@@ -62,7 +62,7 @@ extension RoleSelectorViewModel {
 				self.isIssuer = true
 				self.state = .issuer
 			case .failure(let error):
-				self.error = error
+				self.showErrorSnack(error: error)
 			}
 		}))
 	}
