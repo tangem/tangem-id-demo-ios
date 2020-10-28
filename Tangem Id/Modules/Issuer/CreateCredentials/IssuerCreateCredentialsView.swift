@@ -168,6 +168,5 @@ struct IssuerCreateCredentialsView: View, Equatable {
 struct IssuerCreateCredentialsView_Previews: PreviewProvider {
 	static var previews: some View {
 		ApplicationAssembly.resolve(IssuerCreateCredentialsView.self)!
-			.deviceForPreview(.iPhone7)
 	}
 }

@@ -33,6 +33,9 @@ class DateTextField: UITextField {
 
     private lazy var datePickerView: UIDatePicker = {
         let datePickerView = UIDatePicker()
+		if #available(iOS 13.4, *) {
+			datePickerView.preferredDatePickerStyle = .wheels
+		}
         datePickerView.datePickerMode = .date
 		datePickerView.maximumDate = Date()
         return datePickerView

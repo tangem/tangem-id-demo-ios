@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		
 		// Create the SwiftUI view that provides the window contents.
 		let resolver = ApplicationAssembly.assembler.resolver
-		let roleSelector = resolver.resolve(RoleSelectorView.self).equatable()
+		let roleSelector = resolver.resolve(RoleSelectorView.self)
 
 		// Use a UIHostingController as window root view controller.
 		if let windowScene = scene as? UIWindowScene {
