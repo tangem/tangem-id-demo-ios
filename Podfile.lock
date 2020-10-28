@@ -61,7 +61,7 @@ PODS:
   - secp256k1.swift (0.1.4)
   - Sodium (0.8.0)
   - Starscream (3.1.1)
-  - stellar-ios-mac-sdk (1.8.6)
+  - stellar-ios-mac-sdk (1.9.0)
   - SwiftCBOR (0.4.3)
   - SwiftDate (6.0.3)
   - SwiftProtobuf (1.12.0)
@@ -133,7 +133,7 @@ CHECKOUT OPTIONS:
     :git: https://bitbucket.org/tangem/swiftbinancechain.git
     :tag: 0.0.6
   BlockchainSdk:
-    :commit: 04df424285c472e855ce1f1698a353b35b608550
+    :commit: 783c27ef2f366aeb6816181dd7f624d29d95f785
     :git: "git@bitbucket.org:tangem/blockchain-sdk-swift.git"
   HDWalletKit:
     :git: https://bitbucket.org/tangem/hdwallet.git
@@ -161,7 +161,7 @@ SPEC CHECKSUMS:
   secp256k1.swift: a7e7a214f6db6ce5db32cc6b2b45e5c4dd633634
   Sodium: 63c0ca312a932e6da481689537d4b35568841bdc
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
-  stellar-ios-mac-sdk: dafb41d4c16e928dd846729bb7ed222955dc7b2c
+  stellar-ios-mac-sdk: 02f8594cd4ec581f8aa8d28a211103c209231475
   SwiftCBOR: c7d740966575e0fd5d971466de2b6776db3f10c3
   SwiftDate: 8d4f14bf1ef68e95094511504856547bf9e3e1a6
   SwiftProtobuf: 4ef85479c18ca85b5482b343df9c319c62bda699
@@ -171,6 +171,6 @@ SPEC CHECKSUMS:
   web3swift: e618d3efb2075e65eb42fa1e4c47580fefd8f76b
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
 
-PODFILE CHECKSUM: 7b8812b9e9b9dde85891ffcf7e606cb6cd7f2c76
+PODFILE CHECKSUM: 75d72538041234c48b2863dc3fbee7ab4f5d8b69
 
 COCOAPODS: 1.9.3

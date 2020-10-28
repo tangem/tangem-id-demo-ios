@@ -77,11 +77,7 @@ final class TangemIdIssuer: ActionExecutioner {
 					completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
 					return
 				}
-				guard let wallet = self.walletFactory.makeWalletManager(from: cardInfo) else {
-					completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
-					return
-				}
-				
+				let wallet = self.walletFactory.makeWalletManager(for: .ethereum(testnet: false), walletPublicKey: cardInfo.walletPublicKey ?? Data(), cardId: cardId)
 				self.issuerWalletAddress = wallet.wallet.address
 				self.issuerWallet = wallet
 				self.issuerCardId = cardId
