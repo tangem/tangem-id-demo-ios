@@ -59,7 +59,7 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 		if let covidCreds = credential.credentials as? CovidCredential {
 			title = LocalizationKeys.Common.covidImmunity
 			content = AnyView(
-				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: covidCreds.isCovidPositive)
+				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: covidCreds.isCovidPositive, animated: false)
 			)
 		}
 		return
