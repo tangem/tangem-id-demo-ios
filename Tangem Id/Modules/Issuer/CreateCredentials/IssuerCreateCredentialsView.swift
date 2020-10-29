@@ -28,6 +28,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var isShowingSnack = false
 	@State private var isShowingBackAlert = false
 	@State private var showCameraAlert = false
+	@State private var firstResponseIndex = -1
 	
 	func photoCard() -> some View {
 		let title = LocalizationKeys.Common.photo
@@ -97,14 +98,14 @@ struct IssuerCreateCredentialsView: View, Equatable {
 						title: LocalizationKeys.Common.personalInfo,
 						contentBuilder: {
 							VStack {
-								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { self.viewModel.inputName($0) }
-								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.surname) { self.viewModel.inputSurname($0) }
+								TextFieldWithClearButton(selectedIndex: $firstResponseIndex, index: 0, placeholder: LocalizedStrings.Common.name, returnKeyType: .next, textChangeAction: { self.viewModel.inputName($0) })
+								TextFieldWithClearButton(selectedIndex: $firstResponseIndex, index: 1, placeholder: LocalizedStrings.Common.surname, returnKeyType: .next, textChangeAction: { self.viewModel.inputSurname($0) })
 								RadioSegmentSelector(
 									segments: viewModel.availableGenders,
 									selectedIndex: viewModel.selectedGenderIndex,
 									selectionAction: viewModel.selectGender(at:)
 								)
-								DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth.localizedString(), date: $viewModel.dateOfBirth)
+								DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth, index: 2, date: $viewModel.dateOfBirth, selectedIndex: $firstResponseIndex)
 							}
 					})
 						.frame(height: 300)

@@ -19,3 +19,9 @@ extension UITextField {
 		inputAccessoryView = toolBar
 	}
 }
+
+extension UITextField {
+	@objc func doneButtonTapped(button: UIBarButtonItem) -> Void {
+		self.resignFirstResponder()
+	}
+}
