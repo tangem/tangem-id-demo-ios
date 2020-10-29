@@ -50,6 +50,7 @@
 		B05FE392251E0D090002D338 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B05FE390251E0D090002D338 /* LaunchScreen.storyboard */; };
 		B05FE39D251E0D090002D338 /* Tangem_IdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE39C251E0D090002D338 /* Tangem_IdTests.swift */; };
 		B05FE3A8251E0D090002D338 /* Tangem_IdUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05FE3A7251E0D090002D338 /* Tangem_IdUITests.swift */; };
+		B066A4A2254AA4CB004F5626 /* UIApplication+EndEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B066A4A1254AA4CB004F5626 /* UIApplication+EndEditing.swift */; };
 		B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068AB0225246351006559F9 /* HiddenSystemNavigation.swift */; };
 		B068AB052524678F006559F9 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B068AB042524678F006559F9 /* ImagePicker.swift */; };
 		B07524222529A2C200DFE1B0 /* SnackMessageDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07524212529A2C200DFE1B0 /* SnackMessageDisplayable.swift */; };
@@ -197,6 +198,7 @@
 		B05FE3A3251E0D090002D338 /* Tangem IdUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tangem IdUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B05FE3A7251E0D090002D338 /* Tangem_IdUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tangem_IdUITests.swift; sourceTree = "<group>"; };
 		B05FE3A9251E0D090002D338 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B066A4A1254AA4CB004F5626 /* UIApplication+EndEditing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+EndEditing.swift"; sourceTree = "<group>"; };
 		B068AB0225246351006559F9 /* HiddenSystemNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenSystemNavigation.swift; sourceTree = "<group>"; };
 		B068AB042524678F006559F9 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		B07524212529A2C200DFE1B0 /* SnackMessageDisplayable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnackMessageDisplayable.swift; sourceTree = "<group>"; };
@@ -633,6 +635,7 @@
 			children = (
 				B08F0890251FA36300AEA1C1 /* NavigationController.swift */,
 				B0C5295A2524B0CE00BBCD27 /* DateTextField.swift */,
+				B066A4A1254AA4CB004F5626 /* UIApplication+EndEditing.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1078,6 +1081,7 @@
 				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
 				B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */,
 				B04962732541A99C004FBEDE /* HolderAssembly.swift in Sources */,
+				B066A4A2254AA4CB004F5626 /* UIApplication+EndEditing.swift in Sources */,
 				B07DE5FD2528EC1B003F8D9D /* ByteCountFormatter+.swift in Sources */,
 				B0C529702524EFE400BBCD27 /* TangemIdSdk.swift in Sources */,
 				B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */,

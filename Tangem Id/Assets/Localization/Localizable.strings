@@ -43,6 +43,9 @@
 "cancel" = "Cancel";
 "share" = "Share";
 "hide" = "Hide";
+"settings" = "Settings";
+"camera_permission_denied" = "You must grant camera permission in settings to take photo. Open settings?";
+"access_denied" = "Access denied";
 
 "personal_card" = "Personal card";
 "request_new_credentials" = "Request new credential";

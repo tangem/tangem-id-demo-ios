@@ -8,6 +8,7 @@
 
 import SwiftUI
 import UIKit
+import AVFoundation
 
 struct IssuerCreateCredentialsView: View, Equatable {
 	
@@ -26,14 +27,32 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var showingJsonRepresentation = false
 	@State private var isShowingSnack = false
 	@State private var isShowingBackAlert = false
+	@State private var showCameraAlert = false
 	
 	func photoCard() -> some View {
 		let title = LocalizationKeys.Common.photo
+		let addButtonAction = {
+			UIApplication.endEditing()
+			if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+				self.showingImagePicker = true
+			} else {
+				AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+					if granted {
+						self.showingImagePicker = true
+					} else {
+						self.showCameraAlert = true
+					}
+				})
+			}
+		}
 		let addPhotoButton = ButtonWithImage(image: UIImage(systemName: "plus")!,
 											 color: .tangemBlue,
 											 text: LocalizationKeys.Common.addPhoto,
-											 action: { self.showingImagePicker = true },
+											 action: addButtonAction,
 											 isLtr: true)
+			.alert(isPresented: $showCameraAlert, content: {
+				settingsAlert
+			})
 		if let photo = viewModel.photo {
 			return AnyView(CredentialCard(
 				title: title,
@@ -53,7 +72,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	var body: some View {
 		VStack {
 			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials) {
-				if self.viewModel.isCredentialsCreated {
+				if self.viewModel.doesFormHasInput {
 					self.isShowingBackAlert = true
 				} else {
 					self.presentationMode.wrappedValue.dismiss()
@@ -162,6 +181,20 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			if jsonRepresenation.isEmpty { return }
 			self.showingJsonRepresentation = true
 		}
+	}
+	
+	private var settingsAlert: Alert {
+		Alert(title: Text(LocalizationKeys.Common.accessDenied),
+			  message: Text(LocalizationKeys.Common.cameraPermissionDenied),
+			  primaryButton: .default(Text(LocalizationKeys.Common.settings), action: {
+				guard
+					let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+					UIApplication.shared.canOpenURL(settingsUrl)
+				else { return }
+				
+				UIApplication.shared.open(settingsUrl)
+			  }),
+			  secondaryButton: .cancel())
 	}
 }
 

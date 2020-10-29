@@ -13,7 +13,7 @@ struct CredentialPhotoContent: View {
 	var image: UIImage
 	var isSquare: Bool = false
 	
-	init(image: UIImage, isSquare: Bool = false) {
+	init(image: UIImage, isSquare: Bool = true) {
 		self.image = image
 		self.isSquare = isSquare
 	}
