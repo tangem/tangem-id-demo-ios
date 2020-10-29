@@ -22,7 +22,7 @@ struct ClickableRowWithCheckbox: View {
 				.foregroundColor(Color.tangemBlack)
 			Spacer()
 				.background(Color.red)
-			Checkbox(isSelected: isSelected)
+			Checkbox(animated: true, isSelected: isSelected)
 		}
 		.padding(.horizontal)
 		.padding(.bottom, 16)

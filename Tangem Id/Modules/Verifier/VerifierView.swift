@@ -52,13 +52,14 @@ struct CredentialCardValidCheckboxContent: View {
 	
 	var title: LocalizedStringKey
 	var isCheckboxSelected: Bool
+	var animated: Bool
 	
 	var body: some View {
 		VStack {
 			HStack {
 				Text(title)
 				Spacer()
-				Checkbox(isSelected: isCheckboxSelected)
+				Checkbox(animated: animated, isSelected: isCheckboxSelected)
 					.disabled(true)
 			}
 			.padding(.bottom, 8)
@@ -113,7 +114,8 @@ struct VerifierView: View {
 				viewModel.credentials.ageOver21.map { ageOver21 in
 					CredentialCard(title: LocalizationKeys.Common.ageOver21, contentBuilder: {
 						CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid,
-														   isCheckboxSelected: ageOver21.credentials.isOver21)
+														   isCheckboxSelected: ageOver21.credentials.isOver21,
+														   animated: false)
 					}, footerBuilder: {
 						CredentialValidityFooter(status: ageOver21.status, issuerInfo: ageOver21.issuer)
 					})
@@ -121,7 +123,8 @@ struct VerifierView: View {
 				viewModel.credentials.covid.map { covidCreds in
 					CredentialCard(title: LocalizationKeys.Common.covidImmunity, contentBuilder: {
 						CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid,
-														   isCheckboxSelected: covidCreds.credentials.isCovidPositive)
+														   isCheckboxSelected: covidCreds.credentials.isCovidPositive,
+														   animated: false)
 					}, footerBuilder: {
 						CredentialValidityFooter(status: covidCreds.status, issuerInfo: covidCreds.issuer)
 					})

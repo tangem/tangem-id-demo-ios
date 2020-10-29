@@ -53,7 +53,7 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 		if let ageOver21 = credential.credentials as? AgeOver21Credential {
 			title = LocalizationKeys.Common.ageOver21
 			content = AnyView(
-				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: ageOver21.isOver21)
+				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: ageOver21.isOver21, animated: false)
 			)
 		}
 		if let covidCreds = credential.credentials as? CovidCredential {

@@ -26,7 +26,7 @@ struct RoleSelectorView: View, Equatable {
 	}
 	
 	@ObservedObject var viewModel: RoleSelectorViewModel
-	@State private var isActive : Bool = false 
+	@State private var isActive : Bool = false
 	
 	var body: some View {
 		NavigationView {
