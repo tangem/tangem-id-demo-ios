@@ -74,7 +74,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 			holderCredentials.covid = nil
 		}
 		let fileIndex = file.fileIndex
-		credsToUpdateVisibility.removeValue(forKey: fileIndex)
+		credsToUpdateVisibility.removeValue(forKey: fileIndex)?.fileSettings?.toggleVisibility()
 		credsToDelete.append(file)
 		objectWillChange.send()
 	}
