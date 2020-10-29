@@ -40,6 +40,10 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 		}
 		if let ssn = credential.credentials as? SsnCredential {
 			title = LocalizationKeys.Common.ssn
+			content = AnyView(
+				Divider()
+					.padding(.horizontal)
+			)
 			supplement = AnyView(
 				Text(ssn.ssn)
 					.foregroundColor(.tangemBlack)
