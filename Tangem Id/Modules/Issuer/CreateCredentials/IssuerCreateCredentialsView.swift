@@ -56,22 +56,22 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			})
 		if let photo = viewModel.photo {
 			return AnyView(CredentialCard(
-				title: title,
-				supplementBuilder: {
-					addPhotoButton
-			}, contentBuilder: {
-				CredentialPhotoContent(image: photo)
-			}))
+							title: title,
+							supplementBuilder: {
+								addPhotoButton
+							}, contentBuilder: {
+								CredentialPhotoContent(image: photo)
+							}))
 		} else {
 			return AnyView(CredentialCard(title: title,
 										  supplementBuilder: {
 											addPhotoButton
-			}))
+										  }))
 		}
 	}
 	
 	var body: some View {
-		VStack {
+		let body = VStack {
 			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials) {
 				if self.viewModel.doesFormHasInput {
 					self.isShowingBackAlert = true
@@ -166,11 +166,11 @@ struct IssuerCreateCredentialsView: View, Equatable {
 		.padding(.bottom, keyboardHandler.keyboardHeight)
 		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.onAppear(perform: {
-			if #available(iOS 14, *) { return }
+			//			if #available(iOS 14, *) { return }
 			self.keyboardHandler.subscribe()
 		})
 		.onDisappear(perform: {
-			if #available(iOS 14, *) { return }
+			//			if #available(iOS 14, *) { return }
 			self.keyboardHandler.unsubscribe()
 		})
 		.modifier(HiddenSystemNavigation())
@@ -182,6 +182,12 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			if jsonRepresenation.isEmpty { return }
 			self.showingJsonRepresentation = true
 		}
+		
+		if #available(iOS 14.0, *) {
+			return AnyView(body.ignoresSafeArea(.keyboard, edges: .bottom))
+		}
+		
+		return AnyView(body)
 	}
 	
 	private var settingsAlert: Alert {

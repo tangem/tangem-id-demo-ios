@@ -22,6 +22,6 @@ extension UITextField {
 
 extension UITextField {
 	@objc func doneButtonTapped(button: UIBarButtonItem) -> Void {
-		self.resignFirstResponder()
+		UIApplication.endEditing()
 	}
 }

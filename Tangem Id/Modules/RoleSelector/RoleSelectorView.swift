@@ -21,7 +21,7 @@ extension UINavigationController: UIGestureRecognizerDelegate {
 
 struct RoleSelectorView: View, Equatable {
 	static func == (lhs: RoleSelectorView, rhs: RoleSelectorView) -> Bool {
-		print("Comparing role selector views")
+//		print("Comparing role selector views")
 		return lhs.viewModel == rhs.viewModel
 	}
 	

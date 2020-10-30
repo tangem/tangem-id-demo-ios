@@ -22,10 +22,10 @@ final class KeyboardFollower : ObservableObject {
 	@objc func keyboardVisibilityChanged(_ notification: Notification) {
 		guard
 			let userInfo = notification.userInfo,
-			let keyboardBeginFrame = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect,
+//			let keyboardBeginFrame = userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect,
 			let keyboardEndFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
 			else { return }
-		let visible = keyboardBeginFrame.minY > keyboardEndFrame.minY
+		let visible = keyboardEndFrame.minY <= UIScreen.main.bounds.height - 40
 		keyboardHeight = visible ? keyboardEndFrame.height : 0
 	}
 }
