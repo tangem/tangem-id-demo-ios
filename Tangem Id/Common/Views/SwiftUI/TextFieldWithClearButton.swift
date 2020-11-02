@@ -63,8 +63,11 @@ struct TextFieldUI: UIViewRepresentable {
 			return true
 		}
 		
-		func textFieldDidEndEditing(_ textField: UITextField) {
-			parent.selectedIndex = -1
+		func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+			DispatchQueue.main.async {
+				self.parent.selectedIndex = -1
+			}
+			return true
 		}
 		
 	}

@@ -29,6 +29,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var isShowingBackAlert = false
 	@State private var showCameraAlert = false
 	@State private var firstResponseIndex = -1
+	@State private var isVisible = false
 	
 	func photoCard() -> some View {
 		let title = LocalizationKeys.Common.photo
@@ -71,6 +72,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	}
 	
 	var body: some View {
+		print("Keyboard is visible", keyboardHandler, "Keyboard height:", keyboardHandler.keyboardHeight)
 		let body = VStack {
 			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials) {
 				if self.viewModel.doesFormHasInput {
@@ -163,7 +165,7 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			}
 			.padding(.horizontal, 8)
 		}
-		.padding(.bottom, keyboardHandler.keyboardHeight)
+		.padding(.bottom, keyboardHandler.isKeyboardVisible ? keyboardHandler.keyboardHeight : 0)
 		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.onAppear(perform: {
 			//			if #available(iOS 14, *) { return }
