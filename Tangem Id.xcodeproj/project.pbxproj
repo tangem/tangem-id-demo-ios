@@ -519,6 +519,7 @@
 			children = (
 				B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */,
 				B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */,
+				B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */,
 				B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */,
 			);
 			path = Tasks;
@@ -687,7 +688,6 @@
 			isa = PBXGroup;
 			children = (
 				B007E1A12525F9F600B16E93 /* Command.swift */,
-				B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */,
 			);
 			path = Commands;
 			sourceTree = "<group>";
