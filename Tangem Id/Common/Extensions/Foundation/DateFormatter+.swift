@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
 extension DateFormatter {
 	

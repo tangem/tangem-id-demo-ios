@@ -37,12 +37,15 @@ enum ScreenSidePaddingSize {
 enum ButtonColorStyle {
 	case blue
 	case white
+	case transparentBlue
 	
 	var defaultColor: Color {
 		switch self {
 		case .blue:
 			return .tangemBlue
 		case .white:
+			return .white
+		case .transparentBlue:
 			return .white
 		}
 	}
@@ -53,6 +56,8 @@ enum ButtonColorStyle {
 			return .tangemLightBlue
 		case .white:
 			return .mainBackground
+		case .transparentBlue:
+			return .white
 		}
 	}
 	
@@ -60,6 +65,14 @@ enum ButtonColorStyle {
 		switch self {
 		case .blue: return .white
 		case .white: return .tangemBlack
+		case .transparentBlue: return .tangemBlue
+		}
+	}
+	
+	var isWithShadow: Bool {
+		switch self {
+		case .blue, .white: return true
+		case .transparentBlue: return false
 		}
 	}
 }
@@ -73,6 +86,7 @@ struct ScreenPaddingButtonStyle: ButtonStyle {
 	
 	static let defaultBlueButtonStyleWithPadding = ScreenPaddingButtonStyle(height: 42, cornerRadius: 4, colorStyle: .blue)
 	static let defaultWhiteButtonStyleWithPadding = ScreenPaddingButtonStyle(height: 42, cornerRadius: 4, colorStyle: .white)
+	static let transparentBackWithBlueText = ScreenPaddingButtonStyle(height: 22, cornerRadius: 4, colorStyle: .transparentBlue)
 	
 	var height: CGFloat = 46
 	var cornerRadius: CGFloat = 4
@@ -90,7 +104,7 @@ struct ScreenPaddingButtonStyle: ButtonStyle {
 					colorStyle.pressedColor :
 					colorStyle.defaultColor)
 			.cornerRadius(cornerRadius)
-			.shadow(color: Color.tangemBlack.opacity(0.2), radius: 3, x: 0, y: 1)
+			.shadow(color: Color.tangemBlack.opacity(colorStyle.isWithShadow ? 0.2 : 0.0), radius: 3, x: 0, y: 1)
 			.overlay(!isDisabled ? Color.clear : Color.white.opacity(0.4))
 	}
 	

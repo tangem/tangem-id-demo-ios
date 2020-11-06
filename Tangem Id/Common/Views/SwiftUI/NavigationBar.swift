@@ -62,6 +62,23 @@ extension NavigationBar where LeftButtons == ArrowBack, RightButtons == EmptyVie
 		title: LocalizedStringKey,
 		titleFont: Font = .navigationTitle,
 		titleColor: Color = .tangemBlack,
+		backAction: @escaping () -> Void
+	) {
+		leftButtons = ArrowBack {
+			backAction()
+		}
+		rightButtons = EmptyView()
+		self.title = title
+		self.titleFont = titleFont
+		self.titleColor = titleColor
+	}
+}
+
+extension NavigationBar where LeftButtons == ArrowBack, RightButtons == EmptyView {
+	init(
+		title: LocalizedStringKey,
+		titleFont: Font = .navigationTitle,
+		titleColor: Color = .tangemBlack,
 		presentationMode:  Binding<PresentationMode>
 	) {
 		leftButtons = ArrowBack {

@@ -19,4 +19,44 @@ enum Gender: Int, CaseIterable {
 		case .notSelected: return "N/A"
 		}
 	}
+	
+	var titleStr: String {
+		title.stringValue()
+	}
 }
+
+extension LocalizedStringKey {
+	var stringKey: String {
+		let description = "\(self)"
+		
+		let components = description.components(separatedBy: "key: \"")
+			.map { $0.components(separatedBy: "\",") }
+		
+		return components[1][0]
+	}
+}
+
+extension String {
+	static func localizedString(for key: String,
+								locale: Locale = .current) -> String {
+		let language = locale.languageCode
+		let bundle: Bundle
+		if let bundlePath = Bundle.main.path(forResource: language, ofType: "lproj"),
+		   let targetBundle = Bundle(path: bundlePath)
+		   {
+			bundle = targetBundle
+		} else {
+			bundle = Bundle.main
+		}
+		let localizedString = NSLocalizedString(key, bundle: bundle, comment: "")
+		
+		return localizedString
+	}
+}
+
+extension LocalizedStringKey {
+	func stringValue(locale: Locale = .current) -> String {
+		return .localizedString(for: self.stringKey, locale: locale)
+	}
+}
+

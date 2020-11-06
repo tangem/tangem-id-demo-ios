@@ -19,11 +19,14 @@ struct MaskedTextField: UIViewRepresentable {
 	
 	var textChangeAction: ((String) -> Void)?
 	
+	private let delegate = MaskedTextFieldDelegate()
+	
 	func makeUIView(context: Context) -> UITextField {
+		delegate.primaryMaskFormat = format
 		let textField = UITextField()
 		textField.attributedPlaceholder = NSAttributedString(string: placeholder,
 															 attributes: [.foregroundColor: placeholderColor])
-		textField.delegate = context.coordinator
+		textField.delegate = delegate
 		textField.keyboardType = keyType
 		textField.clearButtonMode = isWithClearButton ? .whileEditing : .never
 		textField.addDoneButton()
@@ -34,22 +37,33 @@ struct MaskedTextField: UIViewRepresentable {
 	}
 	
 	func makeCoordinator() -> MaskedTextField.Coordinator {
-		Coordinator(parent: self, mask: format)
-		
+		let coordinator = Coordinator(parent: self, mask: format)
+		delegate.listener = coordinator
+		return coordinator
 	}
 	
-	class Coordinator: MaskedTextFieldDelegate {
+//	class TextFieldListener: NSObject, MaskedTextFieldDelegateListener {
+//		var parent: MaskedTextField
+//		
+//		init(parent: MaskedTextField) {
+//			self.parent = parent
+//		}
+//		
+//		func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//			true
+//		}
+//		
+//		func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {
+//			parent.textChangeAction?(value)
+//		}
+//		
+//	}
+	
+	class Coordinator: NSObject, MaskedTextFieldDelegateListener {
 		var parent: MaskedTextField
 		
 		init(parent: MaskedTextField, mask: String) {
 			self.parent = parent
-			super.init()
-			self.primaryMaskFormat = mask
-			delegate = self
-		}
-		
-		override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-			return true
 		}
 		
 		func textField(_ textField: UITextField, didFillMandatoryCharacters complete: Bool, didExtractValue value: String) {

@@ -14,10 +14,12 @@
 "name" = "Name";
 "surname" = "Surname";
 "date_of_birth" = "Date of birth";
-"age_over_18" = "Age over 18";
+"age_over_21" = "Age over 21";
 "ssn" = "SSN";
 
 "add_photo" = "Add photo";
+"sign_credentials" = "Sign";
+"write_to_card_credentials" = "Write to card";
 
 "male" = "Male";
 "female" = "Female";
@@ -27,3 +29,42 @@
 "issuer" = "Issuer";
 "verifier" = "Verifier";
 "holder" = "Holder";
+
+"did_issuer_address" = "DID Address of the Issuer";
+
+"dismiss" = "Dismiss";
+"stay" = "Stay";
+"cancel" = "Cancel";
+"share" = "Share";
+"hide" = "Hide";
+
+"show_json_creds" = "Show credentials JSON";
+"issuer_details" = "Issuer's Details";
+
+"credentials_signed_title" = "Progress will be lost";
+"credentials_signed_body" = "Do you want to go back and cancel your input?";
+
+"write_creds_files_hint" = "Tap Holder's card and wait while data transfer will finish";
+
+// MARK: Snack messages
+"issuer_empty_fields" = "You must fill in all data in the form";
+"creds_signed" = "Credentials signed successfully. Write them on Holders card now";
+"creds_saved_on_card" = "Credentials successfully saved on card";
+
+"failed_to_sign_error" = " Failed to sign credentials: %@";
+"failed_to_write_creds_error" = "Failed to write credentials: %@";
+
+
+
+
+// MARK: - Tangem Id Core messages
+"scan_issuer_card" = "Tap Issuer's Card";
+"scan_holder_card" = "Tap Holder's Card";
+
+// MARK: - Tangem Id Core error messages
+"you_not_authorized" = "You not authorized. Please Authorize yourself as Issuer, Holder of Verifier";
+"wrong_authorization" = "Action you trying to perform is not valid for this Role";
+"invalid_issuer_card" = "To issue credentials please use ID Issuer card";
+"invalid_holder_card" = "Tapped card is not an ID Card. Please, tap ID Card";
+"failed_to_read_issuer_card" = "Something went wrong in interaction with a card";
+"failed_to_create_json_representation" = "Can't create JSON representation of provided data";

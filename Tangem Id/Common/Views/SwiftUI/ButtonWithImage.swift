@@ -20,13 +20,13 @@ struct ButtonWithImage: View {
 		Button(action: action, label: {
 			HStack(spacing: 12) {
 				if isLtr {
-					Image(uiImage: image)
+					Image(uiImage: image.withRenderingMode(.alwaysTemplate))
 					.foregroundColor(color)
 				}
 				Text(text)
 					.foregroundColor(color)
 				if !isLtr {
-					Image(uiImage: image)
+					Image(uiImage: image.withRenderingMode(.alwaysTemplate))
 					.foregroundColor(color)
 				}
 			}

@@ -9,6 +9,6 @@
 import Foundation
 
 enum Module {
-	case issuer
-	case issuerCreateCredentials
+	case issuer(roleInfo: RoleInfo, manager: TangemIssuerManager)
+	case issuerCreateCredentials(manager: TangemIssuerManager)
 }

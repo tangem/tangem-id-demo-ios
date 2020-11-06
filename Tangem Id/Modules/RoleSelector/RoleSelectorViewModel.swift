@@ -8,6 +8,7 @@
 
 import Combine
 import SwiftUI
+import TangemSdk
 
 final class RoleSelectorViewModel: ObservableObject, Equatable {
 	
@@ -26,14 +27,19 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 			}
 		}
 	}
+	@Published var isIssuer: Bool = false
+	@Published var isVerifier: Bool = false
+	@Published var isHolder: Bool = false
+	@Published var error: Error?
 	
 	private var disposable = Set<AnyCancellable>()
 	
 	private let moduleAssembly: ModuleAssemblyType
+	private let tangemIdFactory: TangemIdFactoryType
 	
 	private(set) var issuerLink: AnyView = AnyView(EmptyView())
 	
-	var veridierLink: AnyView {
+	var verifierLink: AnyView {
 		AnyView(EmptyView())
 	}
 	
@@ -41,31 +47,42 @@ final class RoleSelectorViewModel: ObservableObject, Equatable {
 		AnyView(EmptyView())
 	}
 	
-	init(moduleAssembly: ModuleAssemblyType) {
-		self.moduleAssembly = moduleAssembly
-		
-		// TODO: Try to rework single link for every view state through subscription
-//		let subs = $state
-//			.sink(receiveValue: {
-//				print("Current state of Role selector view", $0)
-//			})
-//		disposable.insert(subs)
-	}
+	private let verifierManager: TangemVerifierManager
 	
+	init(moduleAssembly: ModuleAssemblyType, tangemIdFactory: TangemIdFactoryType) {
+		self.moduleAssembly = moduleAssembly
+		self.tangemIdFactory = tangemIdFactory
+		verifierManager = tangemIdFactory.createVerifierManager()
+	}
 	
 }
 
 extension RoleSelectorViewModel {
 	func issuerButtonAction() {
-		issuerLink = try! moduleAssembly.assembledView(for: .issuer)
-		state = .issuer
+		let manager = tangemIdFactory.createIssuerManager()
+		manager.execute(action: .authorizeAsIssuer({ [weak self] (result) in
+			guard let self = self else { return }
+			switch result {
+			case .success:
+				let info = manager.executionerInfo
+				self.issuerLink = try! self.moduleAssembly.assembledView(for: .issuer(roleInfo: info, manager: manager))
+				self.isIssuer = true
+				self.state = .issuer
+			case .failure(let error):
+				self.error = error
+			}
+		}))
 	}
 	
 	func verifierButtonAction() {
+		verifierManager.execute(action: .readHoldersCredentials(completion: { (result) in
+			
+		}))
 		state = .verifier
 	}
 	
 	func holderButtonAction() {
+		verifierManager.execute(action: .deleteSavedFiles)
 		state = .holder
 	}
 	
