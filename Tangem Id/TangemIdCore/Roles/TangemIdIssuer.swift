@@ -18,10 +18,9 @@ final class TangemIdIssuer: ActionExecutioner {
 	private let tangemSdk: TangemSdk
 	private let walletFactory = WalletManagerFactory()
 	private let ethereumBlockchain = Blockchain.ethereum(testnet: false)
-	private let credentialCreatorFactory: CredentialCreatorFactoryType
+	private let credentialCreator: CredentialCreator
 	
 	private var credsController: CredentialsControllerType?
-	private var credentialCreator: CredentialCreator?
 	
 	// MARK: Issuer info
 	private var issuerCardId: String?
@@ -44,9 +43,9 @@ final class TangemIdIssuer: ActionExecutioner {
 		return IssuerRoleInfo(didWalletAddress: IdConstants.didPrefix + wallet, qrImage: #imageLiteral(resourceName: "qr"), title: "Issuer", description: "My soft issuer", image: nil)
 	}
 	
-	init(tangemSdk: TangemSdk, credentialCreatorFactory: CredentialCreatorFactoryType) {
+	init(tangemSdk: TangemSdk, credentialCreator: CredentialCreator) {
 		self.tangemSdk = tangemSdk
-		self.credentialCreatorFactory = credentialCreatorFactory
+		self.credentialCreator = credentialCreator
 	}
 	
 	func execute(action: IssuerAction) {
@@ -65,7 +64,8 @@ final class TangemIdIssuer: ActionExecutioner {
 	}
 	
 	private func authorizeIssuer(completion: @escaping EmptyResponse) {
-		tangemSdk.scanCard(initialMessage: Message(header: IdLocalization.Common.scanIssuerCard, body: nil)) { [weak self] (result) in
+		let readCard = ReadRoleCardTask(targetCardType: .idIssuer)
+		tangemSdk.startSession(with: readCard, initialMessage: IdMessages.scanIssuerCard) { [weak self] (result) in
 			guard let self = self else { return }
 			switch result {
 			case .success(let cardInfo):
@@ -74,7 +74,7 @@ final class TangemIdIssuer: ActionExecutioner {
 					self.isValidIssuerCard(cardInfo),
 					let cardId = cardInfo.cardId
 				else {
-					completion(.failure(.notValidIssuerCard))
+					completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
 					return
 				}
 				let wallet = self.walletFactory.makeWalletManager(from: cardInfo)
@@ -82,19 +82,20 @@ final class TangemIdIssuer: ActionExecutioner {
 				self.issuerWallet = wallet
 				self.issuerCardId = cardId
 				self.credsController = DemoCredentialsController(tangemSdk: self.tangemSdk,
-																 credentialCreator: self.credentialCreatorFactory.makeCreator(.demo),
+																 credentialCreator: self.credentialCreator,
 																 issuerCardId: cardId,
 																 issuerWalletAddress: wallet!.wallet.address,
 																 proofCreator: Secp256k1ProofCreator())
 				completion(.success(()))
 			case .failure(let error):
-				completion(.failure(.cardSdkError(sdkError: error.localizedDescription)))
+				completion(.failure(error))
 			}
 		}
 	}
 	
 	private func scanHolderCard(completion: @escaping EmptyResponse) {
-		tangemSdk.scanCard(initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: nil)) { [weak self] (result) in
+		let readCard = ReadRoleCardTask(targetCardType: .idCard)
+		tangemSdk.startSession(with: readCard, initialMessage: IdMessages.scanHolderCard) { [weak self] (result) in
 			guard let self = self else { return }
 			switch result {
 			case .success(let card):
@@ -102,14 +103,14 @@ final class TangemIdIssuer: ActionExecutioner {
 					self.isValidHolderCard(card),
 					let walletPublicKey = card.walletPublicKey
 				else {
-					completion(.failure(.notValidHolderCard))
+					completion(.failure(.underlying(error: TangemIdError.notValidHolderCard)))
 					return
 				}
 				self.holderCardId = card.cardId
 				self.holderEthAddress = self.ethereumBlockchain.makeAddress(from: walletPublicKey)
 				completion(.success(()))
 			case .failure(let error):
-				completion(.failure(TangemIdError.cardSdkError(sdkError: error.localizedDescription)))
+				completion(.failure(error))
 			}
 		}
 	}
@@ -118,7 +119,7 @@ final class TangemIdIssuer: ActionExecutioner {
 		guard
 			let holderEthAddress = holderEthAddress
 			else {
-			completion(.failure(.notValidIssuerCard))
+			completion(.failure(.underlying(error: TangemIdError.notValidIssuerCard)))
 			return
 		}
 		signWorkItem = DispatchWorkItem { [weak self] in

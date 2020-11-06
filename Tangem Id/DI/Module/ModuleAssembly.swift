@@ -47,6 +47,11 @@ extension ModuleAssembly: ModuleAssemblyType {
 				throw ModuleAssemblyError.dependencyResolvingError
 			}
 			return AnyView(view)
+		case let .holder(manager, creds):
+			guard let view = resolver.resolve(HolderView.self, arguments: manager, creds) else {
+				throw ModuleAssemblyError.dependencyResolvingError
+			}
+			return AnyView(view)
 		}
 	}
 }

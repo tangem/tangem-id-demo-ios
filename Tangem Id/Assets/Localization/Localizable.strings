@@ -44,6 +44,16 @@
 "share" = "Share";
 "hide" = "Hide";
 
+"personal_card" = "Personal card";
+"request_new_credentials" = "Request new credential";
+"save_changes" = "Save changes";
+"json_representation" = "JSON representation:";
+"share_json" = "Share JSON";
+"credentials" = "Credentials";
+"select_settings_action" = "Select action";
+"change_passcode" = "Change passcode";
+"passcode_changed" = "Passcode has been changed";
+
 "show_json_creds" = "Show credentials JSON";
 "issuer_details" = "Issuer's Details";
 "verifier_navigation" = "ID Validator";
@@ -69,6 +79,8 @@
 "failed_to_write_creds_error" = "Failed to write credentials: %@";
 "failed_to_create_creds_from_cbor" = "Failed to create credentials from provided info";
 
+"already_has_credential" = "The holder already has this credential";
+
 
 // MARK: - Tangem Id Core messages
 "scan_issuer_card" = "Tap Issuer's Card";
@@ -84,6 +96,10 @@
 "wrong_authorization" = "Action you trying to perform is not valid for this Role";
 "invalid_issuer_card" = "To issue credentials please use ID Issuer card";
 "invalid_holder_card" = "Tapped card is not an ID Card. Please, tap ID Card";
+"invalid_card" = "Tapped card neither ID Card nor ID Issuer card. Please, tap another card";
 "failed_to_read_issuer_card" = "Something went wrong in interaction with a card";
 "failed_to_create_json_representation" = "Can't create JSON representation of provided data";
+"no_available_public_credentials_on_card" = "This card doesn't contain public credentials. Please, use another card";
 "no_available_credentials_on_card" = "This card doesn't contain credentials. Please, use another card";
+"no_holder_information" = "Failed to find Holder information. Please, rescan card";
+"failed_to_receive_credentials_info" = "Failed to receive new credential information. Please, try again later";

@@ -20,15 +20,6 @@ protocol CredentialsControllerType: class {
 
 class DemoCredentialsController {
 	
-	private var signerKeys: KeyPair = {
-		let priv = "11121314151617184771ED81F2BACF57479E4735EB1405083927372D40DA9E92"
-		let pub = "045F16BD1D2EAFE463E62A335A09E6B2BBCBD04452526885CB679FC4D27AF1BD22F553C7DEEFB54FD3D4F361D14E6DC3F11B7D4EA183250A60720EBDF9E110CD26"
-		let keyPairJson = "{\"privateKey\":\"\(priv)\",\"publicKey\":\"\(pub)\"}".data(using: .utf8)
-		let jsonDecoder = JSONDecoder.tangemSdkDecoder
-		let keyPair = try! jsonDecoder.decode(KeyPair.self, from: keyPairJson!)
-		return keyPair
-	}()
-	
 	private let tangemSdk: TangemSdk
 	private let credentialCreator: CredentialCreator
 	private let proofCreator: Secp256k1ProofCreatorType
@@ -71,7 +62,7 @@ extension DemoCredentialsController: CredentialsControllerType {
 				hashesToSign.append(proofHashTuplet.1)
 			}
 			
-			tangemSdk.sign(hashes: hashesToSign, cardId: issuerCardId, initialMessage: Message(header: IdLocalization.Common.scanIssuerCard, body: nil)) { [weak self] (result) in
+			tangemSdk.sign(hashes: hashesToSign, cardId: issuerCardId, initialMessage: IdMessages.scanIssuerCard) { [weak self] (result) in
 				guard let self = self else { return }
 				switch result {
 				case .success(let signResponse):
@@ -84,24 +75,24 @@ extension DemoCredentialsController: CredentialsControllerType {
 					self.signedCreds = creds
 					completion(.success(()))
 				case .failure(let tangemError):
-					completion(.failure(.cardSdkError(sdkError: tangemError.localizedDescription)))
+					completion(.failure(tangemError))
 				}
 			}
 		} catch {
-			completion(.failure(.credentialSigningError(error: error.localizedDescription)))
+			completion(.failure(.underlying(error: TangemIdError.credentialSigningError(error: error.localizedDescription))))
 		}
 	}
 	
 	func writeCredentialsToCard(completion: @escaping EmptyResponse) {
 		let cborFiles = signedCreds.map { $0.cborData() }
-		let writeTask = WriteIssuerFilesTask(files: cborFiles, issuerKeys: signerKeys)
+		let writeTask = WriteIssuerFilesTask(files: cborFiles, issuerKeys: TangemIdUtils.signerKeys, writeSettings: [.overwriteAllFiles])
 		tangemSdk.startSession(with: writeTask, initialMessage: Message(header: IdLocalization.Common.scanHolderCard, body: IdLocalization.Common.writeFilesHint)) { (result) in
 			switch result {
 			case .success(let response):
 				completion(.success(()))
 				print("Files written to card: \(response)")
 			case .failure(let error):
-				completion(.failure(.cardSdkError(sdkError: error.localizedDescription)))
+				completion(.failure(error))
 			}
 		}
 	}

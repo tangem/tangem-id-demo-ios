@@ -12,7 +12,7 @@ import Combine
 
 protocol ActionType {}
 
-typealias EmptyResponse = (Result<Void, TangemIdError>) -> Void
+typealias EmptyResponse = (Result<Void, TangemSdkError>) -> Void
 
 enum IssuerAction: ActionType {
 	case authorizeAsIssuer(EmptyResponse)
@@ -27,41 +27,9 @@ enum VerifierAction: ActionType {
 	case showCredentialsAsJson((JsonCredentialsResult) -> Void)
 }
 
-//enum RoleAction {
-//	case asIssuer(action: IssuerAction)
-//	case asVerifier(action: VerifierAction)
-//
-//	var role: Role {
-//		switch self {
-//		case .asIssuer: return .issuer
-//		case .asVerifier: return .verifier
-//		}
-//	}
-//
-//	var shouldCheckRole: Bool {
-//		switch self {
-//		case .asIssuer(let action):
-//			return action.shouldCheckRole
-//		default:
-//			return false
-//		}
-//	}
-//
-//	enum IssuerAction {
-//		case authorizeAsIssuer
-//		case getHolderAddress
-//		case createAndSignCredentials
-//		case saveCredentialsToCard
-//
-//		var shouldCheckRole: Bool {
-//			switch self {
-//			case .authorizeAsIssuer: return false
-//			default: return true
-//			}
-//		}
-//	}
-//
-//	enum VerifierAction {
-//		case readHoldersCredentials(completion: CompletionResult<Card>)
-//	}
-//}
+enum HolderAction: ActionType {
+	case scanHolderCredentials(completion: CompletionResult<HolderViewCredentials>)
+	case saveChanges(filesToDelete: [File], filesToUpdateSettings: [File], completion: CompletionResult<SimpleResponse>)
+	case requestCovidCreds(completion: CompletionResult<HolderCredential<CovidCredential>>)
+	case changePasscode(completion: CompletionResult<SetPinResponse>)
+}

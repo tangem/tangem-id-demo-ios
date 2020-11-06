@@ -8,11 +8,6 @@
 
 import Foundation
 
-struct VerifierCredentials<T: DemoCredential> {
-	let credentials: T
-	let issuer: IssuerVerificationInfo
-	let status: VerificationStatus
-}
 
 class VerifierViewModel: ObservableObject, SnackMessageDisplayable {
 	
@@ -34,7 +29,7 @@ class VerifierViewModel: ObservableObject, SnackMessageDisplayable {
 			case .success(let json):
 				self.jsonRepresentation = json
 			case .failure(let error):
-				self.showErrorSnack(message: error.localizedDescription)
+				self.showErrorSnack(error: .underlying(error: error))
 			}
 		}))
 	}

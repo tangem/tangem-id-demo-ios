@@ -14,10 +14,12 @@ public class WriteIssuerFilesTask: CardSessionRunnable {
 	
 	private let files: [Data]
 	private let issuerKeys: KeyPair
+	private let writeSettings: Set<WriteFilesSettings>
 	
-	public init(files: [Data], issuerKeys: KeyPair) {
+	public init(files: [Data], issuerKeys: KeyPair, writeSettings: Set<WriteFilesSettings>) {
 		self.files = files
 		self.issuerKeys = issuerKeys
+		self.writeSettings = writeSettings
 	}
 	
 	public func run(in session: CardSession, completion: @escaping CompletionResult<WriteFilesResponse>) {
@@ -59,7 +61,7 @@ public class WriteIssuerFilesTask: CardSessionRunnable {
 					issuerPublicKey: issuerKeys.publicKey)
 			)
 		}
-		let task = WriteFilesTask(files: filesToWrite, settings: [.overwriteAllFiles])
+		let task = WriteFilesTask(files: filesToWrite, settings: writeSettings)
 		task.run(in: session, completion: completion)
 	}
 }

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
-import Foundation
+import TangemSdk
 
 protocol SnackMessageDisplayable: class {
 	var snackMessage: SnackData { get set }
@@ -25,5 +25,14 @@ extension SnackMessageDisplayable {
 	
 	func showInfoSnack(message: String) {
 		showSnack(message: message, type: .info)
+	}
+	
+	func showErrorSnack(error: TangemSdkError) {
+		if case .userCancelled = error { return }
+		
+		if case .underlying(let idError) = error,
+		   case TangemIdError.cancelledWithoutError = idError { return }
+		
+		showErrorSnack(message: error.localizedDescription)
 	}
 }

@@ -8,10 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		113E01595C413ACF3067056F /* Pods_Tangem_IdTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */; };
+		B00498E3254800F500EE3C5E /* IdMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00498E2254800F500EE3C5E /* IdMessages.swift */; };
 		B007E1A22525F9F600B16E93 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = B007E1A12525F9F600B16E93 /* Command.swift */; };
 		B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67A8253D7122002D7D53 /* AlertBinder.swift */; };
 		B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */; };
 		B00A67BF253DDE96002D7D53 /* RootPresentationModeKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */; };
+		B00D7A902546B41E00D0B460 /* TangemIdUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */; };
 		B00F0086253EFC6200D16E66 /* WriteIssuerFilesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */; };
 		B00F00AA253F0AA100D16E66 /* String+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00A9253F0AA100D16E66 /* String+CBOR.swift */; };
 		B00F00AF253F0ABC00D16E66 /* Array+CBOR.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */; };
@@ -22,6 +24,8 @@
 		B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFA25232638004A2985 /* MaskedTextField.swift */; };
 		B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298AFF25232F5E004A2985 /* NavigationBar.swift */; };
 		B0298B052523426A004A2985 /* ClickableRowWithCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */; };
+		B02C168E2547F1FD005A2F79 /* ReadRoleCardTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */; };
+		B02C16932547F3F5005A2F79 /* RoleCardTypeChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02C16922547F3F5005A2F79 /* RoleCardTypeChecker.swift */; };
 		B03295AA2540030800FACC8B /* CredentialJsonPrinter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */; };
 		B03A3BEE252200F800937676 /* ButtonWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3BED252200F800937676 /* ButtonWithImage.swift */; };
 		B03A3C1125220C0300937676 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03A3C1025220C0300937676 /* Checkbox.swift */; };
@@ -31,6 +35,10 @@
 		B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */; };
 		B0413BCA2522ED8900140A70 /* RadioSegmentSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BC92522ED8900140A70 /* RadioSegmentSelector.swift */; };
 		B0413BD32522EEB500140A70 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0413BD22522EEB500140A70 /* RadioButton.swift */; };
+		B044F9C3254593D1003BF413 /* ChangeFilesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */; };
+		B044F9C825459E70003BF413 /* HolderCredentialLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9C725459E70003BF413 /* HolderCredentialLine.swift */; };
+		B044F9D42545D13A003BF413 /* CodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B044F9D32545D13A003BF413 /* CodeScanner.swift */; };
+		B04962732541A99C004FBEDE /* HolderAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04962722541A99C004FBEDE /* HolderAssembly.swift */; };
 		B04E79B02520C479007FAB1E /* RoleSelectorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */; };
 		B05CCAEA2520F59F0033093C /* ApplicationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */; };
 		B05CCAEF2520F6340033093C /* RoleSelectorAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */; };
@@ -51,6 +59,9 @@
 		B07DE5F52528EBB2003F8D9D /* UIImage+ScaleCrop.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07DE5F42528EBB2003F8D9D /* UIImage+ScaleCrop.swift */; };
 		B07DE5FD2528EC1B003F8D9D /* ByteCountFormatter+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B07DE5FC2528EC1B003F8D9D /* ByteCountFormatter+.swift */; };
 		B0800F5B252C339B007E04EE /* IdConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0800F5A252C339B007E04EE /* IdConstants.swift */; };
+		B08B37D82542B44D00FC5D59 /* HolderCredentialViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B37D72542B44D00FC5D59 /* HolderCredentialViewer.swift */; };
+		B08B37DD2542D40500FC5D59 /* DemoCredentialFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B37DC2542D40500FC5D59 /* DemoCredentialFactory.swift */; };
+		B08B37E32542FC5800FC5D59 /* ReadHolderCardTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */; };
 		B08C33ED2527743200194BF1 /* TangemIdFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C33EC2527743200194BF1 /* TangemIdFactory.swift */; };
 		B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */; };
 		B08D4793252AE33700E10DAB /* CredentialsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B08D4792252AE33700E10DAB /* CredentialsController.swift */; };
@@ -107,7 +118,11 @@
 		B0E6A292254048BF0023681A /* VerifierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A291254048BF0023681A /* VerifierView.swift */; };
 		B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A299254048C90023681A /* VerifierViewModel.swift */; };
 		B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E6A29E254048D40023681A /* VerifierAssembly.swift */; };
+		B0FD187D2541676500C4FDB5 /* HolderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD187C2541676500C4FDB5 /* HolderView.swift */; };
+		B0FD18852541676F00C4FDB5 /* HolderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */; };
+		B0FD188A2541683A00C4FDB5 /* TangemIdHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */; };
 		B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */; };
+		B0FFE3972541A79B00DE1C7E /* HolderViewCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0FFE3962541A79B00DE1C7E /* HolderViewCredentials.swift */; };
 		D739EAD27536E56B2A5880F2 /* Pods_Tangem_Id.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,10 +148,12 @@
 		528375D1826D7575429E5B5C /* Pods-Tangem IdTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.release.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.release.xcconfig"; sourceTree = "<group>"; };
 		5FDE8B3725CF46D1E1FB58F7 /* Pods-Tangem IdTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem IdTests.debug.xcconfig"; path = "Target Support Files/Pods-Tangem IdTests/Pods-Tangem IdTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B71B2D8FC0E5FAB4AFD80AA /* Pods_Tangem_IdTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_IdTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B00498E2254800F500EE3C5E /* IdMessages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdMessages.swift; sourceTree = "<group>"; };
 		B007E1A12525F9F600B16E93 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		B00A67A8253D7122002D7D53 /* AlertBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertBinder.swift; sourceTree = "<group>"; };
 		B00A67B9253DD6EE002D7D53 /* UIApplication+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+.swift"; sourceTree = "<group>"; };
 		B00A67BE253DDE95002D7D53 /* RootPresentationModeKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPresentationModeKey.swift; sourceTree = "<group>"; };
+		B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdUtils.swift; sourceTree = "<group>"; };
 		B00F0085253EFC6200D16E66 /* WriteIssuerFilesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteIssuerFilesTask.swift; sourceTree = "<group>"; };
 		B00F00A9253F0AA100D16E66 /* String+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CBOR.swift"; sourceTree = "<group>"; };
 		B00F00AE253F0ABC00D16E66 /* Array+CBOR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+CBOR.swift"; sourceTree = "<group>"; };
@@ -148,6 +165,8 @@
 		B0298AFA25232638004A2985 /* MaskedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextField.swift; sourceTree = "<group>"; };
 		B0298AFF25232F5E004A2985 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		B0298B042523426A004A2985 /* ClickableRowWithCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickableRowWithCheckbox.swift; sourceTree = "<group>"; };
+		B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadRoleCardTask.swift; sourceTree = "<group>"; };
+		B02C16922547F3F5005A2F79 /* RoleCardTypeChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleCardTypeChecker.swift; sourceTree = "<group>"; };
 		B03295A92540030800FACC8B /* CredentialJsonPrinter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialJsonPrinter.swift; sourceTree = "<group>"; };
 		B03A3BED252200F800937676 /* ButtonWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithImage.swift; sourceTree = "<group>"; };
 		B03A3C1025220C0300937676 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
@@ -157,6 +176,10 @@
 		B0413BC42522EBF600140A70 /* TextFieldWithClearButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithClearButton.swift; sourceTree = "<group>"; };
 		B0413BC92522ED8900140A70 /* RadioSegmentSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioSegmentSelector.swift; sourceTree = "<group>"; };
 		B0413BD22522EEB500140A70 /* RadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeFilesTask.swift; sourceTree = "<group>"; };
+		B044F9C725459E70003BF413 /* HolderCredentialLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderCredentialLine.swift; sourceTree = "<group>"; };
+		B044F9D32545D13A003BF413 /* CodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CodeScanner.swift; sourceTree = "<group>"; };
+		B04962722541A99C004FBEDE /* HolderAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderAssembly.swift; sourceTree = "<group>"; };
 		B04E79AF2520C479007FAB1E /* RoleSelectorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorViewModel.swift; sourceTree = "<group>"; };
 		B05CCAE92520F59F0033093C /* ApplicationAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAssembly.swift; sourceTree = "<group>"; };
 		B05CCAEE2520F6340033093C /* RoleSelectorAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleSelectorAssembly.swift; sourceTree = "<group>"; };
@@ -183,6 +206,9 @@
 		B07DE5F42528EBB2003F8D9D /* UIImage+ScaleCrop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ScaleCrop.swift"; sourceTree = "<group>"; };
 		B07DE5FC2528EC1B003F8D9D /* ByteCountFormatter+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ByteCountFormatter+.swift"; sourceTree = "<group>"; };
 		B0800F5A252C339B007E04EE /* IdConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdConstants.swift; sourceTree = "<group>"; };
+		B08B37D72542B44D00FC5D59 /* HolderCredentialViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderCredentialViewer.swift; sourceTree = "<group>"; };
+		B08B37DC2542D40500FC5D59 /* DemoCredentialFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCredentialFactory.swift; sourceTree = "<group>"; };
+		B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadHolderCardTask.swift; sourceTree = "<group>"; };
 		B08C33EC2527743200194BF1 /* TangemIdFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdFactory.swift; sourceTree = "<group>"; };
 		B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdVerifier.swift; sourceTree = "<group>"; };
 		B08D4792252AE33700E10DAB /* CredentialsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsController.swift; sourceTree = "<group>"; };
@@ -239,7 +265,11 @@
 		B0E6A291254048BF0023681A /* VerifierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierView.swift; sourceTree = "<group>"; };
 		B0E6A299254048C90023681A /* VerifierViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewModel.swift; sourceTree = "<group>"; };
 		B0E6A29E254048D40023681A /* VerifierAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierAssembly.swift; sourceTree = "<group>"; };
+		B0FD187C2541676500C4FDB5 /* HolderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderView.swift; sourceTree = "<group>"; };
+		B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderViewModel.swift; sourceTree = "<group>"; };
+		B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TangemIdHolder.swift; sourceTree = "<group>"; };
 		B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifierViewCredentials.swift; sourceTree = "<group>"; };
+		B0FFE3962541A79B00DE1C7E /* HolderViewCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolderViewCredentials.swift; sourceTree = "<group>"; };
 		E12E3A31B51D1C48EC335D73 /* Pods_Tangem_Id.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tangem_Id.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F65F0F669173C1ECAE064488 /* Pods-Tangem Id.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tangem Id.release.xcconfig"; path = "Target Support Files/Pods-Tangem Id/Pods-Tangem Id.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -326,6 +356,7 @@
 				B03844C1251E73BF00437D54 /* RoleSelector */,
 				B08F0859251F972C00AEA1C1 /* Issuer */,
 				B0E6A290254048A50023681A /* Verifier */,
+				B0FD187B254165ED00C4FDB5 /* Holder */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -347,6 +378,14 @@
 				B0413BD22522EEB500140A70 /* RadioButton.swift */,
 			);
 			path = RadioSegmentSelector;
+			sourceTree = "<group>";
+		};
+		B044F9D22545D0C8003BF413 /* QRScanner */ = {
+			isa = PBXGroup;
+			children = (
+				B044F9D32545D13A003BF413 /* CodeScanner.swift */,
+			);
+			path = QRScanner;
 			sourceTree = "<group>";
 		};
 		B05FE379251E0D080002D338 = {
@@ -474,6 +513,16 @@
 				B0993F562521BF45003BEB85 /* Constants.swift */,
 			);
 			path = AppSettings;
+			sourceTree = "<group>";
+		};
+		B08B37E12542FC4000FC5D59 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				B08B37E22542FC5800FC5D59 /* ReadHolderCardTask.swift */,
+				B044F9C2254593D1003BF413 /* ChangeFilesTask.swift */,
+				B02C168D2547F1FD005A2F79 /* ReadRoleCardTask.swift */,
+			);
+			path = Tasks;
 			sourceTree = "<group>";
 		};
 		B08D4797252B02A700E10DAB /* Extensions */ = {
@@ -654,6 +703,8 @@
 				B0E6A28B2540471B0023681A /* DemoCredentials.swift */,
 				B03B520B2540744F00424CFE /* VerificationStatus.swift */,
 				B0FD189125416EA600C4FDB5 /* VerifierViewCredentials.swift */,
+				B0FFE3962541A79B00DE1C7E /* HolderViewCredentials.swift */,
+				B08B37DC2542D40500FC5D59 /* DemoCredentialFactory.swift */,
 			);
 			path = Credential;
 			sourceTree = "<group>";
@@ -703,10 +754,13 @@
 		B0C5296D2524EFB300BBCD27 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				B08B37E12542FC4000FC5D59 /* Tasks */,
 				B0C5296F2524EFE400BBCD27 /* TangemIdSdk.swift */,
 				B0C5297B2525B9E600BBCD27 /* TangemIdError.swift */,
 				B08C33EC2527743200194BF1 /* TangemIdFactory.swift */,
 				B0800F5A252C339B007E04EE /* IdConstants.swift */,
+				B00D7A8F2546B41E00D0B460 /* TangemIdUtils.swift */,
+				B00498E2254800F500EE3C5E /* IdMessages.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -719,6 +773,8 @@
 				B0D4AC682526F59F006F3FA4 /* RoleAction.swift */,
 				B0B82C2025270A34002D71FF /* RoleInfo.swift */,
 				B08C33F125278BB900194BF1 /* TangemIdVerifier.swift */,
+				B0FD18892541683A00C4FDB5 /* TangemIdHolder.swift */,
+				B02C16922547F3F5005A2F79 /* RoleCardTypeChecker.swift */,
 			);
 			path = Roles;
 			sourceTree = "<group>";
@@ -734,6 +790,7 @@
 		B0DF08FB2520D9820077479E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B044F9D22545D0C8003BF413 /* QRScanner */,
 				B00A67A7253D7114002D7D53 /* Alert */,
 				B07DE5EB2528BD91003F8D9D /* Snackbar */,
 				B0C529602524B41C00BBCD27 /* DatePicker */,
@@ -766,6 +823,18 @@
 			path = Verifier;
 			sourceTree = "<group>";
 		};
+		B0FD187B254165ED00C4FDB5 /* Holder */ = {
+			isa = PBXGroup;
+			children = (
+				B0FD187C2541676500C4FDB5 /* HolderView.swift */,
+				B0FD18842541676F00C4FDB5 /* HolderViewModel.swift */,
+				B04962722541A99C004FBEDE /* HolderAssembly.swift */,
+				B08B37D72542B44D00FC5D59 /* HolderCredentialViewer.swift */,
+				B044F9C725459E70003BF413 /* HolderCredentialLine.swift */,
+			);
+			path = Holder;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -784,6 +853,8 @@
 			dependencies = (
 			);
 			name = "Tangem Id";
+			packageProductDependencies = (
+			);
 			productName = "Tangem Id";
 			productReference = B05FE382251E0D080002D338 /* Tangem Id.app */;
 			productType = "com.apple.product-type.application";
@@ -858,6 +929,8 @@
 				Base,
 			);
 			mainGroup = B05FE379251E0D080002D338;
+			packageReferences = (
+			);
 			productRefGroup = B05FE383251E0D080002D338 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -990,36 +1063,47 @@
 				B0C529592524AF1100BBCD27 /* KeyboardFollower.swift in Sources */,
 				B075242B2529A59600DFE1B0 /* CredentialInput.swift in Sources */,
 				B0B82C2125270A34002D71FF /* RoleInfo.swift in Sources */,
+				B08B37E32542FC5800FC5D59 /* ReadHolderCardTask.swift in Sources */,
+				B0FD187D2541676500C4FDB5 /* HolderView.swift in Sources */,
+				B00498E3254800F500EE3C5E /* IdMessages.swift in Sources */,
 				B0B82C332527532E002D71FF /* JsonLdConvertor.swift in Sources */,
 				B08D47AF252B560800E10DAB /* Secp256k1ProofSettings.swift in Sources */,
 				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,
 				B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */,
+				B02C16932547F3F5005A2F79 /* RoleCardTypeChecker.swift in Sources */,
 				B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */,
+				B0FD18852541676F00C4FDB5 /* HolderViewModel.swift in Sources */,
 				B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */,
 				B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */,
 				B08F0875251F981E00AEA1C1 /* PreviewDevice+.swift in Sources */,
 				B00A67A9253D7122002D7D53 /* AlertBinder.swift in Sources */,
+				B04962732541A99C004FBEDE /* HolderAssembly.swift in Sources */,
 				B07DE5FD2528EC1B003F8D9D /* ByteCountFormatter+.swift in Sources */,
 				B0C529702524EFE400BBCD27 /* TangemIdSdk.swift in Sources */,
 				B08C33F225278BB900194BF1 /* TangemIdVerifier.swift in Sources */,
 				B0993F432521B362003BEB85 /* Assembly+Module.swift in Sources */,
 				B0D4AC692526F59F006F3FA4 /* RoleAction.swift in Sources */,
 				B00F0086253EFC6200D16E66 /* WriteIssuerFilesTask.swift in Sources */,
+				B044F9D42545D13A003BF413 /* CodeScanner.swift in Sources */,
 				B07DE5ED2528BD9C003F8D9D /* Snackbar.swift in Sources */,
 				B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */,
 				B08D47A4252B10DE00E10DAB /* ImageHasher.swift in Sources */,
 				B0E6A28C2540471B0023681A /* DemoCredentials.swift in Sources */,
+				B0FFE3972541A79B00DE1C7E /* HolderViewCredentials.swift in Sources */,
 				B0298AB625230B7D004A2985 /* Gender.swift in Sources */,
 				B00F00BE253F241500D16E66 /* ShareView.swift in Sources */,
+				B08B37D82542B44D00FC5D59 /* HolderCredentialViewer.swift in Sources */,
 				B08F0899251FB21700AEA1C1 /* View+PreviewGroup.swift in Sources */,
 				B0993F5D2521C5E1003BEB85 /* IssuerCreateCredentialsView.swift in Sources */,
 				B0B82C3E25275BA1002D71FF /* CredentialCreator.swift in Sources */,
 				B00F00B4253F0AD300D16E66 /* Dict+CBOR.swift in Sources */,
 				B0993F4D2521B3B3003BEB85 /* ServiceAssembly.swift in Sources */,
 				B0C5297C2525B9E600BBCD27 /* TangemIdError.swift in Sources */,
+				B00D7A902546B41E00D0B460 /* TangemIdUtils.swift in Sources */,
 				B07DE5F52528EBB2003F8D9D /* UIImage+ScaleCrop.swift in Sources */,
 				B0298AFB25232638004A2985 /* MaskedTextField.swift in Sources */,
 				B03A3C1125220C0300937676 /* Checkbox.swift in Sources */,
+				B0FD188A2541683A00C4FDB5 /* TangemIdHolder.swift in Sources */,
 				B00A67BA253DD6EE002D7D53 /* UIApplication+.swift in Sources */,
 				B07524382529C37100DFE1B0 /* Secp256k1Proof.swift in Sources */,
 				B0C5297A2525B3A700BBCD27 /* IdLocalization.swift in Sources */,
@@ -1047,6 +1131,7 @@
 				B08F0866251F974A00AEA1C1 /* IssuerView.swift in Sources */,
 				B0DF08FD2520D9940077479E /* NavigationButton.swift in Sources */,
 				B0C529622524B42900BBCD27 /* DateField.swift in Sources */,
+				B02C168E2547F1FD005A2F79 /* ReadRoleCardTask.swift in Sources */,
 				B0C5295B2524B0CE00BBCD27 /* DateTextField.swift in Sources */,
 				B0413BD32522EEB500140A70 /* RadioButton.swift in Sources */,
 				B0C5296B2524D31F00BBCD27 /* LocalizationKeys.swift in Sources */,
@@ -1068,12 +1153,15 @@
 				B0298B0025232F5E004A2985 /* NavigationBar.swift in Sources */,
 				B068AB052524678F006559F9 /* ImagePicker.swift in Sources */,
 				B007E1A22525F9F600B16E93 /* Command.swift in Sources */,
+				B08B37DD2542D40500FC5D59 /* DemoCredentialFactory.swift in Sources */,
+				B044F9C3254593D1003BF413 /* ChangeFilesTask.swift in Sources */,
 				B05FE38A251E0D080002D338 /* RoleSelectorView.swift in Sources */,
 				B0A99DDE2526EF7A006F4A5D /* Role.swift in Sources */,
 				B08D4793252AE33700E10DAB /* CredentialsController.swift in Sources */,
 				B07524222529A2C200DFE1B0 /* SnackMessageDisplayable.swift in Sources */,
 				B0298B052523426A004A2985 /* ClickableRowWithCheckbox.swift in Sources */,
 				B03B52072540738F00424CFE /* CredentialValidityFooter.swift in Sources */,
+				B044F9C825459E70003BF413 /* HolderCredentialLine.swift in Sources */,
 				B0E6A29F254048D40023681A /* VerifierAssembly.swift in Sources */,
 				B0C529772525B26600BBCD27 /* IssuerInfo.swift in Sources */,
 				B0FD189225416EA600C4FDB5 /* VerifierViewCredentials.swift in Sources */,

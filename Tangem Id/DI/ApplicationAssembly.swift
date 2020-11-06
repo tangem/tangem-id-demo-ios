@@ -16,7 +16,8 @@ final class ApplicationAssembly {
 			
 			RoleSelectorAssembly(),
 			IssuerAssembly(),
-			VerifierAssembly()
+			VerifierAssembly(),
+			HolderAssembly()
 		]
 	)
 	

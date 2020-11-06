@@ -40,19 +40,12 @@ final class RoleSelectorViewModel: ObservableObject, Equatable, SnackMessageDisp
 	private let tangemIdFactory: TangemIdFactoryType
 	
 	private(set) var issuerLink: AnyView = AnyView(EmptyView())
-	
 	private(set) var verifierLink: AnyView = AnyView(EmptyView())
-	
-	var holderLink: AnyView {
-		AnyView(EmptyView())
-	}
-	
-	private let verifierManager: TangemVerifierManager
+	private(set) var holderLink: AnyView = AnyView(EmptyView())
 	
 	init(moduleAssembly: ModuleAssemblyType, tangemIdFactory: TangemIdFactoryType) {
 		self.moduleAssembly = moduleAssembly
 		self.tangemIdFactory = tangemIdFactory
-		verifierManager = tangemIdFactory.createVerifierManager()
 	}
 	
 }
@@ -80,15 +73,26 @@ extension RoleSelectorViewModel {
 			switch result {
 			case .success(let creds):
 				self.verifierLink = try! self.moduleAssembly.assembledView(for: .verifier(manager: manager, credentials: creds))
+				self.isVerifier = true
 				self.state = .verifier
 			case .failure(let error):
-				self.showErrorSnack(message: error.localizedDescription)
+				self.showErrorSnack(error: error)
 			}
 		}))
 	}
 	
 	func holderButtonAction() {
-		state = .holder
+		let manager = tangemIdFactory.createHolderManager()
+		manager.execute(action: .scanHolderCredentials(completion: { (result) in
+			switch result {
+			case .success(let creds):
+				self.holderLink = try! self.moduleAssembly.assembledView(for: .holder(manager: manager, credentials: creds))
+				self.isHolder = true
+				self.state = .holder
+			case .failure(let error):
+				self.showErrorSnack(error: error)
+			}
+		}))
 	}
 	
 	func openShop() {

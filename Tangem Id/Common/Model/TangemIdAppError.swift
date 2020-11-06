@@ -8,7 +8,7 @@
 
 import TangemSdk
 
-enum TangemIdAppError: Error, Hashable {
+enum TangemIdAppError: LocalizedError {
 	case idCoreError(error: TangemIdError)
 	case tangemSdkError(error: String)
 }

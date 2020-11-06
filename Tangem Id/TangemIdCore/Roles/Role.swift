@@ -6,8 +6,15 @@
 //  Copyright © 2020 Tangem AG. All rights reserved.
 //
 
-import Foundation
+import TangemSdk
 
-enum Role {
+public enum Role {
 	case issuer, verifier, holder
+	
+	public var validCardMask: ProductMask {
+		switch self {
+		case .issuer: return .idIssuer
+		case .verifier, .holder: return .idCard
+		}
+	}
 }

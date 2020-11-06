@@ -29,7 +29,10 @@ struct IssuerView: View, Equatable {
 			.foregroundColor(.tangemBlack)
 			ZStack {
 				VStack {
-					Image("qr")
+					Image(uiImage: viewModel.qrImage)
+						.resizable()
+						.interpolation(.none)
+						.frame(width: 130, height: 130)
 					Spacer()
 						.frame(height: 48)
 					Text(LocalizationKeys.Modules.Issuer.didIssuerAddress)

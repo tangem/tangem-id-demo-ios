@@ -45,6 +45,10 @@ extension Color {
 		Color(UIColor.success)
 	}
 	
+	static var tangemDarkGray: Color {
+		Color(UIColor.tangemDarkGray)
+	}
+	
 }
 
 extension UIColor {
@@ -82,6 +86,10 @@ extension UIColor {
 	
 	@nonobjc static var success: UIColor {
 		UIColor(named: "Success")!
+	}
+	
+	@nonobjc static var tangemDarkGray: UIColor {
+		UIColor(named: "TangemDarkGray")!
 	}
 	
 }

@@ -8,6 +8,12 @@
 
 import Foundation
 
+struct VerifierCredentials<T: DemoCredential> {
+	let credentials: T
+	let issuer: IssuerVerificationInfo
+	let status: VerificationStatus
+}
+
 struct VerifierViewCredentials {
 	var photo: VerifierCredentials<PhotoCredential>?
 	var personalInfo: VerifierCredentials<PersonalInfoCredential>?
