@@ -56,7 +56,7 @@ struct RoleSelectorView: View, Equatable {
 				VStack(spacing: 16) {
 					NavigationButton(
 						action: { self.viewModel.issuerButtonAction() },
-						text: LocalizationKeys.Common.issuer,
+						text: LocalizationKeys.Common.iIssuer,
 						navigationLink:
 							NavigationLink("",
 										   destination: viewModel.issuerLink,
@@ -64,7 +64,7 @@ struct RoleSelectorView: View, Equatable {
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
 						action: { self.viewModel.verifierButtonAction() },
-						text: LocalizationKeys.Common.verifier,
+						text: LocalizationKeys.Common.iVerifier,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.verifierLink,
@@ -73,7 +73,7 @@ struct RoleSelectorView: View, Equatable {
 						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					NavigationButton(
 						action: { self.viewModel.holderButtonAction() },
-						text: LocalizationKeys.Common.holder,
+						text: LocalizationKeys.Common.iHolder,
 						navigationLink: NavigationLink(
 							destination: viewModel.holderLink,
 							tag: RoleSelectorViewModel.ViewState.holder,
@@ -86,6 +86,7 @@ struct RoleSelectorView: View, Equatable {
 			}
 			.modifier(HiddenSystemNavigation())
 		}
+		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.navigationViewStyle(StackNavigationViewStyle())
 		.environment(\.rootPresentationMode, $viewModel.isIssuer)
 	}

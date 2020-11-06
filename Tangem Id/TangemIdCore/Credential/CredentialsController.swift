@@ -15,7 +15,7 @@ typealias JsonCredentialsResult = Result<String, TangemIdError>
 protocol CredentialsControllerType: class {
 	func signCredentials(for input: CredentialInput, subjectEthAddress: String, completion: @escaping EmptyResponse)
 	func writeCredentialsToCard(completion: @escaping EmptyResponse)
-	func credentialsAsJson(completion: @escaping (JsonCredentialsResult) -> Void)
+	func credentialsAsJson(completion: (JsonCredentialsResult) -> Void)
 }
 
 class DemoCredentialsController {
@@ -106,20 +106,10 @@ extension DemoCredentialsController: CredentialsControllerType {
 		}
 	}
 	
-	func credentialsAsJson(completion: @escaping (JsonCredentialsResult) -> Void) {
-		let encoder = JSONEncoder()
-		encoder.dateEncodingStrategy = .formatted(.iso8601WithSlashes)
-		encoder.outputFormatting = .prettyPrinted
-		do {
-			let encodedData = try encoder.encode(signedCreds)
-			guard let string = String(data: encodedData, encoding: .utf8) else {
-				completion(.failure(.failedToCreateJsonRepresentation))
-				return
-			}
-			completion(.success(string))
-		} catch {
-			completion(.failure(.failedToCreateJsonRepresentation))
-		}
+	func credentialsAsJson(completion: (JsonCredentialsResult) -> Void) {
+		createJson(for: signedCreds, completion: completion)
 	}
 	
 }
+
+extension DemoCredentialsController: CredentialJsonPrinter { }

@@ -56,6 +56,10 @@ struct PersonalInformationCredential: Codable, DictConvertible {
 		self.init(id: id, givenName: input.name, familyName: input.surname, gender: input.gender, born: formatter.string(from: input.dateOfBirth), photoHash: photoHash)
 	}
 	
+	enum CodingKeys: String, CodingKey {
+		case id, givenName, familyName, gender, born, photoHash
+	}
+	
 	let id: String
 	let givenName: String
 	let familyName: String
@@ -67,21 +71,47 @@ struct PersonalInformationCredential: Codable, DictConvertible {
 struct PhotoCredentialSubject: DictConvertible {
 	let id: String
 	let photo: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id, photo
+	}
 }
 
 struct SsnCredentialSubject: DictConvertible {
 	let id: String
 	let ssn: String
 	let photoHash: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id, ssn, photoHash
+	}
 }
 
 struct AgeOver21CredentialSubject: DictConvertible {
 	let id: String
 	let photoHash: String
+	
+	enum CodingKeys: String, CodingKey {
+		case id, photoHash
+	}
 }
 
+enum CovidStatus: String {
+	case negative, positive
+}
+
+struct CovidCredentialSubject: DictConvertible {
+	let id: String
+	let result: CovidStatus
+	
+	enum CodingKeys: String, CodingKey {
+		case id, result
+	}
+}
+
+
 enum VerifiableCredentialType: String, Codable, CaseIterable, CBOREncodable {
-	case VerifiableCredential, TangemEthCredential, TangemPhotoCredential, TangemPersonalInformationCredential, TangemSsnCredential, TangemAgeOver21Credential
+	case VerifiableCredential, TangemEthCredential, TangemPhotoCredential, TangemPersonalInformationCredential, TangemSsnCredential, TangemAgeOver21Credential, TangemCovidCredential
 	
 	func encode() -> [UInt8] {
 		self.rawValue.encode()
@@ -89,16 +119,6 @@ enum VerifiableCredentialType: String, Codable, CaseIterable, CBOREncodable {
 }
 
 class VerifiableCredential: Codable, DictConvertible {
-	
-	static func == (lhs: VerifiableCredential, rhs: VerifiableCredential) -> Bool {
-		lhs.context == rhs.context &&
-			lhs.type == rhs.type &&
-			lhs.credentialSubject == rhs.credentialSubject &&
-			lhs.issuer == rhs.issuer &&
-			lhs.issuanceDate == rhs.issuanceDate
-	}
-	
-	
 	let context: [String]
 	let type: [VerifiableCredentialType]
 	let credentialSubject: [String: String]
@@ -108,15 +128,68 @@ class VerifiableCredential: Codable, DictConvertible {
 	var ethCredentialStatus: String? = nil
 	var proof: Secp256k1Proof? = nil
 	
+	private static let validFromFormatter: DateFormatter = .iso8601WithSlashes
+	
 	private enum CodingKeys: String, CodingKey {
 		case context = "@context"
 		case type, credentialSubject, issuer, issuanceDate, ethCredentialStatus, proof, validFrom
 	}
 	
-	internal init(context: [String], type: [VerifiableCredentialType], credentialSubject: [String: String], issuer: String, issuanceDate: String) {
+	public init(context: [String], type: [VerifiableCredentialType], credentialSubject: [String: String], issuer: String, issuanceDate: String) {
 		self.context = context
 		self.type = type
 		self.credentialSubject = credentialSubject
+		self.issuer = issuer
+		self.issuanceDate = issuanceDate
+	}
+	
+	public init(cbor: CBOR) throws {
+		guard
+			case let .map(dict) = cbor,
+			case let .array(contextCbor) = dict[CodingKeys.context.rawValue.cbor()],
+			case let .array(typeCbor) = dict[CodingKeys.type.rawValue.cbor()],
+			let subjectCbor = dict[CodingKeys.credentialSubject.rawValue.cbor()],
+			case let .map(subjectMap) = subjectCbor,
+			case let .utf8String(issuer) = dict[CodingKeys.issuer.rawValue.cbor()],
+			case let .utf8String(issuanceDate) = dict[CodingKeys.issuanceDate.rawValue.cbor()]
+			else {
+			throw TangemIdError.notValidCborData
+		}
+		if case let .utf8String(validFromString) = dict[CodingKeys.validFrom.rawValue.cbor()],
+		   let validFromDate = VerifiableCredential.validFromFormatter.date(from: validFromString) {
+			validFrom = validFromDate
+		}
+		if let proofCborDict = dict[CodingKeys.proof.rawValue.cbor()] {
+			self.proof = try Secp256k1Proof(cbor: proofCborDict)
+		}
+		if case let .utf8String(ethCredentialStatus) = dict[CodingKeys.ethCredentialStatus.rawValue.cbor()] {
+			self.ethCredentialStatus = ethCredentialStatus
+		}
+		context = try contextCbor.map {
+			guard case let .utf8String(contextStr) = $0 else {
+				throw TangemIdError.notValidCborData
+			}
+			return contextStr
+		}
+		type = try typeCbor.map {
+			guard
+				case let .utf8String(typeStr) = $0,
+				let type = VerifiableCredentialType(rawValue: typeStr) else {
+				throw TangemIdError.notValidCborData
+			}
+			return type
+		}
+		var subject = [String: String]()
+		try subjectMap.forEach {
+			guard
+				case let .utf8String(key) = $0.key,
+				case let .utf8String(value) = $0.value
+			else {
+				throw TangemIdError.notValidCborData
+			}
+			subject[key] = value
+		}
+		self.credentialSubject = subject
 		self.issuer = issuer
 		self.issuanceDate = issuanceDate
 	}
@@ -132,8 +205,7 @@ class VerifiableCredential: Codable, DictConvertible {
 			]
 		)
 		if let valid = validFrom {
-			let formatter = DateFormatter.iso8601WithSlashes
-			map[CodingKeys.validFrom.rawValue.cbor()] = CBOR.utf8String(formatter.string(from: valid))
+			map[CodingKeys.validFrom.rawValue.cbor()] = CBOR.utf8String(VerifiableCredential.validFromFormatter.string(from: valid))
 		}
 		if let ethStatus = ethCredentialStatus {
 			map[CodingKeys.ethCredentialStatus.rawValue.cbor()] = ethStatus.cbor()

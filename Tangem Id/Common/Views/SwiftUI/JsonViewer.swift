@@ -10,7 +10,7 @@ import SwiftUI
 
 struct JsonViewer: View {
 	
-	var jsonMessage: String = ""
+	var jsonMessage: String = "Some json"
 	
 	@Environment(\.presentationMode) var presentationMode
 	@State var isSharePresented: Bool = false
@@ -25,14 +25,14 @@ struct JsonViewer: View {
 			HStack {
 				Spacer()
 				Button(LocalizationKeys.Common.hide) {
-					presentationMode.wrappedValue.dismiss()
+					self.presentationMode.wrappedValue.dismiss()
 				}
 				.padding(.horizontal)
 				Button(LocalizationKeys.Common.share) {
 					self.isSharePresented = true
 				}
 				.sheet(isPresented: $isSharePresented, content: {
-					ShareView(itemsToShare: [jsonMessage] as [Any], applicationActivities: nil)
+					ShareView(itemsToShare: [self.jsonMessage] as [Any], applicationActivities: nil)
 				})
 			}
 			.foregroundColor(.tangemBlue)

@@ -9,6 +9,7 @@
 import TangemSdk
 import BlockchainSdk
 import CryptoSwift
+import SwiftCBOR
 
 enum CredentialCreatorType {
 	case demo
@@ -29,6 +30,7 @@ struct CredentialCreatorFactory: CredentialCreatorFactoryType {
 
 protocol CredentialCreator: class {
 	func createCredentialsToSign(issuerDidAddress: String, input: CredentialInput, holderEthereumAddress: String) throws -> [VerifiableCredential]
+	func createCredentials(from files: [File]) -> [VerifiableCredential]
 }
 
 class DemoCredentialCreator {
@@ -118,6 +120,24 @@ extension DemoCredentialCreator: CredentialCreator {
 		let ethCredsStatus = blockchain.makeAddress(from: singleHash)
 		credentials.forEach { $0.ethCredentialStatus = ethCredsStatus }
 		
+		return credentials
+	}
+	
+	func createCredentials(from files: [File]) -> [VerifiableCredential] {
+		var cborData = [CBOR]()
+		files.forEach {
+			guard let cbor = try? CBOR.decode($0.fileData.bytes) else { return }
+			cborData.append(cbor)
+		}
+		var credentials = [VerifiableCredential]()
+		cborData.forEach {
+			do {
+				let creds = try VerifiableCredential(cbor: $0)
+				credentials.append(creds)
+			} catch {
+				print("Failed to create creds for item: \($0)")
+			}
+		}
 		return credentials
 	}
 }

@@ -33,6 +33,18 @@ extension Color {
 		Color(UIColor.placeholderTextColor)
 	}
 	
+	static var error: Color {
+		Color(UIColor.error)
+	}
+	
+	static var offline: Color {
+		Color(UIColor.offline)
+	}
+	
+	static var success: Color {
+		Color(UIColor.success)
+	}
+	
 }
 
 extension UIColor {
@@ -58,6 +70,18 @@ extension UIColor {
 	
 	@nonobjc static var placeholderTextColor: UIColor {
 		UIColor(named: "PlaceholderTextColor")!
+	}
+	
+	@nonobjc static var error: UIColor {
+		UIColor(named: "Error")!
+	}
+	
+	@nonobjc static var offline: UIColor {
+		UIColor(named: "Offline")!
+	}
+	
+	@nonobjc static var success: UIColor {
+		UIColor(named: "Success")!
 	}
 	
 }

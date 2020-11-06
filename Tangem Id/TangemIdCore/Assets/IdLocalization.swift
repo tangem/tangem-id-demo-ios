@@ -14,6 +14,14 @@ struct IdLocalization {
 		static let scanHolderCard = "scan_holder_card".localizedString()
 		
 		static let writeFilesHint = "write_creds_files_hint".localizedString()
+		
+	}
+	
+	struct VerificationStatus {
+		static let offline = "offline".localizedString()
+		static let valid = "valid".localizedString()
+		static let invalid = "invalid".localizedString()
+		static let revoked = "revoked".localizedString()
 	}
 	
 	struct Errors {
@@ -23,5 +31,7 @@ struct IdLocalization {
 		static let invalidHolderCard = "invalid_holder_card".localizedString()
 		static let failedToReadIssuerCard = "failed_to_read_issuer_card".localizedString()
 		static let failedToCreateJsonRepresentation = "failed_to_create_json_representation".localizedString()
+		static let failedToCreateCredsFromCbor = "failed_to_create_creds_from_cbor".localizedString()
+		static let noAvailableCredentialsOnCard = "no_available_credentials_on_card".localizedString()
 	}
 }
