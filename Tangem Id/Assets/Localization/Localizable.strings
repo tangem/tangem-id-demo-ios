@@ -84,6 +84,9 @@
 
 "already_has_credential" = "The holder already has this credential";
 
+"nfc_is_busy" = "NFC is busy. Please, wait";
+"nfc_ready_to_use" = "NFC was busy and now is ready to use. Please, repeat your request";
+
 
 // MARK: - Tangem Id Core messages
 "scan_issuer_card" = "Tap Issuer's Card";

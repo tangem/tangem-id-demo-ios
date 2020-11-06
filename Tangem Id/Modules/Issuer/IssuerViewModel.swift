@@ -21,6 +21,7 @@ class IssuerViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 	@Published var isCreatingCredentials: Bool? = false
 	@Published var snackMessage: SnackData = .emptySnack
 	@Published var isShowingSnack: Bool = false
+	@Published var isNfcBusy: Bool = false
 	
 	var qrImage: UIImage = #imageLiteral(resourceName: "qr")
 	
@@ -41,8 +42,10 @@ class IssuerViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 	}
 	
 	func createNewCredentials() {
+		isNfcBusy = true
 		issuerManager.execute(action: .getHolderAddress { [weak self] (result) in
 			guard let self = self else { return }
+			
 			switch result {
 			case .success:
 				self.createCredentialsLink = try! self.moduleAssembly.assembledView(for: .issuerCreateCredentials(manager: self.issuerManager))
@@ -50,6 +53,7 @@ class IssuerViewModel: ObservableObject, Equatable, SnackMessageDisplayable {
 			case .failure(let error):
 				self.showErrorSnack(error: error)
 			}
+			self.isNfcBusy = false
 		})
 	}
 	

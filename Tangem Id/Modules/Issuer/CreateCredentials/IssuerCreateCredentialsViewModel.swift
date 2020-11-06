@@ -53,6 +53,7 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 	
 	@Published var jsonRepresentation: String = ""
 	@Published var isShowingJson: Bool = false
+	@Published var isNfcBusy: Bool = false
 	
 	var doesFormHasInput: Bool {
 		!name.isEmpty ||
@@ -105,28 +106,30 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 			showErrorSnack(message: LocalizedStrings.Snacks.issuerSomeEmptyFields)
 			return
 		}
+		isNfcBusy = true
 		issuerManager.execute(action: .signCredentials(credsInput, { [weak self] (result) in
 			switch result {
 			case .success:
 				self?.showSnack(message: LocalizedStrings.Snacks.credentialsSignedSuccess, type: .info)
 				self?.isCredentialsCreated = true
 			case .failure(let error):
-				if case TangemSdkError.userCancelled = error { return }
-				self?.showErrorSnack(message: String(format: LocalizedStrings.Snacks.failedToSignCredentials, error.localizedDescription))
+				self?.showErrorSnack(error: error, withMessage: String(format: LocalizedStrings.Snacks.failedToSignCredentials, error.localizedDescription))
 			}
+			self?.isNfcBusy = false
 		}))
 	}
 	
 	func writeCredentialsToCard() {
+		isNfcBusy = true
 		issuerManager.execute(action: .saveCredentialsToCard { [weak self] (result) in
 			switch result {
 			case .success:
 				self?.showInfoSnack(message: LocalizedStrings.Snacks.credentialsSavedOnCard)
 				self?.shouldDismissToRoot = true
 			case .failure(let error):
-				if case TangemSdkError.userCancelled = error { return }
-				self?.showErrorSnack(message: String(format: LocalizedStrings.Snacks.failedToWriteCredentials, error.localizedDescription))
+				self?.showErrorSnack(error: error, withMessage: String(format: LocalizedStrings.Snacks.failedToWriteCredentials, error.localizedDescription))
 			}
+			self?.isNfcBusy = false
 		})
 	}
 	

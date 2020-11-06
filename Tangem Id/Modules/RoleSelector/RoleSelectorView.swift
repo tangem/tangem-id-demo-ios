@@ -56,28 +56,34 @@ struct RoleSelectorView: View, Equatable {
 				VStack(spacing: 16) {
 					NavigationButton(
 						action: { self.viewModel.issuerButtonAction() },
+						isBusy: self.viewModel.isNfcBusy,
 						text: LocalizationKeys.Common.iIssuer,
 						navigationLink:
 							NavigationLink("",
 										   destination: viewModel.issuerLink,
 										   isActive: $viewModel.isIssuer),
-						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
+						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding,
+						indicatorSettings: .settingsForButtonStyle(.blue))
 					NavigationButton(
 						action: { self.viewModel.verifierButtonAction() },
+						isBusy: self.viewModel.isNfcBusy,
 						text: LocalizationKeys.Common.iVerifier,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.verifierLink,
 							isActive: $viewModel.isVerifier),
-						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
+						buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding,
+						indicatorSettings: .settingsForButtonStyle(.blue))
 					NavigationButton(
 						action: { self.viewModel.holderButtonAction() },
+						isBusy: self.viewModel.isNfcBusy,
 						text: LocalizationKeys.Common.iHolder,
 						navigationLink: NavigationLink(
 							"",
 							destination: viewModel.holderLink,
 							isActive: $viewModel.isHolder),
-						buttonStyle: ScreenPaddingButtonStyle.defaultWhiteButtonStyleWithPadding)
+						buttonStyle: ScreenPaddingButtonStyle.defaultWhiteButtonStyleWithPadding,
+						indicatorSettings: .settingsForButtonStyle(.white))
 				}
 				.padding(.horizontal, 46)
 				.padding(.bottom, 40)

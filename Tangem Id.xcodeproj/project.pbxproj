@@ -91,6 +91,9 @@
 		B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F712521F0F4003BEB85 /* UIFont+.swift */; };
 		B0993F772521F355003BEB85 /* CredentialCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F762521F355003BEB85 /* CredentialCard.swift */; };
 		B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0993F7C2521F5FB003BEB85 /* CredentialPhotoContent.swift */; };
+		B09A318A2555200E0045EDB2 /* ButtonWithLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A31892555200E0045EDB2 /* ButtonWithLoader.swift */; };
+		B09A318F255521990045EDB2 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A318E255521990045EDB2 /* ActivityIndicator.swift */; };
+		B09A3195255527670045EDB2 /* IndicatorSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09A3194255527670045EDB2 /* IndicatorSettings.swift */; };
 		B0A99DDE2526EF7A006F4A5D /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0A99DDD2526EF7A006F4A5D /* Role.swift */; };
 		B0B82C2125270A34002D71FF /* RoleInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B82C2025270A34002D71FF /* RoleInfo.swift */; };
 		B0B82C2D252752D7002D71FF /* VerifiableCredential.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0B82C2C252752D7002D71FF /* VerifiableCredential.swift */; };
@@ -238,6 +241,9 @@
 		B0993F712521F0F4003BEB85 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		B0993F762521F355003BEB85 /* CredentialCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialCard.swift; sourceTree = "<group>"; };
 		B0993F7C2521F5FB003BEB85 /* CredentialPhotoContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialPhotoContent.swift; sourceTree = "<group>"; };
+		B09A31892555200E0045EDB2 /* ButtonWithLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonWithLoader.swift; sourceTree = "<group>"; };
+		B09A318E255521990045EDB2 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
+		B09A3194255527670045EDB2 /* IndicatorSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorSettings.swift; sourceTree = "<group>"; };
 		B0A99DDD2526EF7A006F4A5D /* Role.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		B0B82C2025270A34002D71FF /* RoleInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoleInfo.swift; sourceTree = "<group>"; };
 		B0B82C2C252752D7002D71FF /* VerifiableCredential.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifiableCredential.swift; sourceTree = "<group>"; };
@@ -684,6 +690,16 @@
 			path = CredentialCards;
 			sourceTree = "<group>";
 		};
+		B09A3193255527450045EDB2 /* BusyButton */ = {
+			isa = PBXGroup;
+			children = (
+				B09A31892555200E0045EDB2 /* ButtonWithLoader.swift */,
+				B09A318E255521990045EDB2 /* ActivityIndicator.swift */,
+				B09A3194255527670045EDB2 /* IndicatorSettings.swift */,
+			);
+			path = BusyButton;
+			sourceTree = "<group>";
+		};
 		B0A99DE52526F0C7006F4A5D /* Commands */ = {
 			isa = PBXGroup;
 			children = (
@@ -790,6 +806,7 @@
 		B0DF08FB2520D9820077479E /* SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				B09A3193255527450045EDB2 /* BusyButton */,
 				B044F9D22545D0C8003BF413 /* QRScanner */,
 				B00A67A7253D7114002D7D53 /* Alert */,
 				B07DE5EB2528BD91003F8D9D /* Snackbar */,
@@ -1066,8 +1083,10 @@
 				B08D47AF252B560800E10DAB /* Secp256k1ProofSettings.swift in Sources */,
 				B0993F522521B66A003BEB85 /* IssuerAssembly.swift in Sources */,
 				B0413BC52522EBF600140A70 /* TextFieldWithClearButton.swift in Sources */,
+				B09A318A2555200E0045EDB2 /* ButtonWithLoader.swift in Sources */,
 				B02C16932547F3F5005A2F79 /* RoleCardTypeChecker.swift in Sources */,
 				B0E6A29A254048C90023681A /* VerifierViewModel.swift in Sources */,
+				B09A318F255521990045EDB2 /* ActivityIndicator.swift in Sources */,
 				B0FD18852541676F00C4FDB5 /* HolderViewModel.swift in Sources */,
 				B0993F7D2521F5FB003BEB85 /* CredentialPhotoContent.swift in Sources */,
 				B0993F722521F0F4003BEB85 /* UIFont+.swift in Sources */,
@@ -1081,6 +1100,7 @@
 				B0D4AC692526F59F006F3FA4 /* RoleAction.swift in Sources */,
 				B00F0086253EFC6200D16E66 /* WriteIssuerFilesTask.swift in Sources */,
 				B044F9D42545D13A003BF413 /* CodeScanner.swift in Sources */,
+				B09A3195255527670045EDB2 /* IndicatorSettings.swift in Sources */,
 				B07DE5ED2528BD9C003F8D9D /* Snackbar.swift in Sources */,
 				B068AB0325246351006559F9 /* HiddenSystemNavigation.swift in Sources */,
 				B08D47A4252B10DE00E10DAB /* ImageHasher.swift in Sources */,

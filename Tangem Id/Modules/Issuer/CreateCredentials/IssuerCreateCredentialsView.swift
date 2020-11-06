@@ -137,15 +137,19 @@ struct IssuerCreateCredentialsView: View, Equatable {
 				Group {
 					Spacer()
 						.frame(width: 10, height: 45, alignment: .center)
-					Button(viewModel.isCredentialsCreated ?
+					ButtonWithSpinner(
+						title: viewModel.isCredentialsCreated ?
 							LocalizationKeys.Modules.Issuer.writeToCardCredentials :
-							LocalizationKeys.Modules.Issuer.signCredentials) {
-						if self.viewModel.isCredentialsCreated {
-							self.viewModel.writeCredentialsToCard()
-						} else {
-							self.viewModel.signEnteredInfo()
-						}
-					}
+							LocalizationKeys.Modules.Issuer.signCredentials,
+						isBusy: viewModel.isNfcBusy,
+						action: {
+							if self.viewModel.isCredentialsCreated {
+								self.viewModel.writeCredentialsToCard()
+							} else {
+								self.viewModel.signEnteredInfo()
+							}
+						},
+						settings: .settingsForButtonStyle(.blue))
 					.buttonStyle(ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					if viewModel.isCredentialsCreated {
 						Spacer()

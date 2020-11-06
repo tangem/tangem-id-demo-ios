@@ -54,7 +54,7 @@ struct HolderView: View {
 														self.viewModel.changePasscode()
 													}),
 													.cancel()
-									])
+												])
 								}
 							})
 				ScrollView {
@@ -210,21 +210,25 @@ struct HolderView: View {
 					.frame(minWidth: 0, maxWidth: .infinity)
 					Spacer()
 						.frame(width: 10, height: 44)
-					Button(viewModel.isEditing ?
+					ButtonWithSpinner(
+						title: viewModel.isEditing ?
 							LocalizationKeys.Modules.Holder.saveChanges :
-							LocalizationKeys.Modules.Holder.requestNewCreds) {
-						if self.viewModel.isEditing {
-							self.viewModel.saveChanges()
-						} else {
-							self.isShowingScanner = true
-						}
-					}
-					.sheet(isPresented: $isShowingScanner, content: {
-						self.scannerSheet
-					})
-					.transition(.opacity)
-					.buttonStyle(ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
-					.padding(.horizontal, 46)
+							LocalizationKeys.Modules.Holder.requestNewCreds,
+						isBusy: self.viewModel.isNfcBusy,
+						action: {
+							if self.viewModel.isEditing {
+								self.viewModel.saveChanges()
+							} else {
+								self.isShowingScanner = true
+							}
+						},
+						settings: .settingsForButtonStyle(.blue))
+						.sheet(isPresented: $isShowingScanner, content: {
+							self.scannerSheet
+						})
+						.transition(.opacity)
+						.buttonStyle(ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
+						.padding(.horizontal, 46)
 					Spacer()
 						.frame(width: 10, height: 44)
 				}

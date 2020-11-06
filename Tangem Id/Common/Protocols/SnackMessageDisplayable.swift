@@ -15,8 +15,10 @@ protocol SnackMessageDisplayable: class {
 
 extension SnackMessageDisplayable {
 	func showSnack(message: String, type: SnackType) {
-		snackMessage = SnackData(message: message, type: type)
-		isShowingSnack = true
+		DispatchQueue.main.async {
+			self.snackMessage = SnackData(message: message, type: type)
+			self.isShowingSnack = true
+		}
 	}
 	
 	func showErrorSnack(message: String) {
@@ -28,11 +30,33 @@ extension SnackMessageDisplayable {
 	}
 	
 	func showErrorSnack(error: TangemSdkError) {
-		if case .userCancelled = error { return }
-		
-		if case .underlying(let idError) = error,
-		   case TangemIdError.cancelledWithoutError = idError { return }
+		guard shouldDisplaySnack(error: error) else { return }
 		
 		showErrorSnack(message: error.localizedDescription)
+	}
+	
+	func showErrorSnack(error: TangemSdkError, withMessage message: String) {
+		guard shouldDisplaySnack(error: error) else { return }
+		
+		showErrorSnack(message: message)
+	}
+	
+	private func shouldDisplaySnack(error: TangemSdkError) -> Bool {
+		if case .userCancelled = error { return false }
+		
+		if case .busy = error {
+			showInfoSnack(message: LocalizedStrings.Snacks.nfcIsBusy)
+			return false
+		}
+		
+		if case .nfcStuck = error {
+			showInfoSnack(message: LocalizedStrings.Snacks.nfcReadyToUse)
+			return false
+		}
+		
+		if case .underlying(let idError) = error,
+		   case TangemIdError.cancelledWithoutError = idError { return false }
+		
+		return true
 	}
 }

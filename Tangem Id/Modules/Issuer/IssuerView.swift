@@ -50,13 +50,15 @@ struct IssuerView: View, Equatable {
 					ZStack {
 						NavigationButton(
 							action: { self.viewModel.createNewCredentials() },
+							isBusy: viewModel.isNfcBusy,
 							text: LocalizationKeys.NavigationBar.issueCredentials,
 							navigationLink: NavigationLink(
 								"",
 								destination: viewModel.createCredentialsLink,
 								tag: true,
 								selection: $viewModel.isCreatingCredentials),
-							buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
+							buttonStyle: ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding,
+							indicatorSettings: .settingsForButtonStyle(.blue))
 					}
 					.padding(.bottom, 40)
 					.padding(.horizontal, 46)
