@@ -37,6 +37,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 	}
 	@Published var snackMessage: SnackData = .emptySnack
 	@Published var isShowingSnack: Bool = false
+	@Published var isNfcBusy: Bool = false
 	
 	var scannedQrCode: String = ""
 	
@@ -74,7 +75,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 			holderCredentials.covid = nil
 		}
 		let fileIndex = file.fileIndex
-		credsToUpdateVisibility.removeValue(forKey: fileIndex)
+		credsToUpdateVisibility.removeValue(forKey: fileIndex)?.fileSettings?.toggleVisibility()
 		credsToDelete.append(file)
 		objectWillChange.send()
 	}
@@ -109,6 +110,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 	}
 	
 	func saveChanges() {
+		isNfcBusy = true
 		holderManager.execute(action: .saveChanges(filesToDelete: credsToDelete, filesToUpdateSettings: credsToUpdateVisibility.map { $0.value }, completion: { [weak self] (result) in
 			switch result {
 			case .success:
@@ -120,6 +122,7 @@ final class HolderViewModel: ObservableObject, SnackMessageDisplayable {
 			case .failure(let error):
 				self?.showErrorSnack(error: error)
 			}
+			self?.isNfcBusy = false
 		}))
 	}
 	

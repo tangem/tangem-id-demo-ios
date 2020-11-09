@@ -9,6 +9,7 @@
 import SwiftUI
 import Combine
 import UIKit
+import TangemSdk
 
 extension Gender {
 	static var genderSegments: [SegmentData] {
@@ -28,7 +29,7 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 			lhs.isOver21 == rhs.isOver21
 	}
 	
-	private var selectedGender: Gender = .notSelected
+	
 	
 	var availableGenders: [SegmentData] = Gender.genderSegments
 	
@@ -52,10 +53,22 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 	
 	@Published var jsonRepresentation: String = ""
 	@Published var isShowingJson: Bool = false
+	@Published var isNfcBusy: Bool = false
+	
+	var doesFormHasInput: Bool {
+		!name.isEmpty ||
+			!surname.isEmpty ||
+			!ssn.isEmpty ||
+			photo != nil ||
+			dateOfBirth != nil ||
+			selectedGenderIndex >= 0
+	}
 	
 	private(set) var name: String = ""
 	private(set) var surname: String = ""
 	private(set) var ssn: String = ""
+	
+	private var selectedGender: Gender = .notSelected
 	
 	private let moduleAssembly: ModuleAssemblyType
 	private let issuerManager: TangemIssuerManager
@@ -85,6 +98,7 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 	}
 	
 	func signEnteredInfo() {
+		UIApplication.endEditing()
 		guard
 			isDataValid(),
 			let credsInput = formatCredsInput()
@@ -92,26 +106,30 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 			showErrorSnack(message: LocalizedStrings.Snacks.issuerSomeEmptyFields)
 			return
 		}
+		isNfcBusy = true
 		issuerManager.execute(action: .signCredentials(credsInput, { [weak self] (result) in
 			switch result {
 			case .success:
 				self?.showSnack(message: LocalizedStrings.Snacks.credentialsSignedSuccess, type: .info)
 				self?.isCredentialsCreated = true
 			case .failure(let error):
-				self?.showErrorSnack(message: String(format: LocalizedStrings.Snacks.failedToSignCredentials, error.localizedDescription))
+				self?.showErrorSnack(error: error, withMessage: String(format: LocalizedStrings.Snacks.failedToSignCredentials, error.localizedDescription))
 			}
+			self?.isNfcBusy = false
 		}))
 	}
 	
 	func writeCredentialsToCard() {
+		isNfcBusy = true
 		issuerManager.execute(action: .saveCredentialsToCard { [weak self] (result) in
 			switch result {
 			case .success:
 				self?.showInfoSnack(message: LocalizedStrings.Snacks.credentialsSavedOnCard)
 				self?.shouldDismissToRoot = true
 			case .failure(let error):
-				self?.showErrorSnack(message: String(format: LocalizedStrings.Snacks.failedToWriteCredentials, error.localizedDescription))
+				self?.showErrorSnack(error: error, withMessage: String(format: LocalizedStrings.Snacks.failedToWriteCredentials, error.localizedDescription))
 			}
+			self?.isNfcBusy = false
 		})
 	}
 	
@@ -122,7 +140,7 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 				self.jsonRepresentation = json
 				self.isShowingJson = true
 			case .failure(let error):
-				self.snackMessage = SnackData(error: error)
+				self.showErrorSnack(error: error.toTangemSdkError())
 			}
 		}))
 	}
@@ -131,9 +149,13 @@ class IssuerCreateCredentialsViewModel: ObservableObject, Equatable, SnackMessag
 		return photo != nil &&
 			!name.isEmpty &&
 			!surname.isEmpty &&
-			!ssn.isEmpty &&
+			isSsnValid() &&
 			selectedGender != .notSelected &&
 			dateOfBirth != nil
+	}
+	
+	private func isSsnValid() -> Bool {
+		ssn.count == 11
 	}
 	
 	private func formatCredsInput() -> CredentialInput? {

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct Checkbox: View {
 	
+	var animated: Bool
 	var isSelected: Bool
 	
     var body: some View {
@@ -44,18 +45,20 @@ struct Checkbox: View {
 			}
 			.scaleEffect(isSelected ? 1.0 : 0.001)
 			.animation(
-				(!isSelected ?
-					Animation.easeIn :
-					Animation.spring(response: 0.35, dampingFraction: 0.35, blendDuration: 0
-					))
-					.speed(2))
+				animated ?
+					(!isSelected ?
+						Animation.easeIn :
+						Animation.spring(response: 0.35, dampingFraction: 0.35, blendDuration: 0
+						))
+					.speed(2) :
+					nil)
 		}
     }
 }
 
 struct Checkbox_Previews: PreviewProvider {
     static var previews: some View {
-		Checkbox(isSelected: true)
+		Checkbox(animated: false, isSelected: true)
 			.previewLayout(.fixed(width: 40, height: 40))
     }
 }

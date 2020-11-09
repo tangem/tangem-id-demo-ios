@@ -40,6 +40,10 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 		}
 		if let ssn = credential.credentials as? SsnCredential {
 			title = LocalizationKeys.Common.ssn
+			content = AnyView(
+				Divider()
+					.padding(.horizontal)
+			)
 			supplement = AnyView(
 				Text(ssn.ssn)
 					.foregroundColor(.tangemBlack)
@@ -49,13 +53,13 @@ struct HolderCredentialViewer<Creds: DemoCredential>: View {
 		if let ageOver21 = credential.credentials as? AgeOver21Credential {
 			title = LocalizationKeys.Common.ageOver21
 			content = AnyView(
-				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: ageOver21.isOver21)
+				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: ageOver21.isOver21, animated: false)
 			)
 		}
 		if let covidCreds = credential.credentials as? CovidCredential {
 			title = LocalizationKeys.Common.covidImmunity
 			content = AnyView(
-				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: covidCreds.isCovidPositive)
+				CredentialCardValidCheckboxContent(title: LocalizationKeys.Common.valid, isCheckboxSelected: covidCreds.isCovidPositive, animated: false)
 			)
 		}
 		return

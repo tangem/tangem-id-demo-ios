@@ -8,6 +8,7 @@
 
 import SwiftUI
 import UIKit
+import AVFoundation
 
 struct IssuerCreateCredentialsView: View, Equatable {
 	
@@ -26,34 +27,55 @@ struct IssuerCreateCredentialsView: View, Equatable {
 	@State private var showingJsonRepresentation = false
 	@State private var isShowingSnack = false
 	@State private var isShowingBackAlert = false
+	@State private var showCameraAlert = false
+	@State private var firstResponseIndex = -1
+	@State private var isVisible = false
 	
 	func photoCard() -> some View {
 		let title = LocalizationKeys.Common.photo
+		let addButtonAction = {
+			UIApplication.endEditing()
+			if AVCaptureDevice.authorizationStatus(for: .video) ==  .authorized {
+				self.showingImagePicker = true
+			} else {
+				AVCaptureDevice.requestAccess(for: .video, completionHandler: { (granted: Bool) in
+					if granted {
+						self.showingImagePicker = true
+					} else {
+						self.showCameraAlert = true
+					}
+				})
+			}
+		}
 		let addPhotoButton = ButtonWithImage(image: UIImage(systemName: "plus")!,
 											 color: .tangemBlue,
 											 text: LocalizationKeys.Common.addPhoto,
-											 action: { self.showingImagePicker = true },
+											 action: addButtonAction,
 											 isLtr: true)
+			.alert(isPresented: $showCameraAlert, content: {
+				settingsAlert
+			})
 		if let photo = viewModel.photo {
 			return AnyView(CredentialCard(
-				title: title,
-				supplementBuilder: {
-					addPhotoButton
-			}, contentBuilder: {
-				CredentialPhotoContent(image: photo)
-			}))
+							title: title,
+							supplementBuilder: {
+								addPhotoButton
+							}, contentBuilder: {
+								CredentialPhotoContent(image: photo)
+							}))
 		} else {
 			return AnyView(CredentialCard(title: title,
 										  supplementBuilder: {
 											addPhotoButton
-			}))
+										  }))
 		}
 	}
 	
 	var body: some View {
-		VStack {
+		print("Keyboard is visible", keyboardHandler, "Keyboard height:", keyboardHandler.keyboardHeight)
+		let body = VStack {
 			NavigationBar(title: LocalizationKeys.NavigationBar.issueCredentials) {
-				if self.viewModel.isCredentialsCreated {
+				if self.viewModel.doesFormHasInput {
 					self.isShowingBackAlert = true
 				} else {
 					self.presentationMode.wrappedValue.dismiss()
@@ -78,14 +100,14 @@ struct IssuerCreateCredentialsView: View, Equatable {
 						title: LocalizationKeys.Common.personalInfo,
 						contentBuilder: {
 							VStack {
-								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.name) { self.viewModel.inputName($0) }
-								TextFieldWithClearButton(placeholder: LocalizedStrings.Common.surname) { self.viewModel.inputSurname($0) }
+								TextFieldWithClearButton(selectedIndex: $firstResponseIndex, index: 0, placeholder: LocalizedStrings.Common.name, returnKeyType: .next, textChangeAction: { self.viewModel.inputName($0) })
+								TextFieldWithClearButton(selectedIndex: $firstResponseIndex, index: 1, placeholder: LocalizedStrings.Common.surname, returnKeyType: .next, textChangeAction: { self.viewModel.inputSurname($0) })
 								RadioSegmentSelector(
 									segments: viewModel.availableGenders,
 									selectedIndex: viewModel.selectedGenderIndex,
 									selectionAction: viewModel.selectGender(at:)
 								)
-								DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth.localizedString(), date: $viewModel.dateOfBirth)
+								DatePicker(placeholder: LocalizedStrings.Common.dateOfBirth, index: 2, date: $viewModel.dateOfBirth, selectedIndex: $firstResponseIndex)
 							}
 					})
 						.frame(height: 300)
@@ -115,15 +137,19 @@ struct IssuerCreateCredentialsView: View, Equatable {
 				Group {
 					Spacer()
 						.frame(width: 10, height: 45, alignment: .center)
-					Button(viewModel.isCredentialsCreated ?
+					ButtonWithSpinner(
+						title: viewModel.isCredentialsCreated ?
 							LocalizationKeys.Modules.Issuer.writeToCardCredentials :
-							LocalizationKeys.Modules.Issuer.signCredentials) {
-						if self.viewModel.isCredentialsCreated {
-							self.viewModel.writeCredentialsToCard()
-						} else {
-							self.viewModel.signEnteredInfo()
-						}
-					}
+							LocalizationKeys.Modules.Issuer.signCredentials,
+						isBusy: viewModel.isNfcBusy,
+						action: {
+							if self.viewModel.isCredentialsCreated {
+								self.viewModel.writeCredentialsToCard()
+							} else {
+								self.viewModel.signEnteredInfo()
+							}
+						},
+						settings: .settingsForButtonStyle(.blue))
 					.buttonStyle(ScreenPaddingButtonStyle.defaultBlueButtonStyleWithPadding)
 					if viewModel.isCredentialsCreated {
 						Spacer()
@@ -143,14 +169,14 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			}
 			.padding(.horizontal, 8)
 		}
-		.padding(.bottom, keyboardHandler.keyboardHeight)
+		.padding(.bottom, keyboardHandler.isKeyboardVisible ? keyboardHandler.keyboardHeight : 0)
 		.snack(data: $viewModel.snackMessage, show: $viewModel.isShowingSnack)
 		.onAppear(perform: {
-			if #available(iOS 14, *) { return }
+			//			if #available(iOS 14, *) { return }
 			self.keyboardHandler.subscribe()
 		})
 		.onDisappear(perform: {
-			if #available(iOS 14, *) { return }
+			//			if #available(iOS 14, *) { return }
 			self.keyboardHandler.unsubscribe()
 		})
 		.modifier(HiddenSystemNavigation())
@@ -162,12 +188,31 @@ struct IssuerCreateCredentialsView: View, Equatable {
 			if jsonRepresenation.isEmpty { return }
 			self.showingJsonRepresentation = true
 		}
+		
+		if #available(iOS 14.0, *) {
+			return AnyView(body.ignoresSafeArea(.keyboard, edges: .bottom))
+		}
+		
+		return AnyView(body)
+	}
+	
+	private var settingsAlert: Alert {
+		Alert(title: Text(LocalizationKeys.Common.accessDenied),
+			  message: Text(LocalizationKeys.Common.cameraPermissionDenied),
+			  primaryButton: .default(Text(LocalizationKeys.Common.settings), action: {
+				guard
+					let settingsUrl = URL(string: UIApplication.openSettingsURLString),
+					UIApplication.shared.canOpenURL(settingsUrl)
+				else { return }
+				
+				UIApplication.shared.open(settingsUrl)
+			  }),
+			  secondaryButton: .cancel())
 	}
 }
 
 struct IssuerCreateCredentialsView_Previews: PreviewProvider {
 	static var previews: some View {
 		ApplicationAssembly.resolve(IssuerCreateCredentialsView.self)!
-			.deviceForPreview(.iPhone7)
 	}
 }

@@ -27,7 +27,7 @@ public class WriteIssuerFilesTask: CardSessionRunnable {
 	}
 	
 	private func readFilesCounter(session: CardSession, completion: @escaping CompletionResult<WriteFilesResponse>) {
-		let readFiles = ReadFileCommand(fileIndex: 0, readPrivateFiles: false)
+		let readFiles = ReadFileCommand(fileIndex: 0, readPrivateFiles: true)
 		readFiles.run(in: session) { (result) in
 			switch result {
 			case .success(let response):

@@ -33,6 +33,7 @@ final class RoleSelectorViewModel: ObservableObject, Equatable, SnackMessageDisp
 	@Published var error: Error?
 	@Published var snackMessage: SnackData = .emptySnack
 	@Published var isShowingSnack: Bool = false
+	@Published var isNfcBusy: Bool = false
 	
 	private var disposable = Set<AnyCancellable>()
 	
@@ -52,6 +53,7 @@ final class RoleSelectorViewModel: ObservableObject, Equatable, SnackMessageDisp
 
 extension RoleSelectorViewModel {
 	func issuerButtonAction() {
+		isNfcBusy = true
 		let manager = tangemIdFactory.createIssuerManager()
 		manager.execute(action: .authorizeAsIssuer({ [weak self] (result) in
 			guard let self = self else { return }
@@ -62,12 +64,14 @@ extension RoleSelectorViewModel {
 				self.isIssuer = true
 				self.state = .issuer
 			case .failure(let error):
-				self.error = error
+				self.showErrorSnack(error: error)
 			}
+			self.isNfcBusy = false
 		}))
 	}
 	
 	func verifierButtonAction() {
+		isNfcBusy = true
 		let manager = tangemIdFactory.createVerifierManager()
 		manager.execute(action: .readHoldersCredentials(completion: { (result) in
 			switch result {
@@ -78,10 +82,12 @@ extension RoleSelectorViewModel {
 			case .failure(let error):
 				self.showErrorSnack(error: error)
 			}
+			self.isNfcBusy = false
 		}))
 	}
 	
 	func holderButtonAction() {
+		isNfcBusy = true
 		let manager = tangemIdFactory.createHolderManager()
 		manager.execute(action: .scanHolderCredentials(completion: { (result) in
 			switch result {
@@ -92,6 +98,7 @@ extension RoleSelectorViewModel {
 			case .failure(let error):
 				self.showErrorSnack(error: error)
 			}
+			self.isNfcBusy = false
 		}))
 	}
 	

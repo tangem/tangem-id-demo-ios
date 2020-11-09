@@ -83,6 +83,10 @@ struct LocalizationKeys {
 		static let dismiss: LocalizedStringKey = "dismiss"
 		static let stay: LocalizedStringKey = "stay"
 		static let cancel: LocalizedStringKey = "cancel"
+		static let settings: LocalizedStringKey = "settings"
+		
+		static let cameraPermissionDenied: LocalizedStringKey = "camera_permission_denied"
+		static let accessDenied: LocalizedStringKey = "access_denied"
 	}
 }
 
@@ -104,6 +108,9 @@ struct LocalizedStrings {
 		static let alreadyHasCredential = "already_has_credential".localizedString()
 		
 		static let passcodeChanged = "passcode_changed".localizedString()
+		
+		static let nfcIsBusy = "nfc_is_busy".localizedString()
+		static let nfcReadyToUse = "nfc_ready_to_use".localizedString()
 	}
 }
 

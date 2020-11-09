@@ -43,6 +43,9 @@
 "cancel" = "Cancel";
 "share" = "Share";
 "hide" = "Hide";
+"settings" = "Settings";
+"camera_permission_denied" = "You must grant camera permission in settings to take photo. Open settings?";
+"access_denied" = "Access denied";
 
 "personal_card" = "Personal card";
 "request_new_credentials" = "Request new credential";
@@ -80,6 +83,9 @@
 "failed_to_create_creds_from_cbor" = "Failed to create credentials from provided info";
 
 "already_has_credential" = "The holder already has this credential";
+
+"nfc_is_busy" = "NFC is busy. Please, wait";
+"nfc_ready_to_use" = "NFC was busy and now is ready to use. Please, repeat your request";
 
 
 // MARK: - Tangem Id Core messages
