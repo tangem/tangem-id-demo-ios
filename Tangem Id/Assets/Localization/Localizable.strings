@@ -1,0 +1,111 @@
+/* 
+  Localizable.strings
+  Tangem Id
+
+  Created by Andrew Son on 9/30/20.
+  Copyright © 2020 Tangem AG. All rights reserved.
+*/
+
+// MARK: - Navigation bar
+"issue_credentials" = "Issue Credentials";
+"personal_info" = "Personal information";
+
+"photo" = "Photo";
+"name" = "Name";
+"surname" = "Surname";
+"date_of_birth" = "Date of birth";
+"age_over_21" = "Age over 21";
+"ssn" = "SSN";
+"covid_immunity" = "Covid 19 Immunity Passport";
+
+"add_photo" = "Add photo";
+"sign_credentials" = "Sign";
+"write_to_card_credentials" = "Write to card";
+
+"gender" = "Gender";
+"male" = "Male";
+"female" = "Female";
+"other" = "Other";
+
+"role_selector_rescription" = "This application demonstrates the Tangem ID solution. Conformant with W3C DID and Verifiable Credential. Try for yourself! Get ID cards kit at ";
+"issuer" = "Issuer";
+"verifier" = "Verifier";
+"holder" = "Holder";
+
+"i_am_issuer" = "I'm an issuer";
+"i_am_verifier" = "I'm a verifier";
+"i_am_holder" = "I'm a holder";
+
+"did_issuer_address" = "DID Address of the Issuer";
+
+"dismiss" = "Dismiss";
+"stay" = "Stay";
+"cancel" = "Cancel";
+"share" = "Share";
+"hide" = "Hide";
+"settings" = "Settings";
+"camera_permission_denied" = "You must grant camera permission in settings to take photo. Open settings?";
+"access_denied" = "Access denied";
+
+"personal_card" = "Personal card";
+"request_new_credentials" = "Request new credential";
+"save_changes" = "Save changes";
+"json_representation" = "JSON representation:";
+"share_json" = "Share JSON";
+"credentials" = "Credentials";
+"select_settings_action" = "Select action";
+"change_passcode" = "Change passcode";
+"passcode_changed" = "Passcode has been changed";
+
+"show_json_creds" = "Show credentials JSON";
+"issuer_details" = "Issuer's Details";
+"verifier_navigation" = "ID Validator";
+
+"status" = "Status: ";
+"issued_by" = "Issued by ";
+"issuer" = " issuer ";
+"trusted" = "Trusted";
+"unknown" = "Unknown";
+"valid" = "Valid";
+
+"credentials_signed_title" = "Progress will be lost";
+"credentials_signed_body" = "Do you want to go back and cancel your input?";
+
+"write_creds_files_hint" = "Tap Holder's card and wait while data transfer will finish";
+
+// MARK: Snack messages
+"issuer_empty_fields" = "You must fill in all data in the form";
+"creds_signed" = "Credentials signed successfully. Write them on Holders card now";
+"creds_saved_on_card" = "Credentials successfully saved on card";
+
+"failed_to_sign_error" = " Failed to sign credentials: %@";
+"failed_to_write_creds_error" = "Failed to write credentials: %@";
+"failed_to_create_creds_from_cbor" = "Failed to create credentials from provided info";
+
+"already_has_credential" = "The holder already has this credential";
+
+"nfc_is_busy" = "NFC is busy. Please, wait";
+"nfc_ready_to_use" = "NFC was busy and now is ready to use. Please, repeat your request";
+
+
+// MARK: - Tangem Id Core messages
+"scan_issuer_card" = "Tap Issuer's Card";
+"scan_holder_card" = "Tap Holder's Card";
+
+"offline" = "Offline";
+"valid" = "Valid";
+"invalid" = "Invalid";
+"revoked" = "Revoked";
+
+// MARK: - Tangem Id Core error messages
+"you_not_authorized" = "You not authorized. Please Authorize yourself as Issuer, Holder of Verifier";
+"wrong_authorization" = "Action you trying to perform is not valid for this Role";
+"invalid_issuer_card" = "To issue credentials please use ID Issuer card";
+"invalid_holder_card" = "Tapped card is not an ID Card. Please, tap ID Card";
+"invalid_card" = "Tapped card neither ID Card nor ID Issuer card. Please, tap another card";
+"failed_to_read_issuer_card" = "Something went wrong in interaction with a card";
+"failed_to_create_json_representation" = "Can't create JSON representation of provided data";
+"no_available_public_credentials_on_card" = "This card doesn't contain public credentials. Please, use another card";
+"no_available_credentials_on_card" = "This card doesn't contain credentials. Please, use another card";
+"no_holder_information" = "Failed to find Holder information. Please, rescan card";
+"failed_to_receive_credentials_info" = "Failed to receive new credential information. Please, try again later";
