@@ -337,13 +337,6 @@
 			path = DI;
 			sourceTree = "<group>";
 		};
-		B00A67A7253D7114002D7D53 /* Alert */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Alert;
-			sourceTree = "<group>";
-		};
 		B0298AB425230B74004A2985 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,7 +801,6 @@
 			children = (
 				B09A3193255527450045EDB2 /* BusyButton */,
 				B044F9D22545D0C8003BF413 /* QRScanner */,
-				B00A67A7253D7114002D7D53 /* Alert */,
 				B07DE5EB2528BD91003F8D9D /* Snackbar */,
 				B0C529602524B41C00BBCD27 /* DatePicker */,
 				B0413BCE2522ED8C00140A70 /* RadioSegmentSelector */,
@@ -1360,10 +1352,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tangem.Tangem-Id";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tangem.id;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1384,10 +1376,10 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.tangem.Tangem-Id";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tangem.id;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
