@@ -14,7 +14,7 @@ target 'Tangem Id' do
 	pod 'Swinject'
 	
 	# Internal sdk
-	pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :branch => 'master'
+	pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :tag => 'build-71'
 #	pod 'TangemSdk', :path => '../card-sdk-swift'
 	pod 'BlockchainSdk', :git => 'git@bitbucket.org:tangem/blockchain-sdk-swift.git', :branch => 'master'
 #	pod 'BlockchainSdk', :path => '../blockchain-sdk-swift'
@@ -39,7 +39,7 @@ post_install do |installer|
 end
 
 target 'Tangem IdTests' do
-	pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :branch => 'master'
+	pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :tag => 'build-71'
 #	pod 'TangemSdk', :path => '../card-sdk-swift'
 	pod 'BlockchainSdk', :git => 'git@bitbucket.org:tangem/blockchain-sdk-swift.git', :branch => 'master'
 #	pod 'BlockchainSdk', :path => '../blockchain-sdk-swift'
