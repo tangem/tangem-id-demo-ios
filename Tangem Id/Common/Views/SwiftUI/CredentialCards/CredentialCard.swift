@@ -48,6 +48,7 @@ struct CredentialCard<Supplement: View, Content: View, Footer: View>: View {
 				radius: 2,
 				x: 0,
 				y: 2)
+		.blendMode(.color)
 		.padding(.all, 8)
     }
 }
