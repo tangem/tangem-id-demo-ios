@@ -4,7 +4,7 @@ inhibit_all_warnings!
 
 target 'Tangem Id' do
 	
-	# UIKit
+	# UI
 	pod 'InputMask'
 	
 	# Network
@@ -14,13 +14,12 @@ target 'Tangem Id' do
 	pod 'Swinject'
 	
 	# Internal sdk
-	pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :tag => 'build-71'
-#	pod 'TangemSdk', :path => '../card-sdk-swift'
-	pod 'BlockchainSdk', :git => 'git@bitbucket.org:tangem/blockchain-sdk-swift.git', :branch => 'master'
-#	pod 'BlockchainSdk', :path => '../blockchain-sdk-swift'
-	pod 'BinanceChain', :git => 'https://bitbucket.org/tangem/swiftbinancechain.git', :tag => '0.0.6'
-	pod 'web3swift', :git => 'https://bitbucket.org/tangem/web3swift.git', :tag => '2.2.3'
-	pod 'HDWalletKit', :git => 'https://bitbucket.org/tangem/hdwallet.git', :tag => '0.3.8'
+	pod 'TangemSdk', :git => 'https://github.com/tangem/tangem-sdk-ios', :tag => 'build-71'
+	pod 'BlockchainSdk', :git => 'https://github.com/tangem/blockchain-sdk-swift', :tag => 'build-39'
+
+    pod 'BinanceChain', :git => 'https://github.com/lazutkin-andrey/swiftbinancechain.git', :tag => '0.0.8'
+    pod 'web3swift', :git => 'https://github.com/lazutkin-andrey/web3swift.git', :tag => '2.2.6'
+    pod 'HDWalletKit', :git => 'https://github.com/lazutkin-andrey/hdwallet.git', :tag => '0.3.12'
 end
 
 pre_install do |installer|
@@ -39,8 +38,6 @@ post_install do |installer|
 end
 
 target 'Tangem IdTests' do
-	pod 'TangemSdk', :git => 'git@bitbucket.org:tangem/card-sdk-swift.git', :tag => 'build-71'
-#	pod 'TangemSdk', :path => '../card-sdk-swift'
-	pod 'BlockchainSdk', :git => 'git@bitbucket.org:tangem/blockchain-sdk-swift.git', :branch => 'master'
-#	pod 'BlockchainSdk', :path => '../blockchain-sdk-swift'
+    pod 'TangemSdk', :git => 'https://github.com/tangem/tangem-sdk-ios', :tag => 'build-71'
+    pod 'BlockchainSdk', :git => 'https://github.com/tangem/blockchain-sdk-swift', :tag => 'build-39'
 end
